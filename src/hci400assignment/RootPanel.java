@@ -8,17 +8,20 @@
  *
  * Created on 15/10/2014, 2:33:31 PM
  */
-
 package hci400assignment;
+
+import org.jdesktop.application.Action;
 
 /**
  *
  * @author 16142600
  */
-public class RootPanel extends javax.swing.JPanel {
+public class RootPanel extends javax.swing.JPanel
+{
 
     /** Creates new form RootPanel */
-    public RootPanel() {
+    public RootPanel()
+    {
         initComponents();
     }
 
@@ -32,12 +35,53 @@ public class RootPanel extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        navToolBar = new javax.swing.JToolBar();
+        navHomeButton = new javax.swing.JButton();
+        navFriendsButton = new javax.swing.JButton();
+        navSearchButton = new javax.swing.JButton();
+        navAboutButton = new javax.swing.JButton();
+        contentRootPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setName("Form"); // NOI18N
-        setLayout(new java.awt.GridBagLayout());
+        setLayout(new java.awt.BorderLayout());
+
+        navToolBar.setRollover(true);
+        navToolBar.setName("navToolBar"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(RootPanel.class);
+        navHomeButton.setText(resourceMap.getString("navHomeButton.text")); // NOI18N
+        navHomeButton.setFocusable(false);
+        navHomeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navHomeButton.setName("navHomeButton"); // NOI18N
+        navHomeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navToolBar.add(navHomeButton);
+
+        navFriendsButton.setText(resourceMap.getString("navFriendsButton.text")); // NOI18N
+        navFriendsButton.setName("navFriendsButton"); // NOI18N
+        navToolBar.add(navFriendsButton);
+
+        navSearchButton.setText(resourceMap.getString("navSearchButton.text")); // NOI18N
+        navSearchButton.setFocusable(false);
+        navSearchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navSearchButton.setName("navSearchButton"); // NOI18N
+        navSearchButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navToolBar.add(navSearchButton);
+
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(RootPanel.class, this);
+        navAboutButton.setAction(actionMap.get("navAboutButtonPressed")); // NOI18N
+        navAboutButton.setText(resourceMap.getString("navAboutButton.text")); // NOI18N
+        navAboutButton.setFocusable(false);
+        navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navAboutButton.setName("navAboutButton"); // NOI18N
+        navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navToolBar.add(navAboutButton);
+
+        add(navToolBar, java.awt.BorderLayout.NORTH);
+
+        contentRootPanel.setName("contentRootPanel"); // NOI18N
+        contentRootPanel.setLayout(new java.awt.GridBagLayout());
+
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -45,12 +89,23 @@ public class RootPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(jLabel1, gridBagConstraints);
+        contentRootPanel.add(jLabel1, gridBagConstraints);
+
+        add(contentRootPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-
+    @Action
+    public void navAboutButtonPressed()
+    {
+        ApplicationCore.getInstance().showAboutWindow();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contentRootPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton navAboutButton;
+    private javax.swing.JButton navFriendsButton;
+    private javax.swing.JButton navHomeButton;
+    private javax.swing.JButton navSearchButton;
+    private javax.swing.JToolBar navToolBar;
     // End of variables declaration//GEN-END:variables
-
 }
