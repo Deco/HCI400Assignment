@@ -100,6 +100,12 @@ public class ApplicationCore
         aboutFrame.setVisible(true);
         aboutFrame.toFront();
         aboutFrame.repaint();
+        
+    }
+
+    public void closeAboutWindow()
+    {
+        aboutFrame.dispose();
     }
 
     /**

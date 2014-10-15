@@ -19,7 +19,9 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import org.jdesktop.application.Action;
 
 /**
  *
@@ -35,7 +37,7 @@ public class AboutBox extends javax.swing.JPanel {
 
 //        ImageIcon icon =  (ImageIcon)jLabel1.getIcon();
 //
-        System.out.println(jLabel1.getWidth() + " " + jLabel1.getHeight());
+        //System.out.println(background.getWidth() + " " + background.getHeight());
 //        Image i = icon.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),0);
 //        icon.setImage(i);
 //        jLabel1.setIcon(icon);
@@ -54,21 +56,49 @@ public class AboutBox extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new FancyLabel();
+        content = new javax.swing.JLabel();
+        content1 = new javax.swing.JLabel();
+        background = new FancyLabel();
 
+        setName("aboutPanel"); // NOI18N
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setBackground(new java.awt.Color(225, 144, 64));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/about.png"))); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
+        content.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        content.setText("<html><center> This program was created by Team Placeholder<br> Made in Mid 2014. <br> All rights reserved.<br>  </center></html>"); // NOI18N
+        content.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        content.setName("content"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        add(content, gridBagConstraints);
+
+        content1.setText("<html> About Placeholder </html>"); // NOI18N
+        content1.setName("content1"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
+        add(content1, gridBagConstraints);
+
+        background.setBackground(new java.awt.Color(225, 144, 64));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/about.png"))); // NOI18N
+        background.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        background.setName("background"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(jLabel1, gridBagConstraints);
+        add(background, gridBagConstraints);
+
+        getAccessibleContext().setAccessibleName("aboutPanel");
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel content;
+    private javax.swing.JLabel content1;
     // End of variables declaration//GEN-END:variables
 
     public static class FancyLabel
@@ -85,7 +115,7 @@ public class AboutBox extends javax.swing.JPanel {
             
             ImageIcon icon = (ImageIcon) getIcon();
 
-            System.out.println(getWidth() + " " + getHeight());
+            //System.out.println(getWidth() + " " + getHeight());
             Image i = (new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/about.png"))).getImage().getScaledInstance(getWidth(), getHeight(), 0);
             icon.setImage(i);
             setIcon(icon);
@@ -104,4 +134,6 @@ public class AboutBox extends javax.swing.JPanel {
             //
         }
     }
+
+    
 }
