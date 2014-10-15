@@ -8,8 +8,18 @@
  *
  * Created on 15/10/2014, 2:52:14 PM
  */
-
 package hci400assignment;
+
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,6 +30,18 @@ public class AboutBox extends javax.swing.JPanel {
     /** Creates new form AboutBox */
     public AboutBox() {
         initComponents();
+
+
+
+//        ImageIcon icon =  (ImageIcon)jLabel1.getIcon();
+//
+        System.out.println(jLabel1.getWidth() + " " + jLabel1.getHeight());
+//        Image i = icon.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),0);
+//        icon.setImage(i);
+//        jLabel1.setIcon(icon);
+        //Get icon from label.
+        //Turn it into image: icon.getScaledInstance
+        //Set icon to label(image).
     }
 
     /** This method is called from within the constructor to
@@ -32,7 +54,7 @@ public class AboutBox extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel1 = new FancyLabel();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -40,16 +62,46 @@ public class AboutBox extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/about.png"))); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(jLabel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
+    public static class FancyLabel
+            extends JLabel
+            implements ComponentListener {
+
+        public FancyLabel() {
+            super();
+
+            addComponentListener(this);
+        }
+
+        public void componentResized(ComponentEvent e) {
+            
+            ImageIcon icon = (ImageIcon) getIcon();
+
+            System.out.println(getWidth() + " " + getHeight());
+            Image i = (new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/about.png"))).getImage().getScaledInstance(getWidth(), getHeight(), 0);
+            icon.setImage(i);
+            setIcon(icon);
+            repaint();
+        }
+
+        public void componentMoved(ComponentEvent e) {
+            //
+        }
+
+        public void componentShown(ComponentEvent e) {
+            //
+        }
+
+        public void componentHidden(ComponentEvent e) {
+            //
+        }
+    }
 }
