@@ -3,84 +3,83 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package hci400assignment;
 
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.util.List;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+import javax.swing.ListModel;
+import javax.swing.event.ListDataListener;
 
 /**
  *
  * @author Deco
  */
-public class RootPanel extends javax.swing.JPanel {
+public class RootPanel extends javax.swing.JPanel
+{
+
+    private List<ArticleCard> articleCardList;
+    private final CardGrid cardGrid;
 
     /**
      * Creates new form RootPanel
      */
-    public RootPanel() throws IOException {
+    public RootPanel() throws IOException
+    {
         initComponents();
-        
-        ((ImagePanel)contentViewPanel).setImage(ImageIO.read(
-          RootPanel.class.getResourceAsStream(
-          "/hci400assignment/resources/bg.png")));
-        
-        GridBagLayout innerLayout = (GridBagLayout)contentViewPanel.getLayout();
-        GridBagConstraints innerConstraints = new GridBagConstraints();
-        //contentPanel.setBackground(new Color(0, 220, 250));
-        int max = 20;
 
-        int inset = 20;
-        innerConstraints.insets = new Insets(inset, inset, inset, inset);
+        articleCardList = new ArrayList<ArticleCard>();
 
-        for(int i = 0; i < max; i++) {
-
-            //innerConstraints.gridx = 0;
-            innerConstraints.gridy = i + 1;
-            innerConstraints.weightx = 1.0;
-            innerConstraints.weighty = 0.0;
-            innerConstraints.fill = GridBagConstraints.HORIZONTAL;
-            innerConstraints.anchor = GridBagConstraints.NORTHWEST;
-
-            innerConstraints.gridx = 0;
-            ArticleCard c1 = new ArticleCard();
-            innerLayout.setConstraints(c1, innerConstraints);
-            contentViewPanel.add(c1);
-
-            innerConstraints.gridx = 1;
-            ArticleCard c2 = new ArticleCard();
-            innerLayout.setConstraints(c2, innerConstraints);
-            contentViewPanel.add(c2);
-
-            innerConstraints.gridx = 2;
-            ArticleCard c3 = new ArticleCard();
-            innerLayout.setConstraints(c3, innerConstraints);
-            contentViewPanel.add(c3);
-
+        double aspectRatio = 0.74;
+        double imageHeightPc = 0.61;
+        int cardWidthMin = 346;
+        for(int i = 0; i < 40; i++) {
+            ArticleCard c = new ArticleCard(aspectRatio, imageHeightPc);
+            articleCardList.add(c);
         }
 
-        JPanel innerVoidPanel = new JPanel()
+        final List<ArticleCard> modelCardList = articleCardList;
+        cardGrid = new CardGrid(new ListModel<Card>()
         {
 
             @Override
-            protected void paintComponent(Graphics g)
+            public int getSize()
             {
-                //super.paintComponent(g);
+                return modelCardList.size();
             }
-        };
-        //innerVoidPanel.setBackground(new Color(0, 250, 250));
-        innerConstraints.gridy = max + 1;
-        innerConstraints.gridx = 0;
-        innerConstraints.gridwidth = 3;
-        innerConstraints.weighty = 1.0;
-        innerConstraints.fill = GridBagConstraints.BOTH;
-        innerLayout.setConstraints(innerVoidPanel, innerConstraints);
-        contentViewPanel.add(innerVoidPanel);
+
+            @Override
+            public Card getElementAt(int i)
+            {
+                return modelCardList.get(i);
+            }
+
+            @Override
+            public void addListDataListener(ListDataListener ll)
+            {
+                // 
+            }
+
+            @Override
+            public void removeListDataListener(ListDataListener ll)
+            {
+                // 
+            }
+        });
+
+        cardGrid.setBackgroundPanel(new ImagePanel(
+          ImageIO.read(
+            RootPanel.class.getResourceAsStream(
+              "/hci400assignment/resources/bg.png"
+            )
+          ),
+          ImagePanel.Mode.TILE
+        ));
+        cardGrid.setCardWidthMin(cardWidthMin);
+
+        contentRootPanel.add(cardGrid, java.awt.BorderLayout.CENTER);
+
     }
 
     /**
@@ -90,7 +89,8 @@ public class RootPanel extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         navToolBar = new javax.swing.JToolBar();
         navHomeButton = new javax.swing.JButton();
@@ -98,8 +98,6 @@ public class RootPanel extends javax.swing.JPanel {
         navSearchButton = new javax.swing.JButton();
         navAboutButton = new javax.swing.JButton();
         contentRootPanel = new javax.swing.JPanel();
-        contentScrollPane = new javax.swing.JScrollPane();
-        contentViewPanel = new ImagePanel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -128,8 +126,10 @@ public class RootPanel extends javax.swing.JPanel {
         navAboutButton.setFocusable(false);
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navAboutButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navAboutButtonActionPerformed(evt);
             }
         });
@@ -138,12 +138,6 @@ public class RootPanel extends javax.swing.JPanel {
         add(navToolBar, java.awt.BorderLayout.NORTH);
 
         contentRootPanel.setLayout(new java.awt.BorderLayout());
-
-        contentViewPanel.setLayout(new java.awt.GridBagLayout());
-        contentScrollPane.setViewportView(contentViewPanel);
-
-        contentRootPanel.add(contentScrollPane, java.awt.BorderLayout.CENTER);
-
         add(contentRootPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,8 +148,6 @@ public class RootPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentRootPanel;
-    private javax.swing.JScrollPane contentScrollPane;
-    private javax.swing.JPanel contentViewPanel;
     private javax.swing.JButton navAboutButton;
     private javax.swing.JButton navFriendsButton;
     private javax.swing.JButton navHomeButton;
