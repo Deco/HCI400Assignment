@@ -14,5 +14,5 @@ import javax.swing.JPanel;
 public class Card
   extends JPanel
 {
-
+    //
 }
