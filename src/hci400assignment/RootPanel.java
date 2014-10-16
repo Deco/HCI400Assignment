@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package hci400assignment;
 
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.List;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -18,22 +19,31 @@ import javax.swing.JPanel;
  *
  * @author Deco
  */
-public class RootPanel extends javax.swing.JPanel {
+public class RootPanel extends javax.swing.JPanel
+{
+
+    private List<ArticleCard> articleCardList;
 
     /**
      * Creates new form RootPanel
      */
-    public RootPanel() throws IOException {
+    public RootPanel() throws IOException
+    {
         initComponents();
-        
+
+        articleCardList = new ArrayList<ArticleCard>();
+
+        double aspectRatio = 1.0;
+        double imageHeightPc = 0.3;
+
         ((ImagePanel)contentViewPanel).setImage(ImageIO.read(
           RootPanel.class.getResourceAsStream(
-          "/hci400assignment/resources/bg.png")));
-        
+            "/hci400assignment/resources/bg.png")));
+
         GridBagLayout innerLayout = (GridBagLayout)contentViewPanel.getLayout();
         GridBagConstraints innerConstraints = new GridBagConstraints();
         //contentPanel.setBackground(new Color(0, 220, 250));
-        int max = 20;
+        int max = 8;
 
         int inset = 20;
         innerConstraints.insets = new Insets(inset, inset, inset, inset);
@@ -47,20 +57,14 @@ public class RootPanel extends javax.swing.JPanel {
             innerConstraints.fill = GridBagConstraints.HORIZONTAL;
             innerConstraints.anchor = GridBagConstraints.NORTHWEST;
 
-            innerConstraints.gridx = 0;
-            ArticleCard c1 = new ArticleCard();
-            innerLayout.setConstraints(c1, innerConstraints);
-            contentViewPanel.add(c1);
-
-            innerConstraints.gridx = 1;
-            ArticleCard c2 = new ArticleCard();
-            innerLayout.setConstraints(c2, innerConstraints);
-            contentViewPanel.add(c2);
-
-            innerConstraints.gridx = 2;
-            ArticleCard c3 = new ArticleCard();
-            innerLayout.setConstraints(c3, innerConstraints);
-            contentViewPanel.add(c3);
+            for(int j = 0; j < (i == max-1 ? 2 : 3); j++) {
+                innerConstraints.gridx = j;
+                ArticleCard c = new ArticleCard(aspectRatio, imageHeightPc);
+                innerLayout.setConstraints(c, innerConstraints);
+                contentViewPanel.add(c);
+                
+                articleCardList.add(c);
+            }
 
         }
 
