@@ -118,7 +118,7 @@ public class ApplicationCore
                     app.launch();
                 } catch (IOException ex) {
                     System.err.println("Error: "+ex);
-                    System.exit(-1);
+                    //System.exit(-1);
                 }
             }
         });
