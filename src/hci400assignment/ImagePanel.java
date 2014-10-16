@@ -5,12 +5,8 @@
 
 package hci400assignment;
 
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 /**

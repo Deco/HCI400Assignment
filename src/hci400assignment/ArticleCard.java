@@ -11,6 +11,8 @@
 
 package hci400assignment;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author 16142600
@@ -20,6 +22,9 @@ public class ArticleCard extends javax.swing.JPanel {
     /** Creates new form ArticleCard */
     public ArticleCard() {
         initComponents();
+        
+        setMinimumSize(new Dimension(20, 20));
+        
     }
 
     /** This method is called from within the constructor to
@@ -34,19 +39,19 @@ public class ArticleCard extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(81, 81, 81));
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Title");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/curtin-logo.jpg"))); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.6;
         add(jLabel1, gridBagConstraints);
 
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
@@ -58,26 +63,14 @@ public class ArticleCard extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.weighty = 0.4;
         add(jLabel2, gridBagConstraints);
-
-        jLabel3.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Other text");
-        jLabel3.setName("jLabel3"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        add(jLabel3, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
 }
