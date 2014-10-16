@@ -10,6 +10,15 @@
  */
 package hci400assignment;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import org.jdesktop.application.Action;
 
 /**
@@ -20,9 +29,66 @@ public class RootPanel extends javax.swing.JPanel
 {
 
     /** Creates new form RootPanel */
-    public RootPanel()
+    public RootPanel() throws IOException
     {
         initComponents();
+
+        ((ImagePanel)contentPanel).setImage(ImageIO.read(
+          RootPanel.class.getResourceAsStream(
+          "/hci400assignment/resources/bg.png")));
+
+        GridBagLayout innerLayout = (GridBagLayout)contentPanel.getLayout();
+        GridBagConstraints innerConstraints = new GridBagConstraints();
+        //contentPanel.setBackground(new Color(0, 220, 250));
+        int max = 4;
+
+        int inset = 20;
+        innerConstraints.insets = new Insets(inset, inset, inset, inset);
+
+        for(int i = 0; i < max; i++) {
+
+            //innerConstraints.gridx = 0;
+            innerConstraints.gridy = i + 1;
+            innerConstraints.weightx = 1.0;
+            innerConstraints.weighty = 0.0;
+            innerConstraints.fill = GridBagConstraints.HORIZONTAL;
+            innerConstraints.anchor = GridBagConstraints.NORTHWEST;
+
+            innerConstraints.gridx = 0;
+            ArticleCard c1 = new ArticleCard();
+            innerLayout.setConstraints(c1, innerConstraints);
+            contentPanel.add(c1);
+
+            innerConstraints.gridx = 1;
+            ArticleCard c2 = new ArticleCard();
+            innerLayout.setConstraints(c2, innerConstraints);
+            contentPanel.add(c2);
+
+            innerConstraints.gridx = 2;
+            ArticleCard c3 = new ArticleCard();
+            innerLayout.setConstraints(c3, innerConstraints);
+            contentPanel.add(c3);
+
+        }
+
+        JPanel innerVoidPanel = new JPanel()
+        {
+
+            @Override
+            protected void paintComponent(Graphics g)
+            {
+                //super.paintComponent(g);
+            }
+        };
+        //innerVoidPanel.setBackground(new Color(0, 250, 250));
+        innerConstraints.gridy = max + 1;
+        innerConstraints.gridx = 0;
+        innerConstraints.gridwidth = 3;
+        innerConstraints.weighty = 1.0;
+        innerConstraints.fill = GridBagConstraints.BOTH;
+        innerLayout.setConstraints(innerVoidPanel, innerConstraints);
+        contentPanel.add(innerVoidPanel);
+
     }
 
     /** This method is called from within the constructor to
@@ -44,23 +110,8 @@ public class RootPanel extends javax.swing.JPanel
         navSearchButton = new javax.swing.JButton();
         navAboutButton = new javax.swing.JButton();
         contentRootPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        contentScrollPane = new javax.swing.JScrollPane();
+        contentPanel = new ImagePanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -143,84 +194,17 @@ public class RootPanel extends javax.swing.JPanel
         add(navToolBar, java.awt.BorderLayout.NORTH);
 
         contentRootPanel.setName("contentRootPanel"); // NOI18N
-        contentRootPanel.setLayout(new java.awt.GridBagLayout());
+        contentRootPanel.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setName("jScrollPane1"); // NOI18N
+        contentScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        contentScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        contentScrollPane.setName("contentScrollPane"); // NOI18N
 
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setLayout(new java.awt.GridLayout(0, 3));
+        contentPanel.setName("contentPanel"); // NOI18N
+        contentPanel.setLayout(new java.awt.GridBagLayout());
+        contentScrollPane.setViewportView(contentPanel);
 
-        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
-        jPanel1.add(jLabel4);
-
-        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
-        jLabel5.setName("jLabel5"); // NOI18N
-        jPanel1.add(jLabel5);
-
-        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
-        jLabel6.setName("jLabel6"); // NOI18N
-        jPanel1.add(jLabel6);
-
-        jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
-        jLabel7.setName("jLabel7"); // NOI18N
-        jPanel1.add(jLabel7);
-
-        jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
-        jLabel8.setName("jLabel8"); // NOI18N
-        jPanel1.add(jLabel8);
-
-        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
-        jLabel9.setName("jLabel9"); // NOI18N
-        jPanel1.add(jLabel9);
-
-        jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
-        jLabel10.setName("jLabel10"); // NOI18N
-        jPanel1.add(jLabel10);
-
-        jLabel11.setText(resourceMap.getString("jLabel11.text")); // NOI18N
-        jLabel11.setName("jLabel11"); // NOI18N
-        jPanel1.add(jLabel11);
-
-        jLabel12.setText(resourceMap.getString("jLabel12.text")); // NOI18N
-        jLabel12.setName("jLabel12"); // NOI18N
-        jPanel1.add(jLabel12);
-
-        jLabel13.setText(resourceMap.getString("jLabel13.text")); // NOI18N
-        jLabel13.setName("jLabel13"); // NOI18N
-        jPanel1.add(jLabel13);
-
-        jLabel14.setText(resourceMap.getString("jLabel14.text")); // NOI18N
-        jLabel14.setName("jLabel14"); // NOI18N
-        jPanel1.add(jLabel14);
-
-        jLabel15.setText(resourceMap.getString("jLabel15.text")); // NOI18N
-        jLabel15.setName("jLabel15"); // NOI18N
-        jPanel1.add(jLabel15);
-
-        jLabel16.setText(resourceMap.getString("jLabel16.text")); // NOI18N
-        jLabel16.setName("jLabel16"); // NOI18N
-        jPanel1.add(jLabel16);
-
-        jLabel17.setText(resourceMap.getString("jLabel17.text")); // NOI18N
-        jLabel17.setName("jLabel17"); // NOI18N
-        jPanel1.add(jLabel17);
-
-        jLabel18.setText(resourceMap.getString("jLabel18.text")); // NOI18N
-        jLabel18.setName("jLabel18"); // NOI18N
-        jPanel1.add(jLabel18);
-
-        jScrollPane1.setViewportView(jPanel1);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        contentRootPanel.add(jScrollPane1, gridBagConstraints);
+        contentRootPanel.add(contentScrollPane, java.awt.BorderLayout.CENTER);
 
         add(contentRootPanel, java.awt.BorderLayout.CENTER);
 
@@ -267,29 +251,13 @@ public class RootPanel extends javax.swing.JPanel
     private hci400assignment.ArticleCard articleCard1;
     private hci400assignment.ArticleCard articleCard2;
     private hci400assignment.ArticleCard articleCard3;
+    private javax.swing.JPanel contentPanel;
     private javax.swing.JPanel contentRootPanel;
+    private javax.swing.JScrollPane contentScrollPane;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton navAboutButton;
     private javax.swing.JButton navFriendsButton;

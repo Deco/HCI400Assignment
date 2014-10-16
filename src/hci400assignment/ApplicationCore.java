@@ -42,7 +42,7 @@ public class ApplicationCore
 
     void makeRootWindow()
     {
-        rootFrame = new JFrame("MP400 Assignment");
+        rootFrame = new JFrame("HCI400 Assignment");
         rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         rootPanel = new RootPanel();
@@ -75,7 +75,7 @@ public class ApplicationCore
 
     void makeAboutWindow()
     {
-        aboutFrame = new JFrame("MP400 Assignment");
+        aboutFrame = new JFrame("About");
         aboutFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         rootPanel = new AboutBox();

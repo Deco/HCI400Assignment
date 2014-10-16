@@ -36,8 +36,11 @@ public class ArticleCard extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(81, 81, 81));
         setLayout(new java.awt.GridBagLayout());
 
+        jLabel1.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Title");
         jLabel1.setName("jLabel1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -46,6 +49,8 @@ public class ArticleCard extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(jLabel1, gridBagConstraints);
 
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Text Text Text Text Text Text Text Text");
         jLabel2.setName("jLabel2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -56,6 +61,8 @@ public class ArticleCard extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jLabel2, gridBagConstraints);
 
+        jLabel3.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Other text");
         jLabel3.setName("jLabel3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
