@@ -104,6 +104,10 @@ public class ApplicationCore
         aboutFrame.repaint();
     }
 
+    void hideAboutWindow()
+    {
+        aboutFrame.setVisible(false);
+    }
     /**
      * Main method launching the application.
      */
