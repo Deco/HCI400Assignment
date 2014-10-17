@@ -1,8 +1,6 @@
-
 /*
- * AboutBox.java
- *
- * Created on 15/10/2014, 2:52:14 PM
+ * Curtin University - Machine Perception 400 - Assignment
+ * Group 11 - 2014S2
  */
 package hci400assignment;
 

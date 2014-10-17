@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<synth>
+    <object id="painter" class="hci400assignment.StylePainter" />
+    
+    <!--#### Definitions #### -->
+    <font id="default" name="Arial" size="14" />
+    <color id="uiBackground" value="#333333" />
+    <color id="uiText" value="#EEEEEE" />
+    
+    <!--#### Name-class styles ####-->
+    <style id="controlBarButtonStyle">
+        <color type="BACKGROUND" value="BLACK" />
+        <painter method="buttonBorder" idref="painter" />
+        <painter method="buttonBackground" idref="painter" />
+    </style>
+    <bind style="controlBarButtonStyle"
+          type="NAME" key="([\w_\s]*\s)?control_bar_button(\s[\w_\s]*)?"
+    />
+    
+    <style id="controlBarBackgroundStyle">
+        <state>
+            <opaque value="true"/>
+            <color type="BACKGROUND" idref="uiBackground" />
+            <color type="FOREGROUND" idref="uiText" />
+        </state>
+    </style>
+    <bind style="controlBarBackgroundStyle"
+          type="NAME" key="([\w_\s]*\s)?control_bar_bg(\s[\w_\s]*)?"
+    />
+    
+    <!--#### Component styles ####-->
+    <!-- Button -->
+    <style id="buttonStyle">
+        <font idref="default" />
+        <insets top="5" bottom="5" left="10" right="10" />
+    </style>
+    <bind style="buttonStyle" type="REGION" key="Button" />
+    
+    <!-- Scrollbar -->
+    <style id="scrollBarArrowStyle">
+        <property key="ArrowButton.size" type="integer" value="0" />
+    </style>
+    <bind style="scrollBarArrowStyle" type="REGION" key="ArrowButton" />
+
+    <style id="scrollBarThumbStyle">
+        <painter method="scrollBarThumbBackground" idref="painter"/>
+    </style>
+    <bind style="scrollBarThumbStyle" type="REGION" key="ScrollBarThumb" />
+
+    <style id="scrollbarTrackStyle">
+        <opaque value="true"/>
+        <state>
+            <insets top="1" right="1" bottom="1" left="1"/>
+            <color idref="uiBackground" type="BACKGROUND"/>
+        </state>
+    </style>
+    <bind style="scrollbarTrackStyle" type="REGION" key="ScrollBarTrack" />
+    
+    <!-- ProgressBar -->
+    <style id="progressBarStyle">
+        <font idref="default" />
+        <painter method="progressBarBackground" idref="painter" />
+        <insets top="0" bottom="0" left="5" right="5"/>
+    </style>
+    <bind style="progressBarStyle" type="REGION" key="ProgressBar" />
+    
+    <!-- Slider -->
+    <style id="sliderStyle">
+        <font idref="default" />
+        <painter method="sliderBackground" idref="painter" />
+        <insets top="0" bottom="0" left="5" right="5"/>
+    </style>
+    <bind style="sliderStyle" type="REGION" key="Slider" />
+    
+</synth>

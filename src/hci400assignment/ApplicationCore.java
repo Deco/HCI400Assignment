@@ -1,20 +1,33 @@
 /*
- * Main.java
+ * Curtin University - Machine Perception 400 - Assignment
+ * Group 11 - 2014S2
  */
 package hci400assignment;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 
 /**
  * The main class of the application.
  */
 public class ApplicationCore
 {
+    private static final String synthStyleFilePath
+      = "/hci400assignment/resources/style.xml";
+
     private static ApplicationCore singletonInstance = null;
 
     JFrame rootFrame;
@@ -23,6 +36,8 @@ public class ApplicationCore
     JPanel aboutPanel;
     JFrame focusFrame;
     JPanel focusPanel;
+
+    SynthLookAndFeel laf;
 
     public ApplicationCore()
     {
@@ -37,13 +52,27 @@ public class ApplicationCore
         return singletonInstance;
     }
 
-    void launch() throws IOException
+    void launch()
+      throws IOException, ParseException, UnsupportedLookAndFeelException
     {
+        prepareResources();
+
         makeAboutWindow();
         makeRootWindow();
         makeFocusView();
 
         showRootWindow();
+    }
+
+    private void prepareResources()
+      throws ParseException, IOException, UnsupportedLookAndFeelException
+    {
+        laf = new SynthLookAndFeel();
+        URL synthStyleFileURL
+          = ApplicationCore.class.getResource(synthStyleFilePath);
+
+        laf.load(synthStyleFileURL);
+        UIManager.setLookAndFeel(laf);
     }
 
     void makeRootWindow() throws IOException
@@ -59,8 +88,8 @@ public class ApplicationCore
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = new Dimension(
-          (int) (screenSize.getWidth() * 4.0 / 5.0),
-          (int) (screenSize.getHeight() * 4.0 / 5.0));
+          (int)(screenSize.getWidth() * 4.0 / 5.0),
+          (int)(screenSize.getHeight() * 4.0 / 5.0));
         rootFrame.setPreferredSize(frameSize);
         rootFrame.setSize(frameSize);
         rootFrame.setVisible(true);
@@ -93,8 +122,8 @@ public class ApplicationCore
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = new Dimension(
-          (int) (screenSize.getWidth() * 2.0 / 5.0),
-          (int) (screenSize.getHeight() * 2.0 / 5.0));
+          (int)(screenSize.getWidth() * 2.0 / 5.0),
+          (int)(screenSize.getHeight() * 2.0 / 5.0));
         aboutFrame.setPreferredSize(frameSize);
         aboutFrame.setSize(frameSize);
 
@@ -114,7 +143,7 @@ public class ApplicationCore
     {
         aboutFrame.setVisible(false);
     }
-    
+
     void makeFocusView()
     {
         focusFrame = new JFrame("Focus View");
@@ -128,8 +157,8 @@ public class ApplicationCore
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = new Dimension(
-          (int) (screenSize.getWidth() * 2.0 / 5.0),
-          (int) (screenSize.getHeight() * 2.0 / 5.0));
+          (int)(screenSize.getWidth() * 2.0 / 5.0),
+          (int)(screenSize.getHeight() * 2.0 / 5.0));
         focusFrame.setPreferredSize(frameSize);
         focusFrame.setSize(frameSize);
 
@@ -149,22 +178,25 @@ public class ApplicationCore
     {
         focusFrame.setVisible(false);
     }
-    
+
     /**
      * Main method launching the application.
      */
     public static void main(String[] args) throws IOException
     {
-        SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable()
+        {
 
             @Override
-            public void run() {
+            public void run()
+            {
                 try {
                     ApplicationCore app = new ApplicationCore();
                     app.launch();
-                } catch (IOException ex) {
-                    System.err.println("Error: "+ex);
-                    //System.exit(-1);
+                } catch(Exception ex) {
+//                    System.err.println("Error: " + ex);
+                    ex.printStackTrace(new PrintStream(System.err));
+                    System.exit(-1);
                 }
             }
         });

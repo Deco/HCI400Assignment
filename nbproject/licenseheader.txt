@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Curtin University - Machine Perception 400 - Assignment
+${licensePrefix}Group 11 - 2014S2
+<#if licenseLast??>
+${licenseLast}
+</#if>
