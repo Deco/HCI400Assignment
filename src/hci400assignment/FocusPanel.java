@@ -30,11 +30,9 @@ public class FocusPanel extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
     {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        imagePanel1 = new hci400assignment.ImagePanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -43,41 +41,16 @@ public class FocusPanel extends javax.swing.JPanel
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel1.setLayout(new java.awt.GridBagLayout());
-
-        javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);
-        imagePanel1.setLayout(imagePanel1Layout);
-        imagePanel1Layout.setHorizontalGroup(
-            imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 626, Short.MAX_VALUE)
-        );
-        imagePanel1Layout.setVerticalGroup(
-            imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.2;
-        jPanel1.add(imagePanel1, gridBagConstraints);
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\nLots of writing<br>\n</html>");
+        jLabel1.setText("<html> article.getContentHTML(); </html>");
         jPanel2.add(jLabel1, java.awt.BorderLayout.CENTER);
+        jLabel1.getAccessibleContext().setAccessibleName("<html>\n<img href=\"\"></img>\n</html>");
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.8;
-        jPanel1.add(jPanel2, gridBagConstraints);
+        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -86,7 +59,6 @@ public class FocusPanel extends javax.swing.JPanel
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private hci400assignment.ImagePanel imagePanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
