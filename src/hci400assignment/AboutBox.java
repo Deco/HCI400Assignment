@@ -32,6 +32,10 @@ public class AboutBox extends javax.swing.JPanel {
     /** Creates new form AboutBox */
     public AboutBox() {
         initComponents();
+<<<<<<< HEAD
+        
+        System.out.println("hey");
+=======
 
 
 
@@ -44,6 +48,7 @@ public class AboutBox extends javax.swing.JPanel {
         //Get icon from label.
         //Turn it into image: icon.getScaledInstance
         //Set icon to label(image).
+>>>>>>> aboutbox
     }
 
     /** This method is called from within the constructor to
