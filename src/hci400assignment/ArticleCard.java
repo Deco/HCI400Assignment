@@ -16,9 +16,8 @@ import java.awt.GridBagLayout;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -120,7 +119,8 @@ public class ArticleCard
               (int)((double)size.width / aspectRatio)
             );
             setPreferredSize(newSize);
-            getParent().revalidate();
+
+            Util.revalidate(getParent());
         }
     }
     
