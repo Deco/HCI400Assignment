@@ -30,7 +30,6 @@ public class AboutBox extends javax.swing.JPanel
     public AboutBox()
     {
         initComponents();
-<<<<<<< HEAD
 
 //        ImageIcon icon =  (ImageIcon)jLabel1.getIcon();
 //
@@ -41,10 +40,6 @@ public class AboutBox extends javax.swing.JPanel
         //Get icon from label.
         //Turn it into image: icon.getScaledInstance
         //Set icon to label(image).
-=======
-        
-        System.out.println("hey");
->>>>>>> master
     }
 
     /**
