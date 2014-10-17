@@ -105,9 +105,9 @@ public class ApplicationCore
         
     }
 
-    public void closeAboutWindow()
+    public void hideAboutWindow()
     {
-        aboutFrame.dispose();
+        aboutFrame.setVisible(false);
     }
 
     /**
