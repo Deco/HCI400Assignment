@@ -40,7 +40,7 @@ public class RootPanel extends javax.swing.JPanel
         }
 
         final List<ArticleCard> modelCardList = articleCardList;
-        cardGrid = new CardGrid(new ListModel<Card>()
+        cardGrid = new CardGrid(new ListModel()
         {
 
             @Override
@@ -89,8 +89,7 @@ public class RootPanel extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         navToolBar = new javax.swing.JToolBar();
         navHomeButton = new javax.swing.JButton();
@@ -98,6 +97,13 @@ public class RootPanel extends javax.swing.JPanel
         navSearchButton = new javax.swing.JButton();
         navAboutButton = new javax.swing.JButton();
         contentRootPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -126,10 +132,8 @@ public class RootPanel extends javax.swing.JPanel
         navAboutButton.setFocusable(false);
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        navAboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 navAboutButtonActionPerformed(evt);
             }
         });
@@ -139,6 +143,29 @@ public class RootPanel extends javax.swing.JPanel
 
         contentRootPanel.setLayout(new java.awt.BorderLayout());
         add(contentRootPanel, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new java.awt.GridBagConstraints());
+
+        jButton2.setText("jButton1");
+        jPanel1.add(jButton2, new java.awt.GridBagConstraints());
+
+        jButton3.setText("jButton1");
+        jPanel1.add(jButton3, new java.awt.GridBagConstraints());
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jButton4.setText("jButton1");
+        jPanel2.add(jButton4, new java.awt.GridBagConstraints());
+
+        jButton5.setText("jButton1");
+        jPanel2.add(jButton5, new java.awt.GridBagConstraints());
+
+        jPanel1.add(jPanel2, new java.awt.GridBagConstraints());
+
+        add(jPanel1, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
 
     private void navAboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navAboutButtonActionPerformed
@@ -148,6 +175,13 @@ public class RootPanel extends javax.swing.JPanel
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentRootPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton navAboutButton;
     private javax.swing.JButton navFriendsButton;
     private javax.swing.JButton navHomeButton;

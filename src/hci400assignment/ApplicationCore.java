@@ -20,6 +20,7 @@ public class ApplicationCore
     JFrame rootFrame;
     JPanel rootPanel;
     JFrame aboutFrame;
+    JPanel aboutPanel;
 
     public ApplicationCore()
     {
@@ -48,8 +49,9 @@ public class ApplicationCore
         rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         rootPanel = new RootPanel();
-        rootFrame.getContentPane().add(rootPanel);
+        rootPanel.setDoubleBuffered(true);
 
+        rootFrame.getContentPane().add(rootPanel);
         rootFrame.pack();
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -80,8 +82,9 @@ public class ApplicationCore
         aboutFrame = new JFrame("About");
         aboutFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
-        rootPanel = new AboutBox();
-        aboutFrame.getContentPane().add(rootPanel);
+        aboutPanel = new AboutBox();
+        aboutPanel.setDoubleBuffered(true);
+        aboutFrame.getContentPane().add(aboutPanel);
 
         aboutFrame.pack();
 
