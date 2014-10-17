@@ -24,7 +24,7 @@ public class CardGrid
   extends javax.swing.JPanel
   implements ListDataListener, ComponentListener
 {
-    private ListModel<Card> model;
+    private ListModel model;
     private int cardWidthMin = 400;
     private int cardInset = 22;
     private boolean shouldCardsGrow = false;
@@ -35,7 +35,7 @@ public class CardGrid
     /**
      * Creates new form CardGrid
      */
-    public CardGrid(ListModel<Card> modelIn)
+    public CardGrid(ListModel modelIn)
     {
         initComponents();
 
@@ -99,7 +99,7 @@ public class CardGrid
             );
 
             for(int cardI = 0; cardI < cardCount; cardI++) {
-                Card card = model.getElementAt(cardI);
+                Card card = (Card)model.getElementAt(cardI);
 
                 if(!shouldCardsGrow) {
                     Dimension cardPreferredSize = card.getPreferredSize();
@@ -175,12 +175,12 @@ public class CardGrid
         // 
     }
 
-    public ListModel<Card> getModel()
+    public ListModel getModel()
     {
         return model;
     }
 
-    public void setModel(ListModel<Card> model)
+    public void setModel(ListModel model)
     {
         this.model = model;
         populateGrid();
