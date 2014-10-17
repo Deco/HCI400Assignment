@@ -23,7 +23,6 @@ import javax.swing.JLabel;
  */
 public class AboutBox extends javax.swing.JPanel
 {
-
     /**
      * Creates new form AboutBox
      */
@@ -34,6 +33,7 @@ public class AboutBox extends javax.swing.JPanel
 //        ImageIcon icon =  (ImageIcon)jLabel1.getIcon();
 //
         System.out.println(jLabel1.getWidth() + " " + jLabel1.getHeight());
+
 //        Image i = icon.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),0);
 //        icon.setImage(i);
 //        jLabel1.setIcon(icon);
@@ -49,8 +49,7 @@ public class AboutBox extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jButton1 = new javax.swing.JButton();
@@ -62,10 +61,8 @@ public class AboutBox extends javax.swing.JPanel
 
         jButton1.setText("Close");
         jButton1.setName("jButton1"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -76,7 +73,7 @@ public class AboutBox extends javax.swing.JPanel
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         add(jButton1, gridBagConstraints);
 
-        jLabel3.setText("<html>\n<center>\nThis Program is a product of Team Placeholder<br>\nCreated in mid 2014.\n</center>\n</html>");
+        jLabel3.setText("<html>\n<center> This Program is a product of Team Placeholder<br>\nCreated in mid 2014. </center>\n\n<img src=\"file:/home/16142600/hci400/assignment/build/classes/hci400assignment/resources/curtin-logo.jpg\"></img>\n\n</html>");
         jLabel3.setName("jLabel3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -106,10 +103,8 @@ public class AboutBox extends javax.swing.JPanel
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-    ApplicationCore.getInstance().hideAboutWindow();        // TODO add your handling code here:
+        ApplicationCore.getInstance().hideAboutWindow();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -125,7 +120,6 @@ public class AboutBox extends javax.swing.JPanel
       extends JLabel
       implements ComponentListener
     {
-
         public FancyLabel()
         {
             super();
