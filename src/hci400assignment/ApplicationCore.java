@@ -21,6 +21,8 @@ public class ApplicationCore
     JPanel rootPanel;
     JFrame aboutFrame;
     JPanel aboutPanel;
+    JFrame focusFrame;
+    JPanel focusPanel;
 
     public ApplicationCore()
     {
@@ -39,6 +41,7 @@ public class ApplicationCore
     {
         makeAboutWindow();
         makeRootWindow();
+        makeFocusView();
 
         showRootWindow();
     }
@@ -111,6 +114,42 @@ public class ApplicationCore
     {
         aboutFrame.setVisible(false);
     }
+    
+    void makeFocusView()
+    {
+        focusFrame = new JFrame("Focus View");
+        focusFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+        focusPanel = new FocusPanel();
+        focusPanel.setDoubleBuffered(true);
+        focusFrame.getContentPane().add(focusPanel);
+
+        focusFrame.pack();
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = new Dimension(
+          (int) (screenSize.getWidth() * 2.0 / 5.0),
+          (int) (screenSize.getHeight() * 2.0 / 5.0));
+        focusFrame.setPreferredSize(frameSize);
+        focusFrame.setSize(frameSize);
+
+        focusFrame.setLocation(
+          screenSize.width / 2 - focusFrame.getSize().width / 2,
+          screenSize.height / 2 - focusFrame.getSize().height / 2);
+    }
+
+    void showFocusView()
+    {
+        focusFrame.setVisible(true);
+        focusFrame.toFront();
+        focusFrame.repaint();
+    }
+
+    void hideFocusView()
+    {
+        focusFrame.setVisible(false);
+    }
+    
     /**
      * Main method launching the application.
      */

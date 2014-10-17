@@ -89,13 +89,15 @@ public class RootPanel extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         navToolBar = new javax.swing.JToolBar();
         navHomeButton = new javax.swing.JButton();
         navFriendsButton = new javax.swing.JButton();
         navSearchButton = new javax.swing.JButton();
         navAboutButton = new javax.swing.JButton();
+        navAboutButton1 = new javax.swing.JButton();
         contentRootPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -132,12 +134,27 @@ public class RootPanel extends javax.swing.JPanel
         navAboutButton.setFocusable(false);
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navAboutButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navAboutButtonActionPerformed(evt);
             }
         });
         navToolBar.add(navAboutButton);
+
+        navAboutButton1.setText("Test FocusView");
+        navAboutButton1.setFocusable(false);
+        navAboutButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navAboutButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navAboutButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navAboutButton1ActionPerformed(evt);
+            }
+        });
+        navToolBar.add(navAboutButton1);
 
         add(navToolBar, java.awt.BorderLayout.NORTH);
 
@@ -172,6 +189,10 @@ public class RootPanel extends javax.swing.JPanel
         ApplicationCore.getInstance().showAboutWindow();
     }//GEN-LAST:event_navAboutButtonActionPerformed
 
+    private void navAboutButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navAboutButton1ActionPerformed
+       ApplicationCore.getInstance().showFocusView();
+    }//GEN-LAST:event_navAboutButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentRootPanel;
@@ -183,6 +204,7 @@ public class RootPanel extends javax.swing.JPanel
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton navAboutButton;
+    private javax.swing.JButton navAboutButton1;
     private javax.swing.JButton navFriendsButton;
     private javax.swing.JButton navHomeButton;
     private javax.swing.JButton navSearchButton;
