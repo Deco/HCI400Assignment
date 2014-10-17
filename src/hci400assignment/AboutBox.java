@@ -20,8 +20,6 @@ public class AboutBox extends javax.swing.JPanel {
     /** Creates new form AboutBox */
     public AboutBox() {
         initComponents();
-        
-        System.out.println("hey");
     }
 
     /** This method is called from within the constructor to

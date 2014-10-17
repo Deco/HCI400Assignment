@@ -5,10 +5,8 @@ package hci400assignment;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 /**
  * The main class of the application.
@@ -34,7 +32,7 @@ public class ApplicationCore
         return singletonInstance;
     }
 
-    void launch() throws IOException
+    void launch()
     {
         makeAboutWindow();
         makeRootWindow();
@@ -42,9 +40,9 @@ public class ApplicationCore
         showRootWindow();
     }
 
-    void makeRootWindow() throws IOException
+    void makeRootWindow()
     {
-        rootFrame = new JFrame("HCI400 Assignment");
+        rootFrame = new JFrame("MP400 Assignment");
         rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         rootPanel = new RootPanel();
@@ -54,8 +52,8 @@ public class ApplicationCore
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = new Dimension(
-          (int) (screenSize.getWidth() * 4.0 / 5.0),
-          (int) (screenSize.getHeight() * 4.0 / 5.0));
+          (int) (screenSize.getWidth() * 3.0 / 5.0),
+          (int) (screenSize.getHeight() * 3.0 / 5.0));
         rootFrame.setPreferredSize(frameSize);
         rootFrame.setSize(frameSize);
         rootFrame.setVisible(true);
@@ -77,7 +75,7 @@ public class ApplicationCore
 
     void makeAboutWindow()
     {
-        aboutFrame = new JFrame("About");
+        aboutFrame = new JFrame("MP400 Assignment");
         aboutFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         rootPanel = new AboutBox();
@@ -107,20 +105,9 @@ public class ApplicationCore
     /**
      * Main method launching the application.
      */
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
     {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    ApplicationCore app = new ApplicationCore();
-                    app.launch();
-                } catch (IOException ex) {
-                    System.err.println("Error: "+ex);
-                    //System.exit(-1);
-                }
-            }
-        });
+        ApplicationCore app = new ApplicationCore();
+        app.launch();
     }
 }
