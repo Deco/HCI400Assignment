@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <synth>
-    <object id="painter" class="hci400assignment.StylePainter" />
+    <object id="painter" class="hci400assignment.gui.StylePainter" />
     
     <!--#### Definitions #### -->
     <font id="default" name="Arial" size="14" />
