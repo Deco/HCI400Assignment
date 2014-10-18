@@ -12,6 +12,7 @@ import java.util.Map;
  * @author 16142600
  */
 public class Article
+    extends Item
 {
     private Date publishDate;
     private String title;

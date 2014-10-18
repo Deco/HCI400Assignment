@@ -2,27 +2,31 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment.gui;
+package hci400assignment.gui.minimal;
 
 import hci400assignment.ApplicationCore;
-import hci400assignment.gui.ArticleCard;
+
 import hci400assignment.gui.Card;
+import hci400assignment.gui.CardGrid;
+import hci400assignment.gui.ImagePanel;
+import hci400assignment.model.Item;
 import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
-import javax.swing.JOptionPane;
 
 /**
+ * MINIMAL!
  *
  * @author Deco
  */
-public class RootPanel extends javax.swing.JPanel
+public class RootPanel
+  extends javax.swing.JPanel
 {
 
-    private List<ArticleCard> articleCardList;
+    private List<PreviewCard> articleCardList;
     private final CardGrid cardGrid;
 
     /**
@@ -32,17 +36,17 @@ public class RootPanel extends javax.swing.JPanel
     {
         initComponents();
 
-        articleCardList = new ArrayList<ArticleCard>();
+        articleCardList = new ArrayList<PreviewCard>();
 
         double aspectRatio = 0.74;
         double imageHeightPc = 0.61;
         int cardWidthMin = 346;
-        for(int i = 0; i < 40; i++) {
-            ArticleCard c = new ArticleCard(aspectRatio, imageHeightPc);
+        for(int i = 0; i < 20; i++) {
+            PreviewCard c = new PreviewCard(new Item());
             articleCardList.add(c);
         }
 
-        final List<ArticleCard> modelCardList = articleCardList;
+        final List<PreviewCard> modelCardList = articleCardList;
         cardGrid = new CardGrid(new ListModel()
         {
 
@@ -92,8 +96,8 @@ public class RootPanel extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
+    private void initComponents()
+    {
 
         contentRootPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -151,8 +155,10 @@ public class RootPanel extends javax.swing.JPanel
         navAboutButton.setFocusable(false);
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navAboutButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navAboutButtonActionPerformed(evt);
             }
         });
@@ -266,5 +272,6 @@ public class RootPanel extends javax.swing.JPanel
     private javax.swing.JButton navFriendsButton;
     private javax.swing.JButton navHomeButton;
     private javax.swing.JButton navSearchButton;
+    private javax.swing.JToolBar navToolBar;
     // End of variables declaration//GEN-END:variables
 }
