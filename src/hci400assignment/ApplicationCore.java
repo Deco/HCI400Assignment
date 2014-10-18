@@ -83,7 +83,7 @@ public class ApplicationCore
         rootFrame = new JFrame("HCI400 Assignment");
         rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        rootPanel = new hci400assignment.gui.cluttered.RootPanel();
+        rootPanel = new hci400assignment.gui.minimal.RootPanel();
         rootPanel.setDoubleBuffered(true);
 
         rootFrame.getContentPane().add(rootPanel);
