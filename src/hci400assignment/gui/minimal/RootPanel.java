@@ -14,6 +14,7 @@ import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
@@ -98,6 +99,7 @@ public class RootPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
     {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         contentRootPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -173,9 +175,10 @@ public class RootPanel
         navAboutButton1.setFocusable(false);
         navAboutButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navAboutButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navAboutButton1ActionPerformed(evt);
             }
         });
@@ -190,8 +193,10 @@ public class RootPanel
         navFacebookButton.setFocusable(false);
         navFacebookButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navFacebookButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navFacebookButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navFacebookButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navFacebookButtonActionPerformed(evt);
             }
         });
@@ -206,8 +211,10 @@ public class RootPanel
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -272,6 +279,5 @@ public class RootPanel
     private javax.swing.JButton navFriendsButton;
     private javax.swing.JButton navHomeButton;
     private javax.swing.JButton navSearchButton;
-    private javax.swing.JToolBar navToolBar;
     // End of variables declaration//GEN-END:variables
 }
