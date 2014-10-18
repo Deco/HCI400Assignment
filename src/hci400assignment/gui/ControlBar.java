@@ -30,7 +30,8 @@ public class ControlBar extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
@@ -84,8 +85,10 @@ public class ControlBar extends javax.swing.JPanel
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/icons-small/fastforward.png"))); // NOI18N
         jButton1.setName("control_bar_button"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -121,7 +124,6 @@ public class ControlBar extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 4, 0);
         jPanel2.add(jSlider1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -130,8 +132,10 @@ public class ControlBar extends javax.swing.JPanel
         gridBagConstraints.weightx = 1.0;
         jPanel2.add(jPanel3, gridBagConstraints);
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/icons-large/volume.png"))); // NOI18N
-        jPanel2.add(jButton8, new java.awt.GridBagConstraints());
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/icons-small/volume.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        jPanel2.add(jButton8, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -142,8 +146,10 @@ public class ControlBar extends javax.swing.JPanel
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/icons-medium/screen.png"))); // NOI18N
         jButton6.setName("control_bar_button"); // NOI18N
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton6ActionPerformed(evt);
             }
         });

@@ -82,27 +82,20 @@
 
     <!--Slider Track-->
     <style id="SliderTrackStyle">
-        <opaque value="FALSE"/>
+        <opaque value="false"/>
     </style>
     <bind style="SliderTrackStyle" type="region" key="sliderTrack" />
 
     <!--Slider Thumb -->
     <style id="sliderThumbStyle">
-        <opaque value="TRUE"/>
-
+        <opaque value="true"/>
         <state>
             <color type="BACKGROUND" value="RED"/>
-            <imagePainter method="sliderThumbBackground" path="../resources/icons-large/sliderknob-small.png" sourceInsets="10 10 10 10" />
-     </state>
-
-<!--        <state value="PRESSED">
-            <color type="BACKGROUND" value="GREEN"/>
+            <imagePainter method="sliderThumbBackground"
+                          path="../resources/icons-large/sliderknob-small.png"
+                          sourceInsets="0 0 0 0"
+            />
         </state>
-
-        <state value="MOUSE_OVER">
-            <color type="BACKGROUND" value="BLUE"/>
-        </state>-->
-
     </style>
     <bind style="sliderThumbStyle" type="region" key="SliderThumb" />
 

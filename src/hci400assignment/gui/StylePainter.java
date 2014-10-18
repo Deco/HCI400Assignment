@@ -101,30 +101,6 @@ public class StylePainter
     {
         paintBorder(sc, g, x, y, w, h);
 
-        double percent
-          = ((JSlider)sc.getComponent()).getValue() / 100.0;
-
-//        paintVerticalGradient(
-//          sc, g,
-//          x, y,
-//          (int)(w * percent),
-//          h
-//        );
-
-        paintVerticalGradient(
-          sc, g,
-          x, y,
-          w,
-          h
-        );
-    }
-
-    @Override
-    public void paintSliderThumbBackground(
-      SynthContext sc, Graphics g,
-      int x, int y, int w, int h, int orientation
-    )
-    {
         paintVerticalGradient(
           sc, g,
           x, y,
