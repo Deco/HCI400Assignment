@@ -7,10 +7,30 @@
     <font id="default" name="Arial" size="14" />
     <color id="uiBackground" value="#333333" />
     <color id="uiText" value="#EEEEEE" />
-    
+
+
+
     <!--#### Name-class styles ####-->
+    
+    <style id="topbarStyle">
+        <state>
+            <opaque value="true"/>
+            <color type="BACKGROUND" idref="uiBackground" />
+            <color type="FOREGROUND" idref="uiText" />
+        </state>
+    </style>
+    <bind style="topbarStyle" type="NAME" key="topbar"/>
+
+    <style id="topbarButtonStyle">
+        <color type="BACKGROUND" idref="uiBackground" />
+        <color type="FOREGROUND" idref="uiBackground" />
+        <painter method="buttonBorder" idref="painter" />
+        <painter method="buttonBackground" idref="painter" />
+    </style>
+    <bind style="topbarButtonStyle" type="NAME" key="top_bar_button"/>
+
     <style id="controlBarButtonStyle">
-        <color type="BACKGROUND" value="BLACK" />
+        <color type="BACKGROUND" idref="uiBackground" />
         <painter method="buttonBorder" idref="painter" />
         <painter method="buttonBackground" idref="painter" />
 
