@@ -1,5 +1,5 @@
 /*
- * Curtin University - Machine Perception 400 - Assignment
+ * Curtin University - Human Computer Interface 400 - Assignment
  * Group 11 - 2014S2
  */
 package hci400assignment.model;
