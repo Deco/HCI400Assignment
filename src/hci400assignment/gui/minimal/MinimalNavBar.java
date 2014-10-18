@@ -45,6 +45,7 @@ public class MinimalNavBar extends javax.swing.JPanel
 
         setLayout(new java.awt.GridBagLayout());
 
+        navHomeButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navHomeButton.setText("Home");
         navHomeButton.setFocusable(false);
         navHomeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -55,9 +56,11 @@ public class MinimalNavBar extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(navHomeButton, gridBagConstraints);
 
+        navFriendsButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navFriendsButton.setText("Friends");
         navFriendsButton.setToolTipText("");
         navFriendsButton.setFocusable(false);
@@ -69,9 +72,11 @@ public class MinimalNavBar extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(navFriendsButton, gridBagConstraints);
 
+        navSearchButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navSearchButton.setText("Search");
         navSearchButton.setFocusable(false);
         navSearchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -82,18 +87,18 @@ public class MinimalNavBar extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(navSearchButton, gridBagConstraints);
 
+        navAboutButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navAboutButton.setText("About");
         navAboutButton.setFocusable(false);
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton.setName("top_bar_button"); // NOI18N
         navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        navAboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 navAboutButtonActionPerformed(evt);
             }
         });
@@ -102,17 +107,17 @@ public class MinimalNavBar extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(navAboutButton, gridBagConstraints);
 
+        navAboutButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navAboutButton1.setText("Switch Design");
         navAboutButton1.setFocusable(false);
         navAboutButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton1.setName("top_bar_button"); // NOI18N
-        navAboutButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        navAboutButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 navAboutButton1ActionPerformed(evt);
             }
         });
@@ -121,6 +126,7 @@ public class MinimalNavBar extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(navAboutButton1, gridBagConstraints);
 
@@ -129,10 +135,8 @@ public class MinimalNavBar extends javax.swing.JPanel
         navFacebookButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navFacebookButton.setName("top_bar_button"); // NOI18N
         navFacebookButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navFacebookButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        navFacebookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 navFacebookButtonActionPerformed(evt);
             }
         });
@@ -149,10 +153,8 @@ public class MinimalNavBar extends javax.swing.JPanel
         navTwitterButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navTwitterButton.setName("top_bar_button"); // NOI18N
         navTwitterButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navTwitterButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        navTwitterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 navTwitterButtonActionPerformed(evt);
             }
         });
@@ -179,7 +181,7 @@ public class MinimalNavBar extends javax.swing.JPanel
         gapPanel.setLayout(gapPanelLayout);
         gapPanelLayout.setHorizontalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
+            .addGap(0, 8, Short.MAX_VALUE)
         );
         gapPanelLayout.setVerticalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
