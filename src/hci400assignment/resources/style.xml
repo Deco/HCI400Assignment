@@ -13,6 +13,11 @@
         <color type="BACKGROUND" value="BLACK" />
         <painter method="buttonBorder" idref="painter" />
         <painter method="buttonBackground" idref="painter" />
+
+        <state value="PRESSED">
+         
+        </state>
+        
     </style>
     <bind style="controlBarButtonStyle"
           type="NAME" key="([\w_\s]*\s)?control_bar_button(\s[\w_\s]*)?"
