@@ -22,7 +22,7 @@
     <bind style="topbarStyle" type="NAME" key="topbar"/>
 
     <style id="topbarButtonStyle">
-        <color type="BACKGROUND" idref="uiBackground" />
+        <color type="BACKGROUND" idref="uiBackground" />w
         <color type="FOREGROUND" idref="uiBackground" />
         <painter method="buttonBorder" idref="painter" />
         <painter method="buttonBackground" idref="painter" />
