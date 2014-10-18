@@ -2,8 +2,11 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment;
+package hci400assignment.gui;
 
+import hci400assignment.ApplicationCore;
+import hci400assignment.gui.ArticleCard;
+import hci400assignment.gui.Card;
 import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -98,7 +101,7 @@ public class RootPanel extends javax.swing.JPanel
         navAboutButton = new javax.swing.JButton();
         navAboutButton1 = new javax.swing.JButton();
         contentRootPanel = new javax.swing.JPanel();
-        controlsBar1 = new hci400assignment.ControlBar();
+        controlsBar1 = new hci400assignment.gui.ControlBar();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -167,7 +170,7 @@ public class RootPanel extends javax.swing.JPanel
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentRootPanel;
-    private hci400assignment.ControlBar controlsBar1;
+    private hci400assignment.gui.ControlBar controlsBar1;
     private javax.swing.JButton navAboutButton;
     private javax.swing.JButton navAboutButton1;
     private javax.swing.JButton navFriendsButton;

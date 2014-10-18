@@ -4,15 +4,15 @@
  */
 package hci400assignment;
 
+import hci400assignment.gui.FocusPanel;
+import hci400assignment.gui.AboutBox;
+import hci400assignment.gui.RootPanel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -96,13 +96,14 @@ public class ApplicationCore
 
         rootFrame.setLocation(
           screenSize.width / 2 - rootFrame.getSize().width / 2,
-          screenSize.height / 2 - rootFrame.getSize().height / 2);
+          screenSize.height / 2 - rootFrame.getSize().height / 2
+        );
 
         rootFrame.toFront();
         rootFrame.repaint();
     }
 
-    void showRootWindow()
+    public void showRootWindow()
     {
         rootFrame.setVisible(true);
         rootFrame.toFront();
@@ -132,14 +133,14 @@ public class ApplicationCore
           screenSize.height / 2 - aboutFrame.getSize().height / 2);
     }
 
-    void showAboutWindow()
+    public void showAboutWindow()
     {
         aboutFrame.setVisible(true);
         aboutFrame.toFront();
         aboutFrame.repaint();
     }
 
-    void hideAboutWindow()
+    public void hideAboutWindow()
     {
         aboutFrame.setVisible(false);
     }
@@ -167,14 +168,14 @@ public class ApplicationCore
           screenSize.height / 2 - focusFrame.getSize().height / 2);
     }
 
-    void showFocusView()
+    public void showFocusView()
     {
         focusFrame.setVisible(true);
         focusFrame.toFront();
         focusFrame.repaint();
     }
 
-    void hideFocusView()
+    public void hideFocusView()
     {
         focusFrame.setVisible(false);
     }

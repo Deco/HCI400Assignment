@@ -8,7 +8,7 @@
  *
  * Created on 15/10/2014, 4:36:46 PM
  */
-package hci400assignment;
+package hci400assignment.gui;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -17,7 +17,6 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -71,7 +70,7 @@ public class ArticleCard
     {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        articleImage = new hci400assignment.ImagePanel();
+        articleImage = new hci400assignment.gui.ImagePanel();
         articleText = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(81, 81, 81));
@@ -104,7 +103,7 @@ public class ArticleCard
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private hci400assignment.ImagePanel articleImage;
+    private hci400assignment.gui.ImagePanel articleImage;
     private javax.swing.JLabel articleText;
     // End of variables declaration//GEN-END:variables
 

@@ -2,7 +2,7 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment;
+package hci400assignment.gui;
 
 /**
  *
@@ -30,8 +30,7 @@ public class ControlBar extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
@@ -82,12 +81,10 @@ public class ControlBar extends javax.swing.JPanel
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(jButton2, gridBagConstraints);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/icons-medium/fastforward.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/icons-small/fastforward.png"))); // NOI18N
         jButton1.setName("control_bar_button"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -140,10 +137,8 @@ public class ControlBar extends javax.swing.JPanel
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/icons-medium/screen.png"))); // NOI18N
         jButton6.setName("control_bar_button"); // NOI18N
-        jButton6.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });

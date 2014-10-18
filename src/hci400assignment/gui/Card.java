@@ -2,7 +2,7 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment;
+package hci400assignment.gui;
 
 import javax.swing.JPanel;
 

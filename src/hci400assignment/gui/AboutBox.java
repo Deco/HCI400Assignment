@@ -2,8 +2,9 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment;
+package hci400assignment.gui;
 
+import hci400assignment.ApplicationCore;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ComponentEvent;
@@ -47,7 +48,8 @@ public class AboutBox extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jButton1 = new javax.swing.JButton();
@@ -59,8 +61,10 @@ public class AboutBox extends javax.swing.JPanel
 
         jButton1.setText("Close");
         jButton1.setName("jButton1"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -101,7 +105,7 @@ public class AboutBox extends javax.swing.JPanel
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        ApplicationCore.getInstance().hideAboutWindow();        // TODO add your handling code here:
+        ApplicationCore.getInstance().hideAboutWindow();
     }//GEN-LAST:event_jButton1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
