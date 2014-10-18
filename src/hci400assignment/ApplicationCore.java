@@ -4,8 +4,12 @@
  */
 package hci400assignment;
 
-import hci400assignment.gui.FocusPanel;
 import hci400assignment.gui.AboutBox;
+import hci400assignment.gui.RootPanel;
+import hci400assignment.gui.cluttered.ClutteredRootPanel;
+import hci400assignment.gui.minimal.MinimalRootPanel;
+import hci400assignment.model.Item;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -28,15 +32,17 @@ public class ApplicationCore
       = "/hci400assignment/resources/style.xml";
 
     private static ApplicationCore singletonInstance = null;
-    
+
     private ApplicationDataController dc;
 
+    private MinimalRootPanel minimalRootPanel;
+    private ClutteredRootPanel clutteredRootPanel;
+
     private JFrame rootFrame;
-    private JPanel rootPanel;
+    private RootPanel currentRootPanel;
+
     private JFrame aboutFrame;
     private JPanel aboutPanel;
-    private JFrame focusFrame;
-    private JPanel focusPanel;
 
     private SynthLookAndFeel laf;
 
@@ -46,7 +52,7 @@ public class ApplicationCore
             throw new IllegalStateException("Singleton!");
         }
         singletonInstance = this;
-        
+
         dc = new ApplicationDataController();
     }
 
@@ -60,9 +66,9 @@ public class ApplicationCore
     {
         prepareResources();
 
-        makeAboutWindow();
+        makeRootPanels();
         makeRootWindow();
-        makeFocusView();
+        makeAboutWindow();
 
         showRootWindow();
     }
@@ -78,15 +84,25 @@ public class ApplicationCore
         UIManager.setLookAndFeel(laf);
     }
 
+    private void makeRootPanels() throws IOException
+    {
+        minimalRootPanel = new MinimalRootPanel();
+
+        clutteredRootPanel = new ClutteredRootPanel();
+
+        currentRootPanel = minimalRootPanel;
+    }
+
     private void makeRootWindow() throws IOException
     {
         rootFrame = new JFrame("HCI400 Assignment");
         rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        rootPanel = new hci400assignment.gui.minimal.RootPanel();
-        rootPanel.setDoubleBuffered(true);
-
-        rootFrame.getContentPane().add(rootPanel);
+        CardLayout layout = new CardLayout();
+        rootFrame.getContentPane().setLayout(layout);
+        rootFrame.getContentPane().add(minimalRootPanel);
+        rootFrame.getContentPane().add(clutteredRootPanel);
+        updateDesign();
         rootFrame.pack();
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -148,41 +164,6 @@ public class ApplicationCore
         aboutFrame.setVisible(false);
     }
 
-    private void makeFocusView()
-    {
-        focusFrame = new JFrame("Focus View");
-        focusFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-
-        focusPanel = new FocusPanel();
-        focusPanel.setDoubleBuffered(true);
-        focusFrame.getContentPane().add(focusPanel);
-
-        focusFrame.pack();
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension frameSize = new Dimension(
-          (int)(screenSize.getWidth() * 2.0 / 5.0),
-          (int)(screenSize.getHeight() * 2.0 / 5.0));
-        focusFrame.setPreferredSize(frameSize);
-        focusFrame.setSize(frameSize);
-
-        focusFrame.setLocation(
-          screenSize.width / 2 - focusFrame.getSize().width / 2,
-          screenSize.height / 2 - focusFrame.getSize().height / 2);
-    }
-
-    public void showFocusView()
-    {
-        focusFrame.setVisible(true);
-        focusFrame.toFront();
-        focusFrame.repaint();
-    }
-
-    public void hideFocusView()
-    {
-        focusFrame.setVisible(false);
-    }
-
     /**
      * Main method launching the application.
      */
@@ -204,5 +185,36 @@ public class ApplicationCore
                 }
             }
         });
+    }
+
+    public void focusItem(Item item)
+    {
+        currentRootPanel.focusItem(item);
+    }
+    
+    private void updateDesign()
+    {
+        CardLayout layout = (CardLayout)rootFrame.getContentPane().getLayout();
+        if(currentRootPanel == minimalRootPanel) {
+            layout.first(rootFrame.getContentPane());
+            rootFrame.setTitle("HCI400 — Group 11 — Minimalistic");
+        } else if(currentRootPanel == clutteredRootPanel) {
+            layout.last(rootFrame.getContentPane());
+            rootFrame.setTitle("HCI400 — Group 11 — Cluttered");
+        } else {
+            throw new IllegalStateException("wat!?!?!?");
+        }
+    }
+
+    public void switchDesign()
+    {
+        if(currentRootPanel == minimalRootPanel) {
+            currentRootPanel = clutteredRootPanel;
+        } else if(currentRootPanel == clutteredRootPanel) {
+            currentRootPanel = minimalRootPanel;
+        } else {
+            throw new IllegalStateException("wat!?!?!?");
+        }
+        updateDesign();
     }
 }

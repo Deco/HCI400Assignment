@@ -4,7 +4,7 @@
  */
 package hci400assignment.model;
 
-import hci400assignment.gui.minimal.PreviewCard;
+import hci400assignment.gui.minimal.MinimalPreviewCard;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -19,7 +19,7 @@ public class Item
     public Image getPreviewImage()
     {
         try {
-            return ImageIO.read(PreviewCard.class.getResourceAsStream(
+            return ImageIO.read(MinimalPreviewCard.class.getResourceAsStream(
                 "/hci400assignment/resources/curtin-logo.jpg"
               )
             );

@@ -9,6 +9,7 @@ import hci400assignment.ApplicationCore;
 import hci400assignment.gui.Card;
 import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
+import hci400assignment.gui.RootPanel;
 import hci400assignment.model.Item;
 import java.util.List;
 import java.io.IOException;
@@ -24,31 +25,31 @@ import javax.swing.JOptionPane;
  *
  * @author Deco
  */
-public class RootPanel
-  extends javax.swing.JPanel
+public class MinimalRootPanel
+  extends RootPanel
 {
 
-    private List<PreviewCard> articleCardList;
+    private List<MinimalPreviewCard> articleCardList;
     private final CardGrid cardGrid;
 
     /**
      * Creates new form RootPanel
      */
-    public RootPanel() throws IOException
+    public MinimalRootPanel() throws IOException
     {
         initComponents();
 
-        articleCardList = new ArrayList<PreviewCard>();
+        articleCardList = new ArrayList<MinimalPreviewCard>();
 
         double aspectRatio = 0.74;
         double imageHeightPc = 0.61;
         int cardWidthMin = 346;
         for(int i = 0; i < 20; i++) {
-            PreviewCard c = new PreviewCard(new Item());
+            MinimalPreviewCard c = new MinimalPreviewCard(new Item());
             articleCardList.add(c);
         }
 
-        final List<PreviewCard> modelCardList = articleCardList;
+        final List<MinimalPreviewCard> modelCardList = articleCardList;
         cardGrid = new CardGrid(new ListModel()
         {
 
@@ -79,7 +80,7 @@ public class RootPanel
 
         cardGrid.setBackgroundPanel(new ImagePanel(
           ImageIO.read(
-            RootPanel.class.getResourceAsStream(
+            MinimalRootPanel.class.getResourceAsStream(
               "/hci400assignment/resources/bg.png"
             )
           ),
@@ -100,7 +101,7 @@ public class RootPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        navBar = new hci400assignment.gui.minimal.NavBar();
+        navBar = new hci400assignment.gui.minimal.MinimalNavBar();
         contentRootPanel = new javax.swing.JPanel();
         controlsBar1 = new hci400assignment.gui.ControlBar();
 
@@ -118,6 +119,6 @@ public class RootPanel
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentRootPanel;
     private hci400assignment.gui.ControlBar controlsBar1;
-    private hci400assignment.gui.minimal.NavBar navBar;
+    private hci400assignment.gui.minimal.MinimalNavBar navBar;
     // End of variables declaration//GEN-END:variables
 }

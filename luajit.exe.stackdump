@@ -1,0 +1,7 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=66FBB5CA
+eax=0070D540 ebx=00000002 ecx=00000000 edx=04030000 esi=FFE97190 edi=FFE971E0
+ebp=00000000 esp=0028A980 program=C:\cygwin\usr\local\bin\luajit.exe, pid 2472, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+End of stack trace

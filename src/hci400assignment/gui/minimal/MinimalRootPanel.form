@@ -16,7 +16,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Component class="hci400assignment.gui.minimal.NavBar" name="navBar">
+    <Component class="hci400assignment.gui.minimal.MinimalNavBar" name="navBar">
       <Properties>
         <Property name="name" type="java.lang.String" value="topbar" noResource="true"/>
       </Properties>

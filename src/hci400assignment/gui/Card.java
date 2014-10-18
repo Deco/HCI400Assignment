@@ -4,9 +4,13 @@
  */
 package hci400assignment.gui;
 
+import hci400assignment.ApplicationCore;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
 /**
@@ -15,10 +19,10 @@ import javax.swing.JPanel;
  */
 public class Card
   extends JPanel
-  implements ComponentListener
+  implements ComponentListener, MouseListener
 {
     public static final double DEFAULT_ASPECT_RATIO = 0.74;
-    
+
     private double aspectRatio;
 
     public Card(double aspectRatioIn)
@@ -30,7 +34,9 @@ public class Card
         setAspectRatio(aspectRatioIn);
 
         this.addComponentListener(this);
+        this.addMouseListener(this);
     }
+
     public Card()
     {
         this(DEFAULT_ASPECT_RATIO);
@@ -52,6 +58,49 @@ public class Card
         }
     }
 
+    public double getAspectRatio()
+    {
+        return aspectRatio;
+    }
+
+    public void setAspectRatio(double aspectRatioIn)
+    {
+        aspectRatio = aspectRatioIn;
+        componentResized(null);
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me)
+    {
+        Cursor cursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+        setCursor(cursor);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me)
+    {
+        Cursor cursor = Cursor.getDefaultCursor();
+        setCursor(cursor);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me)
+    {
+        // 
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me)
+    {
+        // 
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me)
+    {
+        // 
+    }
+
     @Override
     public void componentMoved(ComponentEvent e)
     {
@@ -68,17 +117,6 @@ public class Card
     public void componentHidden(ComponentEvent e)
     {
         // 
-    }
-
-    public double getAspectRatio()
-    {
-        return aspectRatio;
-    }
-
-    public void setAspectRatio(double aspectRatioIn)
-    {
-        aspectRatio = aspectRatioIn;
-        componentResized(null);
     }
 
 }

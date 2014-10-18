@@ -10,17 +10,19 @@
  */
 package hci400assignment.gui.minimal;
 
+import hci400assignment.ApplicationCore;
 import hci400assignment.gui.Card;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.model.Item;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.MouseEvent;
 
 /**
  *
  * @author 16142600
  */
-public class PreviewCard
+public class MinimalPreviewCard
   extends Card
 {
     public static final double DEFAULT_IMAGE_HEIGHT_PC = 0.61;
@@ -29,7 +31,7 @@ public class PreviewCard
 
     private double imageHeightPc;
 
-    public PreviewCard(Item itemIn)
+    public MinimalPreviewCard(Item itemIn)
     {
         super();
         initComponents();
@@ -81,6 +83,12 @@ public class PreviewCard
         revalidate();
     }
 
+    @Override
+    public void mouseClicked(MouseEvent me)
+    {
+        ApplicationCore.getInstance().focusItem(item);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,7 +96,8 @@ public class PreviewCard
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         articleImagePanel = new hci400assignment.gui.ImagePanel();

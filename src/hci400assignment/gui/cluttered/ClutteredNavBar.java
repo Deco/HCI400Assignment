@@ -2,8 +2,9 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment.gui.minimal;
+package hci400assignment.gui.cluttered;
 
+import hci400assignment.gui.minimal.*;
 import hci400assignment.ApplicationCore;
 import javax.swing.JOptionPane;
 
@@ -11,13 +12,14 @@ import javax.swing.JOptionPane;
  *
  * @author Declan White
  */
-public class NavBar extends javax.swing.JPanel
+public class ClutteredNavBar
+extends javax.swing.JPanel
 {
 
     /**
      * Creates new form NavBar
      */
-    public NavBar()
+    public ClutteredNavBar()
     {
         initComponents();
     }
@@ -29,7 +31,8 @@ public class NavBar extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         navHomeButton = new javax.swing.JButton();
@@ -89,8 +92,10 @@ public class NavBar extends javax.swing.JPanel
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton.setName("top_bar_button"); // NOI18N
         navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navAboutButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navAboutButtonActionPerformed(evt);
             }
         });
@@ -102,12 +107,14 @@ public class NavBar extends javax.swing.JPanel
         gridBagConstraints.weighty = 1.0;
         add(navAboutButton, gridBagConstraints);
 
-        navAboutButton1.setText("Test FocusView");
+        navAboutButton1.setText("Switch Design");
         navAboutButton1.setFocusable(false);
         navAboutButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton1.setName("top_bar_button"); // NOI18N
-        navAboutButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navAboutButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navAboutButton1ActionPerformed(evt);
             }
         });
@@ -124,8 +131,10 @@ public class NavBar extends javax.swing.JPanel
         navFacebookButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navFacebookButton.setName("top_bar_button"); // NOI18N
         navFacebookButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navFacebookButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navFacebookButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navFacebookButtonActionPerformed(evt);
             }
         });
@@ -142,8 +151,10 @@ public class NavBar extends javax.swing.JPanel
         navTwitterButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navTwitterButton.setName("top_bar_button"); // NOI18N
         navTwitterButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navTwitterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navTwitterButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navTwitterButtonActionPerformed(evt);
             }
         });
@@ -170,7 +181,7 @@ public class NavBar extends javax.swing.JPanel
         gapPanel.setLayout(gapPanelLayout);
         gapPanelLayout.setHorizontalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 44, Short.MAX_VALUE)
         );
         gapPanelLayout.setVerticalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +203,7 @@ public class NavBar extends javax.swing.JPanel
 
     private void navAboutButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navAboutButton1ActionPerformed
     {//GEN-HEADEREND:event_navAboutButton1ActionPerformed
-        ApplicationCore.getInstance().showFocusView();
+        ApplicationCore.getInstance().switchDesign();
     }//GEN-LAST:event_navAboutButton1ActionPerformed
 
     private void navFacebookButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navFacebookButtonActionPerformed
