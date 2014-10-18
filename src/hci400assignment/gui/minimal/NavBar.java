@@ -44,6 +44,7 @@ public class NavBar extends javax.swing.JPanel
 
         setLayout(new java.awt.GridBagLayout());
 
+        navHomeButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navHomeButton.setText("Home");
         navHomeButton.setFocusable(false);
         navHomeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -58,6 +59,7 @@ public class NavBar extends javax.swing.JPanel
         gridBagConstraints.weighty = 1.0;
         add(navHomeButton, gridBagConstraints);
 
+        navFriendsButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navFriendsButton.setText("Friends");
         navFriendsButton.setToolTipText("");
         navFriendsButton.setFocusable(false);
@@ -73,6 +75,7 @@ public class NavBar extends javax.swing.JPanel
         gridBagConstraints.weighty = 1.0;
         add(navFriendsButton, gridBagConstraints);
 
+        navSearchButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navSearchButton.setText("Search");
         navSearchButton.setFocusable(false);
         navSearchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -87,6 +90,7 @@ public class NavBar extends javax.swing.JPanel
         gridBagConstraints.weighty = 1.0;
         add(navSearchButton, gridBagConstraints);
 
+        navAboutButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navAboutButton.setText("About");
         navAboutButton.setFocusable(false);
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -106,6 +110,7 @@ public class NavBar extends javax.swing.JPanel
         gridBagConstraints.weighty = 1.0;
         add(navAboutButton, gridBagConstraints);
 
+        navAboutButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navAboutButton1.setText("Test FocusView");
         navAboutButton1.setFocusable(false);
         navAboutButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -175,7 +180,7 @@ public class NavBar extends javax.swing.JPanel
         gapPanel.setLayout(gapPanelLayout);
         gapPanelLayout.setHorizontalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 8, Short.MAX_VALUE)
         );
         gapPanelLayout.setVerticalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
