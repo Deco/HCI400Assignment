@@ -164,7 +164,7 @@ public class NavBar extends javax.swing.JPanel
         );
         gapPanelLayout.setVerticalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 76, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();

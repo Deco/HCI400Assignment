@@ -16,7 +16,6 @@ import java.awt.Stroke;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JList;
 import javax.swing.JProgressBar;
-import javax.swing.JSlider;
 import javax.swing.plaf.synth.ColorType;
 import javax.swing.plaf.synth.SynthConstants;
 import javax.swing.plaf.synth.SynthContext;

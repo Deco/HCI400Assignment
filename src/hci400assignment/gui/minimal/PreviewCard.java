@@ -11,11 +11,10 @@
 package hci400assignment.gui.minimal;
 
 import hci400assignment.gui.Card;
+import hci400assignment.gui.ImagePanel;
 import hci400assignment.model.Item;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 /**
  *
@@ -33,8 +32,8 @@ public class PreviewCard
     public PreviewCard(Item itemIn)
     {
         super();
-
         initComponents();
+        articleImagePanel.setMode(ImagePanel.Mode.FIT_MAX);
 
         setItem(itemIn);
 
