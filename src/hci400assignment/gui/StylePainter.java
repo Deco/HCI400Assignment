@@ -118,7 +118,12 @@ public class StylePainter
       int x, int y, int w, int h, int orientation
     )
     {
-        //
+        paintVerticalGradient(
+          sc, g,
+          x, y,
+          w,
+          h
+        );
     }
     // </editor-fold>
 

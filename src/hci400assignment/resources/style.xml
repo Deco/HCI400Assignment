@@ -67,10 +67,43 @@
     
     <!-- Slider -->
     <style id="sliderStyle">
+        <state>
+            <property key="Slider.paintValue" type="boolean" value="false"/>
+            <property key="Slider.thumbWidth" type="integer" value="14"/>
+            <property key="Slider.thumbHeight" type="integer" value="14"/>
+        </state>
+
         <font idref="default" />
         <painter method="sliderBackground" idref="painter" />
         <insets top="0" bottom="0" left="5" right="5"/>
     </style>
     <bind style="sliderStyle" type="REGION" key="Slider" />
-    
+
+
+    <!--Slider Track-->
+    <style id="SliderTrackStyle">
+        <opaque value="FALSE"/>
+    </style>
+    <bind style="SliderTrackStyle" type="region" key="sliderTrack" />
+
+    <!--Slider Thumb -->
+    <style id="sliderThumbStyle">
+        <opaque value="TRUE"/>
+
+        <state>
+            <color type="BACKGROUND" value="RED"/>
+            <imagePainter method="sliderThumbBackground" path="../resources/icons-large/sliderknob-small.png" sourceInsets="10 10 10 10" />
+     </state>
+
+<!--        <state value="PRESSED">
+            <color type="BACKGROUND" value="GREEN"/>
+        </state>
+
+        <state value="MOUSE_OVER">
+            <color type="BACKGROUND" value="BLUE"/>
+        </state>-->
+
+    </style>
+    <bind style="sliderThumbStyle" type="region" key="SliderThumb" />
+
 </synth>

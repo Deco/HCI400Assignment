@@ -44,6 +44,7 @@ public class ControlBar extends javax.swing.JPanel
         jLabel1 = new javax.swing.JLabel();
         jSlider1 = new javax.swing.JSlider();
         jPanel3 = new javax.swing.JPanel();
+        jButton8 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
@@ -97,7 +98,7 @@ public class ControlBar extends javax.swing.JPanel
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -113,9 +114,10 @@ public class ControlBar extends javax.swing.JPanel
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 4, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
 
-        jSlider1.setPreferredSize(new java.awt.Dimension(140, 20));
+        jSlider1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jSlider1.setPreferredSize(new java.awt.Dimension(140, 10));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
@@ -127,6 +129,9 @@ public class ControlBar extends javax.swing.JPanel
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         jPanel2.add(jPanel3, gridBagConstraints);
+
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/icons-large/volume.png"))); // NOI18N
+        jPanel2.add(jButton8, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -176,6 +181,7 @@ public class ControlBar extends javax.swing.JPanel
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
