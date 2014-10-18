@@ -104,10 +104,17 @@ public class StylePainter
         double percent
           = ((JSlider)sc.getComponent()).getValue() / 100.0;
 
+//        paintVerticalGradient(
+//          sc, g,
+//          x, y,
+//          (int)(w * percent),
+//          h
+//        );
+
         paintVerticalGradient(
           sc, g,
           x, y,
-          (int)(w * percent),
+          w,
           h
         );
     }
