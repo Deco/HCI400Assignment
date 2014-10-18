@@ -103,8 +103,9 @@ public class RootPanel extends javax.swing.JPanel
         navAboutButton = new javax.swing.JButton();
         navAboutButton1 = new javax.swing.JButton();
         navFacebookButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        navTwitterButton = new javax.swing.JButton();
+        navRSSButton = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         controlsBar1 = new hci400assignment.gui.ControlBar();
 
         setLayout(new java.awt.BorderLayout());
@@ -166,8 +167,6 @@ public class RootPanel extends javax.swing.JPanel
         navAboutButton1.setText("Test FocusView");
         navAboutButton1.setFocusable(false);
         navAboutButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        navAboutButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         navAboutButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 navAboutButton1ActionPerformed(evt);
@@ -196,13 +195,13 @@ public class RootPanel extends javax.swing.JPanel
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         jPanel1.add(navFacebookButton, gridBagConstraints);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/SmallTwitter.png"))); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        navTwitterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/SmallTwitter.png"))); // NOI18N
+        navTwitterButton.setFocusable(false);
+        navTwitterButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navTwitterButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navTwitterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                navTwitterButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -210,12 +209,15 @@ public class RootPanel extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(navTwitterButton, gridBagConstraints);
+
+        navRSSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/SmallRSS.png"))); // NOI18N
+        jPanel1.add(navRSSButton, new java.awt.GridBagConstraints());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.weightx = 1.0;
-        jPanel1.add(jButton2, gridBagConstraints);
+        jPanel1.add(jButton3, gridBagConstraints);
 
         contentRootPanel.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -243,7 +245,7 @@ public class RootPanel extends javax.swing.JPanel
 
     }//GEN-LAST:event_navFacebookButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void navTwitterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navTwitterButtonActionPerformed
        try {
            String URL = "https://www.twitter.com/";
            java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
@@ -251,20 +253,21 @@ public class RootPanel extends javax.swing.JPanel
        catch(Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage());
        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_navTwitterButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentRootPanel;
     private hci400assignment.gui.ControlBar controlsBar1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton navAboutButton;
     private javax.swing.JButton navAboutButton1;
     private javax.swing.JButton navFacebookButton;
     private javax.swing.JButton navFriendsButton;
     private javax.swing.JButton navHomeButton;
+    private javax.swing.JButton navRSSButton;
     private javax.swing.JButton navSearchButton;
+    private javax.swing.JButton navTwitterButton;
     // End of variables declaration//GEN-END:variables
 }
