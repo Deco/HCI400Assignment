@@ -21,9 +21,9 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
   <SubComponents>
-    <Container class="hci400assignment.gui.ImagePanel" name="articleImage">
+    <Container class="hci400assignment.gui.ImagePanel" name="articleImagePanel">
       <Properties>
-        <Property name="name" type="java.lang.String" value="articleImage" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="articleImagePanel" noResource="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -35,7 +35,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
     </Container>
-    <Component class="javax.swing.JLabel" name="articleText">
+    <Component class="javax.swing.JLabel" name="articleSnippetLabel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
@@ -48,7 +48,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Text Text Text Text Text Text Text Text"/>
-        <Property name="name" type="java.lang.String" value="articleText" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="articleSnippetLabel" noResource="true"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Constraints>

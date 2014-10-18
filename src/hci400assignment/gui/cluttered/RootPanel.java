@@ -2,11 +2,14 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment.gui;
+package hci400assignment.gui.cluttered;
 
 import hci400assignment.ApplicationCore;
-import hci400assignment.gui.ArticleCard;
 import hci400assignment.gui.Card;
+import hci400assignment.gui.CardGrid;
+import hci400assignment.gui.ImagePanel;
+import hci400assignment.gui.minimal.PreviewCard;
+import hci400assignment.model.Item;
 import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,33 +18,34 @@ import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
 /**
+ * CLUTTERED!
  *
  * @author Deco
  */
-public class RootPanel extends javax.swing.JPanel
+public class RootPanel
+  extends javax.swing.JPanel
 {
 
-    private List<ArticleCard> articleCardList;
+    private List<PreviewCard> articleCardList;
     private final CardGrid cardGrid;
 
     /**
      * Creates new form RootPanel
      */
-    public RootPanel() throws IOException
+    public RootPanel()
+      throws IOException
     {
         initComponents();
 
-        articleCardList = new ArrayList<ArticleCard>();
+        articleCardList = new ArrayList<PreviewCard>();
 
-        double aspectRatio = 0.74;
-        double imageHeightPc = 0.61;
         int cardWidthMin = 346;
-        for(int i = 0; i < 40; i++) {
-            ArticleCard c = new ArticleCard(aspectRatio, imageHeightPc);
+        for(int i = 0; i < 20; i++) {
+            PreviewCard c = new PreviewCard(new Item());
             articleCardList.add(c);
         }
 
-        final List<ArticleCard> modelCardList = articleCardList;
+        final List<PreviewCard> modelCardList = articleCardList;
         cardGrid = new CardGrid(new ListModel()
         {
 
@@ -73,7 +77,7 @@ public class RootPanel extends javax.swing.JPanel
         cardGrid.setBackgroundPanel(new ImagePanel(
           ImageIO.read(
             RootPanel.class.getResourceAsStream(
-              "/hci400assignment/resources/bg.png"
+              "/hci400assignment/resources/dark-bg.png"
             )
           ),
           ImagePanel.Mode.TILE
@@ -164,7 +168,7 @@ public class RootPanel extends javax.swing.JPanel
     }//GEN-LAST:event_navAboutButtonActionPerformed
 
     private void navAboutButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navAboutButton1ActionPerformed
-       ApplicationCore.getInstance().showFocusView();
+        ApplicationCore.getInstance().showFocusView();
     }//GEN-LAST:event_navAboutButton1ActionPerformed
 
 

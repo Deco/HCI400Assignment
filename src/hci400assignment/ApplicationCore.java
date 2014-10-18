@@ -6,7 +6,6 @@ package hci400assignment;
 
 import hci400assignment.gui.FocusPanel;
 import hci400assignment.gui.AboutBox;
-import hci400assignment.gui.RootPanel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -29,15 +28,17 @@ public class ApplicationCore
       = "/hci400assignment/resources/style.xml";
 
     private static ApplicationCore singletonInstance = null;
+    
+    private ApplicationDataController dc;
 
-    JFrame rootFrame;
-    JPanel rootPanel;
-    JFrame aboutFrame;
-    JPanel aboutPanel;
-    JFrame focusFrame;
-    JPanel focusPanel;
+    private JFrame rootFrame;
+    private JPanel rootPanel;
+    private JFrame aboutFrame;
+    private JPanel aboutPanel;
+    private JFrame focusFrame;
+    private JPanel focusPanel;
 
-    SynthLookAndFeel laf;
+    private SynthLookAndFeel laf;
 
     public ApplicationCore()
     {
@@ -45,6 +46,8 @@ public class ApplicationCore
             throw new IllegalStateException("Singleton!");
         }
         singletonInstance = this;
+        
+        dc = new ApplicationDataController();
     }
 
     public static ApplicationCore getInstance()
@@ -52,7 +55,7 @@ public class ApplicationCore
         return singletonInstance;
     }
 
-    void launch()
+    private void launch()
       throws IOException, ParseException, UnsupportedLookAndFeelException
     {
         prepareResources();
@@ -75,12 +78,12 @@ public class ApplicationCore
         UIManager.setLookAndFeel(laf);
     }
 
-    void makeRootWindow() throws IOException
+    private void makeRootWindow() throws IOException
     {
         rootFrame = new JFrame("HCI400 Assignment");
         rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        rootPanel = new RootPanel();
+        rootPanel = new hci400assignment.gui.cluttered.RootPanel();
         rootPanel.setDoubleBuffered(true);
 
         rootFrame.getContentPane().add(rootPanel);
@@ -110,7 +113,7 @@ public class ApplicationCore
         rootFrame.repaint();
     }
 
-    void makeAboutWindow()
+    private void makeAboutWindow()
     {
         aboutFrame = new JFrame("About");
         aboutFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -145,7 +148,7 @@ public class ApplicationCore
         aboutFrame.setVisible(false);
     }
 
-    void makeFocusView()
+    private void makeFocusView()
     {
         focusFrame = new JFrame("Focus View");
         focusFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
