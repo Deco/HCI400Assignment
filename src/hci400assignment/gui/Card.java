@@ -4,7 +4,6 @@
  */
 package hci400assignment.gui;
 
-import hci400assignment.ApplicationCore;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
@@ -54,7 +53,7 @@ public class Card
             );
             setPreferredSize(newSize);
 
-            Util.revalidate(getParent());
+            GUIUtil.revalidate(getParent());
         }
     }
 

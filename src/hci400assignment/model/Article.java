@@ -4,20 +4,29 @@
  */
 package hci400assignment.model;
 
+import hci400assignment.gui.minimal.MinimalPreviewCard;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import java.util.Map;
+import javax.imageio.ImageIO;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 /**
  *
  * @author 16142600
  */
 public class Article
-    extends Item
+  extends Item
 {
     private Date publishDate;
     private String title;
     private String author;
-    private String contentHTML;
+    private Document contentDocument;
     private Map<String, Object> resourceMap;
 
     public Article()
@@ -26,9 +35,44 @@ public class Article
           random()));
         title = "Yay, swag!";
         author = "Paul Swaggins";
-        contentHTML =
-          "<html> Stuff and things and <b>more</b> stuff. <br/> Picture: <img src=\"http://i.imgur.com/sFEVfMB.jpg\"> <br/>Yay!";
-        
+        contentDocument = Jsoup.parse(
+          "<html> Stuff and things and <b>more</b> stuff."
+          + "<br/> Picture:"
+          + "<img src=\"http://i.imgur.com/sFEVfMB.jpg\">"
+          + "<br/>Yay!"
+        );
+
+    }
+
+    public Image getPreviewImage()
+    {
+        try {
+            Elements imageElements = contentDocument.select("img");
+            if(imageElements.size() > 0) {
+                Element imageElement = imageElements.get(0);
+                String src = imageElement.attr("abs:src");
+                return ImageIO.read(
+                  new URL(src)
+                );
+            } else {
+                return ImageIO.read(
+                  MinimalPreviewCard.class.getResourceAsStream(
+                    "/hci400assignment/resources/curtin-logo.jpg"
+                  )
+                );
+            }
+        } catch(IOException ex) {
+            System.err.println("meow " + ex);
+            System.exit(-1);
+        }
+        return null;
+    }
+
+    public String getPreviewText()
+    {
+        Document previewDocument = contentDocument.clone();
+        previewDocument.select("img").remove();
+        return previewDocument.html();
     }
 
     public String getAuthor()
@@ -41,14 +85,14 @@ public class Article
         this.author = author;
     }
 
-    public String getContent()
+    public String getContentHTML()
     {
-        return contentHTML;
+        return contentDocument.html();
     }
 
-    public void setContent(String content)
+    public void setContentHTML(String contentHTML)
     {
-        this.contentHTML = content;
+        contentDocument = Jsoup.parse(contentHTML);
     }
 
     public String getTitle()

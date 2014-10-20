@@ -12,8 +12,12 @@ package hci400assignment.gui.minimal;
 
 import hci400assignment.ApplicationCore;
 import hci400assignment.gui.Card;
+import hci400assignment.gui.CardFactory;
+import hci400assignment.gui.GUIUtil;
 import hci400assignment.gui.ImagePanel;
+import hci400assignment.gui.ItemCard;
 import hci400assignment.model.Item;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
@@ -23,66 +27,57 @@ import java.awt.event.MouseEvent;
  * @author 16142600
  */
 public class MinimalPreviewCard
-  extends Card
+  extends ItemCard
 {
     public static final double DEFAULT_IMAGE_HEIGHT_PC = 0.61;
-
-    private Item item;
-
+    
     private double imageHeightPc;
-
+    
     public MinimalPreviewCard(Item itemIn)
     {
         super();
+        
         initComponents();
+        
         articleImagePanel.setMode(ImagePanel.Mode.FIT_MAX);
-
         setItem(itemIn);
-
         setImageHeightPc(DEFAULT_IMAGE_HEIGHT_PC);
     }
-
-    private void updateContent()
+    
+    @Override
+    protected void updateContent()
     {
         articleImagePanel.setImage(item.getPreviewImage());
         articleSnippetLabel.setText(item.getPreviewText());
     }
-
-    public Item getItem()
-    {
-        return item;
-    }
-
-    public void setItem(Item item)
-    {
-        this.item = item;
-        updateContent();
-    }
-
+    
     public double getImageHeightPc()
     {
         return imageHeightPc;
     }
-
+    
     public void setImageHeightPc(double imageHeightPcIn)
     {
         imageHeightPc = imageHeightPcIn;
-
+        
         GridBagLayout layout = (GridBagLayout)getLayout();
         GridBagConstraints constraints = layout.
           getConstraints(articleImagePanel);
         remove(articleImagePanel);
         constraints.weighty = imageHeightPc;
         add(articleImagePanel, constraints);
-
+        
         constraints = layout.getConstraints(articleSnippetLabel);
         remove(articleSnippetLabel);
         constraints.weighty = 1.0 - imageHeightPc;
         add(articleSnippetLabel, constraints);
-
-        revalidate();
+        
+        articleSnippetLabel.setPreferredSize(new Dimension(0, 0));
+        articleSnippetLabelPanel.setPreferredSize(new Dimension(0, 0));
+        
+        GUIUtil.revalidate(this);
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent me)
     {
@@ -101,6 +96,8 @@ public class MinimalPreviewCard
         java.awt.GridBagConstraints gridBagConstraints;
 
         articleImagePanel = new hci400assignment.gui.ImagePanel();
+        articleSnippetPanel = new javax.swing.JPanel();
+        articleSnippetLabelPanel = new javax.swing.JPanel();
         articleSnippetLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(81, 81, 81));
@@ -112,28 +109,54 @@ public class MinimalPreviewCard
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 1.0;
         add(articleImagePanel, gridBagConstraints);
+
+        articleSnippetPanel.setName("articleSnippetPanel"); // NOI18N
+        articleSnippetPanel.setLayout(new javax.swing.OverlayLayout(articleSnippetPanel));
+
+        articleSnippetLabelPanel.setBackground(new java.awt.Color(0, 51, 255));
+        articleSnippetLabelPanel.setName("articleSnippetLabelPanel"); // NOI18N
+        articleSnippetLabelPanel.setPreferredSize(new java.awt.Dimension(0, 0));
+        articleSnippetLabelPanel.setLayout(new java.awt.BorderLayout());
 
         articleSnippetLabel.setBackground(new java.awt.Color(51, 51, 51));
         articleSnippetLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         articleSnippetLabel.setForeground(new java.awt.Color(204, 204, 204));
-        articleSnippetLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        articleSnippetLabel.setText("Text Text Text Text Text Text Text Text");
+        articleSnippetLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        articleSnippetLabel.setText("<html>\n<div id=\"lipsum\">\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ornare ultrices dolor, ut faucibus risus rutrum nec. Ut posuere sapien lectus, eget iaculis ipsum ultrices nec. Vestibulum dictum ligula est, at tempor enim pulvinar id. Donec libero dui, tristique vitae pellentesque sodales, interdum a erat. Vestibulum ac lacus consequat, sollicitudin est vitae, bibendum libero. Curabitur volutpat rutrum interdum. Phasellus fringilla risus nulla, nec imperdiet tellus dignissim quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ac nisl ex.\n</p>\n<p>\nAenean eget sodales mauris, ac placerat purus. Morbi sodales quis diam id mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam eget tincidunt urna. Suspendisse semper tincidunt nisl vel rutrum. Ut tristique porta ex, nec egestas enim rhoncus vitae. Curabitur purus massa, bibendum euismod mi vitae, facilisis tempus augue. Aenean purus diam, blandit non ex non, blandit maximus arcu. Suspendisse fermentum, arcu sed pretium sodales, turpis urna imperdiet lectus, a tincidunt arcu odio nec ipsum. Aliquam erat volutpat.\n</p>\n<p>\nMauris ullamcorper nunc diam, quis aliquam risus euismod ut. Vestibulum metus lectus, vestibulum in pharetra et, efficitur eu tortor. Proin posuere vel mauris eget eleifend. Sed porttitor metus nec libero vestibulum, id ullamcorper odio commodo. Nam commodo dictum massa id tempor. Donec elementum dolor lacinia tortor imperdiet, ut consectetur turpis auctor. Pellentesque ultricies consectetur dolor. Aenean nec nisi erat. Interdum et malesuada fames ac ante ipsum primis in faucibus.\n</p>\n<p>\nDonec aliquet eu dolor at tempus. Quisque posuere quam vitae lacus placerat, nec placerat ante commodo. Curabitur id ultricies enim. Duis a malesuada erat. Nullam suscipit nisi eu sollicitudin euismod. Maecenas malesuada faucibus nisi, mattis pellentesque odio tincidunt ac. In semper vulputate efficitur. Suspendisse vel pretium ipsum, quis imperdiet lorem. In convallis tortor felis, ac lacinia neque venenatis eu. Quisque egestas turpis id dapibus egestas.\n</p>\n<p>\nSed quis elementum metus. Aliquam eget maximus ligula. Sed fringilla, eros vel convallis egestas, ante quam volutpat leo, nec fermentum justo velit id lectus. Maecenas id mi purus. Vestibulum at massa condimentum, dapibus ligula dignissim, pellentesque nisi. Curabitur congue mauris sit amet odio consequat, eget luctus mi tincidunt. Sed non lobortis sapien. Duis non dolor bibendum, blandit nulla id, pharetra velit. Suspendisse et nunc eu tortor varius porttitor ac sit amet purus. Sed eu dui facilisis, aliquam neque at, ultrices quam.\n</p></div>");
+        articleSnippetLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         articleSnippetLabel.setName("articleSnippetLabel"); // NOI18N
-        articleSnippetLabel.setOpaque(true);
+        articleSnippetLabel.setPreferredSize(new java.awt.Dimension(0, 0));
+        articleSnippetLabelPanel.add(articleSnippetLabel, java.awt.BorderLayout.CENTER);
+
+        articleSnippetPanel.add(articleSnippetLabelPanel);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        add(articleSnippetLabel, gridBagConstraints);
+        gridBagConstraints.weighty = 0.5;
+        add(articleSnippetPanel, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private hci400assignment.gui.ImagePanel articleImagePanel;
     private javax.swing.JLabel articleSnippetLabel;
+    private javax.swing.JPanel articleSnippetLabelPanel;
+    private javax.swing.JPanel articleSnippetPanel;
     // End of variables declaration//GEN-END:variables
 
+    public static class Factory implements CardFactory
+    {
+        @Override
+        public Card construct(Object content)
+        {
+            Item item = (Item)content;
+            return new MinimalPreviewCard(item);
+        }
+    }
+    
 }

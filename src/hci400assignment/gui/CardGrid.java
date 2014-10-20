@@ -4,7 +4,6 @@
  */
 package hci400assignment.gui;
 
-import hci400assignment.gui.Card;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -25,6 +24,7 @@ public class CardGrid
   implements ListDataListener, ComponentListener
 {
     private ListModel model;
+    private CardFactory cardFactory;
     private int cardWidthMin = 400;
     private int cardInset = 22;
     private boolean shouldCardsGrow = false;
@@ -35,12 +35,13 @@ public class CardGrid
     /**
      * Creates new form CardGrid
      */
-    public CardGrid(ListModel modelIn)
+    public CardGrid(ListModel modelIn, CardFactory cardFactoryIn)
     {
         initComponents();
 
         gridScrollPane.getVerticalScrollBar().setUnitIncrement(24);
-        
+
+        cardFactory = cardFactoryIn;
         setModel(modelIn);
 
         this.addComponentListener(this);
@@ -99,7 +100,8 @@ public class CardGrid
             );
 
             for(int cardI = 0; cardI < cardCount; cardI++) {
-                Card card = (Card)model.getElementAt(cardI);
+                Object cardContent = model.getElementAt(cardI);
+                Card card = cardFactory.construct(cardContent);
 
                 if(!shouldCardsGrow) {
                     Dimension cardPreferredSize = card.getPreferredSize();

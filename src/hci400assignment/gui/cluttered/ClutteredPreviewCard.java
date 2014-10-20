@@ -12,6 +12,7 @@ package hci400assignment.gui.cluttered;
 
 import hci400assignment.ApplicationCore;
 import hci400assignment.gui.Card;
+import hci400assignment.gui.ItemCard;
 import hci400assignment.model.Item;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -22,11 +23,9 @@ import java.awt.event.MouseEvent;
  * @author 16142600
  */
 public class ClutteredPreviewCard
-  extends Card
+  extends ItemCard
 {
     public static final double DEFAULT_IMAGE_HEIGHT_PC = 0.61;
-
-    private Item item;
 
     private double imageHeightPc;
 
@@ -41,21 +40,11 @@ public class ClutteredPreviewCard
         setImageHeightPc(DEFAULT_IMAGE_HEIGHT_PC);
     }
 
-    private void updateContent()
+    @Override
+    protected void updateContent()
     {
         articleImagePanel.setImage(item.getPreviewImage());
         articleSnippetLabel.setText(item.getPreviewText());
-    }
-
-    public Item getItem()
-    {
-        return item;
-    }
-
-    public void setItem(Item item)
-    {
-        this.item = item;
-        updateContent();
     }
 
     public double getImageHeightPc()
@@ -87,8 +76,6 @@ public class ClutteredPreviewCard
     {
         ApplicationCore.getInstance().focusItem(item);
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

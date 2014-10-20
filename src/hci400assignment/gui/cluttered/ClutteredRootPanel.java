@@ -9,6 +9,7 @@ import hci400assignment.gui.Card;
 import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.RootPanel;
+import hci400assignment.gui.minimal.MinimalPreviewCard;
 import hci400assignment.model.Item;
 import java.util.List;
 import java.io.IOException;
@@ -36,43 +37,12 @@ public class ClutteredRootPanel
       throws IOException
     {
         initComponents();
-
-        articleCardList = new ArrayList<ClutteredPreviewCard>();
-
         int cardWidthMin = 346;
-        for(int i = 0; i < 20; i++) {
-            ClutteredPreviewCard c = new ClutteredPreviewCard(new Item());
-            articleCardList.add(c);
-        }
-
-        final List<ClutteredPreviewCard> modelCardList = articleCardList;
-        cardGrid = new CardGrid(new ListModel()
-        {
-
-            @Override
-            public int getSize()
-            {
-                return modelCardList.size();
-            }
-
-            @Override
-            public Card getElementAt(int i)
-            {
-                return modelCardList.get(i);
-            }
-
-            @Override
-            public void addListDataListener(ListDataListener ll)
-            {
-                // 
-            }
-
-            @Override
-            public void removeListDataListener(ListDataListener ll)
-            {
-                // 
-            }
-        });
+        
+        cardGrid = new CardGrid(
+          ApplicationCore.getInstance().getDataController().getHomePreviewFeed(),
+          new MinimalPreviewCard.Factory()
+        );
 
         cardGrid.setBackgroundPanel(new ImagePanel(
           ImageIO.read(ClutteredRootPanel.class.getResourceAsStream(

@@ -61,6 +61,11 @@ public class ApplicationCore
         return singletonInstance;
     }
 
+    public ApplicationDataController getDataController()
+    {
+        return dc;
+    }
+    
     private void launch()
       throws IOException, ParseException, UnsupportedLookAndFeelException
     {
@@ -164,29 +169,6 @@ public class ApplicationCore
         aboutFrame.setVisible(false);
     }
 
-    /**
-     * Main method launching the application.
-     */
-    public static void main(String[] args) throws IOException
-    {
-        SwingUtilities.invokeLater(new Runnable()
-        {
-
-            @Override
-            public void run()
-            {
-                try {
-                    ApplicationCore app = new ApplicationCore();
-                    app.launch();
-                } catch(Exception ex) {
-//                    System.err.println("Error: " + ex);
-                    ex.printStackTrace(new PrintStream(System.err));
-                    System.exit(-1);
-                }
-            }
-        });
-    }
-
     public void focusItem(Item item)
     {
         currentRootPanel.focusItem(item);
@@ -216,5 +198,28 @@ public class ApplicationCore
             throw new IllegalStateException("wat!?!?!?");
         }
         updateDesign();
+    }
+
+    /**
+     * Main method launching the application.
+     */
+    public static void main(String[] args) throws IOException
+    {
+        SwingUtilities.invokeLater(new Runnable()
+        {
+
+            @Override
+            public void run()
+            {
+                try {
+                    ApplicationCore app = new ApplicationCore();
+                    app.launch();
+                } catch(Exception ex) {
+//                    System.err.println("Error: " + ex);
+                    ex.printStackTrace(new PrintStream(System.err));
+                    System.exit(-1);
+                }
+            }
+        });
     }
 }

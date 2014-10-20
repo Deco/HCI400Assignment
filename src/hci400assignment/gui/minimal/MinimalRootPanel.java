@@ -5,7 +5,6 @@
 package hci400assignment.gui.minimal;
 
 import hci400assignment.ApplicationCore;
-
 import hci400assignment.gui.Card;
 import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
@@ -15,10 +14,8 @@ import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
-import javax.swing.JOptionPane;
 
 /**
  * MINIMAL!
@@ -39,44 +36,12 @@ public class MinimalRootPanel
     {
         initComponents();
 
-        articleCardList = new ArrayList<MinimalPreviewCard>();
-
-        double aspectRatio = 0.74;
-        double imageHeightPc = 0.61;
         int cardWidthMin = 346;
-        for(int i = 0; i < 20; i++) {
-            MinimalPreviewCard c = new MinimalPreviewCard(new Item());
-            articleCardList.add(c);
-        }
 
-        final List<MinimalPreviewCard> modelCardList = articleCardList;
-        cardGrid = new CardGrid(new ListModel()
-        {
-
-            @Override
-            public int getSize()
-            {
-                return modelCardList.size();
-            }
-
-            @Override
-            public Card getElementAt(int i)
-            {
-                return modelCardList.get(i);
-            }
-
-            @Override
-            public void addListDataListener(ListDataListener ll)
-            {
-                // 
-            }
-
-            @Override
-            public void removeListDataListener(ListDataListener ll)
-            {
-                // 
-            }
-        });
+        cardGrid = new CardGrid(
+          ApplicationCore.getInstance().getDataController().getHomePreviewFeed(),
+          new MinimalPreviewCard.Factory()
+        );
 
         cardGrid.setBackgroundPanel(new ImagePanel(
           ImageIO.read(
@@ -88,7 +53,9 @@ public class MinimalRootPanel
         ));
         cardGrid.setCardWidthMin(cardWidthMin);
 
-        contentRootPanel.add(cardGrid, java.awt.BorderLayout.CENTER);
+        contentRootPanel.add(cardGrid);
+
+        contentRootPanel.add(cardGrid);
 
     }
 
@@ -110,7 +77,7 @@ public class MinimalRootPanel
         navBar.setName("topbar"); // NOI18N
         add(navBar, java.awt.BorderLayout.NORTH);
 
-        contentRootPanel.setLayout(new java.awt.BorderLayout());
+        contentRootPanel.setLayout(new java.awt.CardLayout());
         add(contentRootPanel, java.awt.BorderLayout.CENTER);
         add(controlsBar1, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
