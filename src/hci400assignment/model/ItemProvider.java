@@ -5,6 +5,7 @@
 package hci400assignment.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
@@ -19,6 +20,7 @@ public class ItemProvider
 {
     private List<Item> itemList;
     private List<ListDataListener> dataListenerList;
+    private Comparator<Item> comparator;
 
     public ItemProvider()
     {

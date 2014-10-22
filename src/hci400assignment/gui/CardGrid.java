@@ -4,12 +4,19 @@
  */
 package hci400assignment.gui;
 
+import hci400assignment.model.Item;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
@@ -28,9 +35,9 @@ public class CardGrid
     private int cardWidthMin = 400;
     private int cardInset = 22;
     private boolean shouldCardsGrow = false;
-
     private final JPanel tailVoidPanel = new VoidPanel();
-    private int columnCount;
+    private int currentColumnCount;
+    private Map<Object, Card> itemCardMap;
 
     /**
      * Creates new form CardGrid
@@ -42,6 +49,11 @@ public class CardGrid
         gridScrollPane.getVerticalScrollBar().setUnitIncrement(24);
 
         cardFactory = cardFactoryIn;
+
+        currentColumnCount = calculateColumnCount();
+
+        itemCardMap = new HashMap<Object, Card>();
+
         setModel(modelIn);
 
         this.addComponentListener(this);
@@ -54,74 +66,88 @@ public class CardGrid
         return Math.max(1, count);
     }
 
+    private int calculateRowCount()
+    {
+        return (int)Math.ceil((double)model.getSize() / currentColumnCount);
+    }
+
     private int calculateInset()
     {
-//
-//        if(shouldCardsGrow) {
-//            return cardInset;
-//        } else {
-//            double fullCellWidth = getWidth() / columnCount;
-//            double cardWidth = cardWidthMin;
-//            double inset = (fullCellWidth - cardWidth) / 2.0;
-//            System.out.println("III: " + inset);
-//            return (int)inset;
-//        }
         return cardInset;
     }
 
-    private void populateGrid()
+    private void recreateCards()
     {
-        gridContentPanel.removeAll();
+        itemCardMap.clear();
+        relayoutCards(0);
+    }
 
-        columnCount = 1;
-        int rowCount = 0;
+    private void relayoutCards(int startIndex)
+    {
         GridBagConstraints constraints = new GridBagConstraints();
 
-        if(model != null) {
-            constraints.weightx = 1.0;
-            constraints.weighty = 0.0;
-            if(shouldCardsGrow) {
-                constraints.fill = GridBagConstraints.HORIZONTAL;
-            } else {
-                constraints.fill = GridBagConstraints.NONE;
-            }
-            constraints.anchor = GridBagConstraints.CENTER;
-
-            int cardCount = model.getSize();
-            columnCount = calculateColumnCount();
-            rowCount = (int)Math.ceil((double)cardCount / columnCount);
-
-            int inset = calculateInset();
-            constraints.insets = new Insets(
-              inset, // top
-              inset, // left
-              inset, // bottom
-              inset// right
-            );
-
-            for(int cardI = 0; cardI < cardCount; cardI++) {
-                Object cardContent = model.getElementAt(cardI);
-                Card card = cardFactory.construct(cardContent);
-
-                if(!shouldCardsGrow) {
-                    Dimension cardPreferredSize = card.getPreferredSize();
-                    Dimension cardNewSize = new Dimension(
-                      cardWidthMin,
-                      cardPreferredSize.height
-                    );
-                    card.setPreferredSize(cardNewSize);
-                    card.setSize(cardNewSize);
-                }
-
-                constraints.gridx = cardI % columnCount;
-                constraints.gridy = cardI / columnCount;
-
-                gridContentPanel.add(card, constraints);
-            }
+        constraints.weightx = 1.0;
+        constraints.weighty = 0.0;
+        if(shouldCardsGrow) {
+            constraints.fill = GridBagConstraints.HORIZONTAL;
+        } else {
+            constraints.fill = GridBagConstraints.NONE;
         }
+        constraints.anchor = GridBagConstraints.CENTER;
+
+        int inset = calculateInset();
+        constraints.insets = new Insets(
+          inset, // top
+          inset, // left
+          inset, // bottom
+          inset // right
+          );
+
+        Set<Object> absentItemSet = new HashSet<Object>(itemCardMap.keySet());
+
+        for(int itemI = startIndex; itemI < model.getSize(); itemI++) {
+            Object item = model.getElementAt(itemI);
+            Card card = itemCardMap.get(item);
+            if(card == null) {
+                card = cardFactory.construct(item);
+                itemCardMap.put(item, card);
+            } else {
+                //gridContentPanel.remove(card);
+            }
+            absentItemSet.remove(item);
+
+            if(!shouldCardsGrow) {
+                Dimension cardPreferredSize = card.getPreferredSize();
+                Dimension cardNewSize = new Dimension(
+                  cardWidthMin,
+                  cardPreferredSize.height);
+                card.setPreferredSize(cardNewSize);
+                card.setSize(cardNewSize);
+            }
+
+            constraints.gridx = itemI % currentColumnCount;
+            constraints.gridy = itemI / currentColumnCount;
+
+            gridContentPanel.add(card, constraints);
+
+        }
+        for(Object item : absentItemSet) {
+            itemCardMap.remove(item);
+        }
+
+        GUIUtil.revalidate(this);
+        relayoutVoidPanel();
+    }
+
+    private void relayoutVoidPanel()
+    {
+        int rowCount = calculateRowCount();
+
+        gridContentPanel.remove(tailVoidPanel);
+        GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridy = rowCount;
         constraints.gridx = 0;
-        constraints.gridwidth = columnCount;
+        constraints.gridwidth = currentColumnCount;
         constraints.weightx = 1.0;
         constraints.weighty = 1.0;
         constraints.fill = GridBagConstraints.BOTH;
@@ -129,33 +155,36 @@ public class CardGrid
         constraints.insets = new Insets(0, 0, 0, 0);
         gridContentPanel.add(tailVoidPanel, constraints);
 
-        revalidate();
+        GUIUtil.revalidate(this);
     }
 
     @Override
     public void contentsChanged(ListDataEvent ev)
     {
-        populateGrid();
+        relayoutCards(0);
     }
 
     @Override
     public void intervalAdded(ListDataEvent ev)
     {
-        contentsChanged(ev);
+        relayoutCards(ev.getIndex0());
     }
 
     @Override
     public void intervalRemoved(ListDataEvent ev)
     {
-        contentsChanged(ev);
+        relayoutCards(ev.getIndex0());
     }
 
     @Override
     public void componentResized(ComponentEvent ce)
     {
         int newColumnCount = calculateColumnCount();
-        if(columnCount != newColumnCount) {
-            populateGrid();
+        System.out.println("CCC: " + currentColumnCount + " -> "
+          + newColumnCount);
+        if(currentColumnCount != newColumnCount) {
+            currentColumnCount = newColumnCount;
+            relayoutCards(0);
         }
     }
 
@@ -191,7 +220,7 @@ public class CardGrid
         if(model != null) {
             model.addListDataListener(this);
         }
-        populateGrid();
+        recreateCards();
     }
 
     public int getCardWidthMin()
@@ -202,7 +231,7 @@ public class CardGrid
     public void setCardWidthMin(int cardWidthMin)
     {
         this.cardWidthMin = cardWidthMin;
-        populateGrid();
+        relayoutCards(0);
     }
 
     public int getCardInset()
@@ -213,7 +242,7 @@ public class CardGrid
     public void setCardInset(int cardInset)
     {
         this.cardInset = cardInset;
-        populateGrid();
+        relayoutCards(0);
     }
 
     public JPanel getBackgroundPanel()
@@ -277,8 +306,6 @@ public class CardGrid
 
         add(gridScrollPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JPanel gridContentPanel;
@@ -289,13 +316,10 @@ public class CardGrid
     private class VoidPanel
       extends JPanel
     {
-
         @Override
         protected void paintComponent(Graphics g)
         {
             //super.paintComponent(g);
         }
-
     }
-
 }
