@@ -30,8 +30,7 @@ public class Settings extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jCheckBox4 = new javax.swing.JCheckBox();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -81,10 +80,8 @@ public class Settings extends javax.swing.JFrame
         soundDriver = new javax.swing.JComboBox();
 
         jCheckBox4.setText("Enable auto-download");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox4ActionPerformed(evt);
             }
         });
@@ -92,21 +89,20 @@ public class Settings extends javax.swing.JFrame
         jMenuItem1.setText("jMenuItem1");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("General");
@@ -119,47 +115,37 @@ public class Settings extends javax.swing.JFrame
 
         checkBox1.setSelected(true);
         checkBox1.setText("Check for new software updates automatically");
-        checkBox1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        checkBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkBox1ActionPerformed(evt);
             }
         });
 
         checkBox2.setSelected(true);
         checkBox2.setText("Start the program on system startup");
-        checkBox2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        checkBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkBox2ActionPerformed(evt);
             }
         });
 
         checkBox4.setText("Sort Home page content");
-        checkBox4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        checkBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkBox4ActionPerformed(evt);
             }
         });
 
         checkBox5.setText("Pause video playback when minimized");
-        checkBox5.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        checkBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkBox5ActionPerformed(evt);
             }
         });
 
         checkBox3.setText("Automatically fetch new content every");
-        checkBox3.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        checkBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkBox3ActionPerformed(evt);
             }
         });
@@ -182,10 +168,8 @@ public class Settings extends javax.swing.JFrame
         jLabel10.setText("the program can automatically download new posts, articles,");
 
         checkBox7.setText("Enable auto-download");
-        checkBox7.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        checkBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkBox7ActionPerformed(evt);
             }
         });
@@ -194,10 +178,8 @@ public class Settings extends javax.swing.JFrame
         jLabel11.setText("images, audios and videos from the specified account.");
 
         checkBox6.setText("Pause now playing music when a video is played");
-        checkBox6.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        checkBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkBox6ActionPerformed(evt);
             }
         });
@@ -214,19 +196,15 @@ public class Settings extends javax.swing.JFrame
         jLabel14.setText("Internet Accounts sets up your accounts to use with this program.");
 
         addAccount.setText("Add");
-        addAccount.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        addAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addAccountActionPerformed(evt);
             }
         });
 
         removeAccount.setText("Remove");
-        removeAccount.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        removeAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeAccountActionPerformed(evt);
             }
         });
@@ -234,10 +212,8 @@ public class Settings extends javax.swing.JFrame
         createPlaylist.setText("Create");
 
         removePlaylist.setText("Remove");
-        removePlaylist.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        removePlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removePlaylistActionPerformed(evt);
             }
         });
@@ -245,19 +221,15 @@ public class Settings extends javax.swing.JFrame
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jButton6.setText("Cancel");
-        jButton6.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
         jButton7.setText("Apply");
-        jButton7.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
@@ -265,41 +237,33 @@ public class Settings extends javax.swing.JFrame
         jButton8.setText("Okay");
 
         accountsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 { new Boolean(false), "Facebook", "nathan21@facebook.com", "connected"},
                 {null, "Youtube", "nathan.beats@gmail.com", "connected"},
                 {null, "SoundCloud", "nathan21@facebook.com", "error"},
                 {null, "Twitter", "@nathan21", "connected"}
             },
-            new String []
-            {
+            new String [] {
                 "Enabled", "Account", "Signed-in as", "Status"
             }
-        )
-        {
-            Class[] types = new Class []
-            {
+        ) {
+            Class[] types = new Class [] {
                 java.lang.Boolean.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean []
-            {
+            boolean[] canEdit = new boolean [] {
                 true, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex)
-            {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane3.setViewportView(accountsTable);
-        if (accountsTable.getColumnModel().getColumnCount() > 0)
-        {
+        if (accountsTable.getColumnModel().getColumnCount() > 0) {
             accountsTable.getColumnModel().getColumn(0).setResizable(false);
             accountsTable.getColumnModel().getColumn(0).setPreferredWidth(240);
             accountsTable.getColumnModel().getColumn(1).setResizable(false);
@@ -310,76 +274,61 @@ public class Settings extends javax.swing.JFrame
         }
 
         playListTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Playlist", "Date Modified", "Duration"
             }
-        )
-        {
-            Class[] types = new Class []
-            {
+        ) {
+            Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean []
-            {
+            boolean[] canEdit = new boolean [] {
                 false, false, false
             };
 
-            public Class getColumnClass(int columnIndex)
-            {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane4.setViewportView(playListTable);
-        if (playListTable.getColumnModel().getColumnCount() > 0)
-        {
+        if (playListTable.getColumnModel().getColumnCount() > 0) {
             playListTable.getColumnModel().getColumn(0).setResizable(false);
             playListTable.getColumnModel().getColumn(1).setResizable(false);
             playListTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
         autoDownloadTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, "Facebook"},
                 {null, "Youtube"},
                 {null, "SoundCloud"},
                 {null, "Twitter"}
             },
-            new String []
-            {
+            new String [] {
                 "Enabled", "Account"
             }
-        )
-        {
-            Class[] types = new Class []
-            {
+        ) {
+            Class[] types = new Class [] {
                 java.lang.Boolean.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean []
-            {
+            boolean[] canEdit = new boolean [] {
                 true, false
             };
 
-            public Class getColumnClass(int columnIndex)
-            {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
@@ -389,8 +338,7 @@ public class Settings extends javax.swing.JFrame
         autoDownloadTable.setEnabled(false);
         autoDownloadTable.setOpaque(false);
         jScrollPane5.setViewportView(autoDownloadTable);
-        if (autoDownloadTable.getColumnModel().getColumnCount() > 0)
-        {
+        if (autoDownloadTable.getColumnModel().getColumnCount() > 0) {
             autoDownloadTable.getColumnModel().getColumn(0).setPreferredWidth(200);
             autoDownloadTable.getColumnModel().getColumn(1).setResizable(false);
             autoDownloadTable.getColumnModel().getColumn(1).setPreferredWidth(1000);
@@ -399,10 +347,8 @@ public class Settings extends javax.swing.JFrame
         jButton9.setText("Change");
 
         folderLocation.setText("C:\\Users\\nathan\\Musics\\");
-            folderLocation.addActionListener(new java.awt.event.ActionListener()
-            {
-                public void actionPerformed(java.awt.event.ActionEvent evt)
-                {
+            folderLocation.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
                     folderLocationActionPerformed(evt);
                 }
             });
