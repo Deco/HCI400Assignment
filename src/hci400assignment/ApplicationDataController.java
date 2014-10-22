@@ -32,14 +32,14 @@ public class ApplicationDataController
         }
     }
 
-    public CardProvider getHomePreviewFeed()
+    public ItemProvider getHomePreviewFeed()
     {
         ItemProvider itemProvider = new ItemProvider();
         fetchRSS(itemProvider, "http://www.engadget.com/rss.xml");
         fetchRSS(itemProvider, "http://www.fivedollarfinds.com/feed/");
         fetchRSS(itemProvider, "http://wtfevolution.tumblr.com/rss");
 
-        return new CardProvider(itemProvider);
+        return itemProvider;
     }
 
     public void fetchRSS(
@@ -47,7 +47,7 @@ public class ApplicationDataController
       final String uriString
     )
     {
-        SwingUtilities.invokeLater(new Runnable()
+        Thread feedFetchThread = new Thread()
         {
             @Override
             public void run()
@@ -94,80 +94,8 @@ public class ApplicationDataController
                     System.exit(-1);
                 }
             }
-        });
-
-    }
-
-    public class CardProvider
-      implements ListModel, ListDataListener
-    {
-        private final ItemProvider itemProvider;
-        private List<ListDataListener> dataListenerList;
-
-        private CardProvider(ItemProvider itemProviderIn)
-        {
-            itemProvider = itemProviderIn;
-        }
-
-        @Override
-        public int getSize()
-        {
-            return itemProvider.getSize();
-        }
-
-        @Override
-        public void contentsChanged(ListDataEvent event)
-        {
-            ListDataEvent propagatedEvent = new ListDataEvent(
-              this, ListDataEvent.CONTENTS_CHANGED,
-              event.getIndex0(), event.getIndex1()
-            );
-            for(ListDataListener listener : dataListenerList) {
-                listener.intervalAdded(propagatedEvent);
-            }
-        }
-
-        @Override
-        public void intervalAdded(ListDataEvent event)
-        {
-            ListDataEvent propagatedEvent = new ListDataEvent(
-              this, ListDataEvent.INTERVAL_ADDED,
-              event.getIndex0(), event.getIndex1()
-            );
-            for(ListDataListener listener : dataListenerList) {
-                listener.intervalAdded(propagatedEvent);
-            }
-        }
-
-        @Override
-        public void intervalRemoved(ListDataEvent event)
-        {
-            ListDataEvent propagatedEvent = new ListDataEvent(
-              this, ListDataEvent.INTERVAL_REMOVED,
-              event.getIndex0(), event.getIndex1()
-            );
-            for(ListDataListener listener : dataListenerList) {
-                listener.intervalAdded(propagatedEvent);
-            }
-        }
-
-        @Override
-        public Object getElementAt(int i)
-        {
-            return itemProvider.getElementAt(i);
-        }
-
-        @Override
-        public void addListDataListener(ListDataListener listener)
-        {
-            dataListenerList.add(listener);
-        }
-
-        @Override
-        public void removeListDataListener(ListDataListener listener)
-        {
-            dataListenerList.remove(listener);
-        }
+        };
+        feedFetchThread.start();
 
     }
 }

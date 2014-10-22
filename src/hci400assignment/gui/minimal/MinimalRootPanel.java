@@ -53,9 +53,9 @@ public class MinimalRootPanel
         ));
         cardGrid.setCardWidthMin(cardWidthMin);
 
-        contentRootPanel.add(cardGrid);
+        contentRootPanel.add(cardGrid, "cardGrid");
 
-        contentRootPanel.add(cardGrid);
+        //contentRootPanel.add(focusPanel, "focusPanel");
 
     }
 

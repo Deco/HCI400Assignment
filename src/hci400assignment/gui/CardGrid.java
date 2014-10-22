@@ -182,9 +182,15 @@ public class CardGrid
         return model;
     }
 
-    public void setModel(ListModel model)
+    public void setModel(ListModel modelIn)
     {
-        this.model = model;
+        if(model != null) {
+            model.removeListDataListener(this);
+        }
+        model = modelIn;
+        if(model != null) {
+            model.addListDataListener(this);
+        }
         populateGrid();
     }
 

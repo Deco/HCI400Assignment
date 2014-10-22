@@ -12,9 +12,9 @@ nb-configuration.xml
 *.class
 
 # Package Files #
-*.jar
-*.war
-*.ear
+#*.jar
+#*.war
+#*.ear
 
 # Merge Files #
 *.orig

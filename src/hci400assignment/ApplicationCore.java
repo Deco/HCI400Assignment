@@ -86,7 +86,7 @@ public class ApplicationCore
           = ApplicationCore.class.getResource(synthStyleFilePath);
 
         laf.load(synthStyleFileURL);
-//        UIManager.setLookAndFeel(laf);
+        UIManager.setLookAndFeel(laf);
     }
 
     private void makeRootPanels() throws IOException
@@ -105,8 +105,8 @@ public class ApplicationCore
 
         CardLayout layout = new CardLayout();
         rootFrame.getContentPane().setLayout(layout);
-        rootFrame.getContentPane().add(minimalRootPanel);
-        rootFrame.getContentPane().add(clutteredRootPanel);
+        rootFrame.getContentPane().add(minimalRootPanel, "minimal");
+        rootFrame.getContentPane().add(clutteredRootPanel, "cluttered");
         updateDesign();
         rootFrame.pack();
 

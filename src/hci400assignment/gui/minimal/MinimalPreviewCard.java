@@ -77,13 +77,13 @@ public class MinimalPreviewCard
         constraints.weighty = imageHeightPc;
         add(articleImagePanel, constraints);
         
-        constraints = layout.getConstraints(articleSnippetLabel);
-        remove(articleSnippetLabel);
+        constraints = layout.getConstraints(articleSnippetPanel);
+        remove(articleSnippetPanel);
         constraints.weighty = 1.0 - imageHeightPc;
-        add(articleSnippetLabel, constraints);
+        add(articleSnippetPanel, constraints);
         
+        articleSnippetPanel.setPreferredSize(new Dimension(0, 0));
         articleSnippetLabel.setPreferredSize(new Dimension(0, 0));
-        articleSnippetLabelPanel.setPreferredSize(new Dimension(0, 0));
         
         GUIUtil.revalidate(this);
     }
@@ -101,15 +101,11 @@ public class MinimalPreviewCard
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         articleImagePanel = new hci400assignment.gui.ImagePanel();
         articleSnippetPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        articleSnippetLabelPanel = new javax.swing.JPanel();
         articleSnippetLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(81, 81, 81));
@@ -125,20 +121,9 @@ public class MinimalPreviewCard
         gridBagConstraints.weighty = 1.0;
         add(articleImagePanel, gridBagConstraints);
 
-        articleSnippetPanel.setName("articleSnippetPanel"); // NOI18N
+        articleSnippetPanel.setBackground(new java.awt.Color(1, 1, 1));
+        articleSnippetPanel.setName("control_bar_bg"); // NOI18N
         articleSnippetPanel.setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
-
-        jButton1.setText("jButton1");
-        jButton1.setName("jButton1"); // NOI18N
-        jPanel1.add(jButton1);
-
-        articleSnippetLabelPanel.setBackground(new java.awt.Color(0, 51, 255));
-        articleSnippetLabelPanel.setName("articleSnippetLabelPanel"); // NOI18N
-        articleSnippetLabelPanel.setPreferredSize(new java.awt.Dimension(0, 0));
-        articleSnippetLabelPanel.setLayout(new java.awt.BorderLayout());
 
         articleSnippetLabel.setBackground(new java.awt.Color(51, 51, 51));
         articleSnippetLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -148,12 +133,7 @@ public class MinimalPreviewCard
         articleSnippetLabel.setToolTipText("");
         articleSnippetLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         articleSnippetLabel.setName("articleSnippetLabel"); // NOI18N
-        articleSnippetLabel.setPreferredSize(new java.awt.Dimension(0, 0));
-        articleSnippetLabelPanel.add(articleSnippetLabel, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(articleSnippetLabelPanel);
-
-        articleSnippetPanel.add(jPanel1, java.awt.BorderLayout.CENTER);
+        articleSnippetPanel.add(articleSnippetLabel, java.awt.BorderLayout.CENTER);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -167,10 +147,7 @@ public class MinimalPreviewCard
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private hci400assignment.gui.ImagePanel articleImagePanel;
     private javax.swing.JLabel articleSnippetLabel;
-    private javax.swing.JPanel articleSnippetLabelPanel;
     private javax.swing.JPanel articleSnippetPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
     public static class Factory implements CardFactory
