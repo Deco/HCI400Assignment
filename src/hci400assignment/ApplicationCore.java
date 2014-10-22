@@ -86,7 +86,7 @@ public class ApplicationCore
           = ApplicationCore.class.getResource(synthStyleFilePath);
 
         laf.load(synthStyleFileURL);
-        UIManager.setLookAndFeel(laf);
+//        UIManager.setLookAndFeel(laf);
     }
 
     private void makeRootPanels() throws IOException

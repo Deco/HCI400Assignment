@@ -7,32 +7,20 @@ package hci400assignment.model;
 import hci400assignment.gui.minimal.MinimalPreviewCard;
 import java.awt.Image;
 import java.io.IOException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
  *
  * @author Declan White
  */
-public class Item
+public abstract class Item
 {
 
-    public Image getPreviewImage()
-    {
-        try {
-            return ImageIO.read(MinimalPreviewCard.class.getResourceAsStream(
-                "/hci400assignment/resources/curtin-logo.jpg"
-              )
-            );
-        } catch(IOException ex) {
-            System.err.println("meow "+ex);
-            System.exit(-1);
-        }
-        return null;
-    }
+    public abstract Image getPreviewImage();
 
-    public String getPreviewText()
-    {
-        return "Text text text!";
-    }
+    public abstract String getPreviewText();
+
+    public abstract URL getPreviewImageURL();
     
 }

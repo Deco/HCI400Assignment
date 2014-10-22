@@ -9,7 +9,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -54,6 +60,13 @@ public class ImagePanel
     {
         this(imageIn);
         setMode(modeIn);
+    }
+
+    public ImagePanel(URL urlIn)
+    {
+        this();
+
+        setImage(urlIn);
     }
 
     private Mode getImageCoords(int[] pos, int[] size)
@@ -149,39 +162,41 @@ public class ImagePanel
     {
         super.paintComponent(g);
 
-        if(image == null) {
-            return;
-        }
-        int ow = image.getWidth(this);
-        int oh = image.getHeight(this);
-        if(ow <= 0 || oh <= 0) {
-            return;
-        }
+        synchronized(this) {
+            if(image == null) {
+                return;
+            }
+            int ow = image.getWidth(this);
+            int oh = image.getHeight(this);
+            if(ow <= 0 || oh <= 0) {
+                return;
+            }
 
-        switch(mode) {
-            case CENTER_HORIZONTAL:
-            case CENTER_VERTICAL:
-            case CENTER_BOTH:
-            case FILL:
-            case FIT_WIDTH:
-            case FIT_HEIGHT:
-            case FIT_MIN:
-            case FIT_MAX:
-                int[] pos = new int[2];
-                int[] size = new int[2];
-                getImageCoords(pos, size);
-                g.drawImage(image, pos[0], pos[1], size[0], size[1], this);
-                break;
-            case TILE:
-                // http://stackoverflow.com/a/2228932
-                for(int ix = 0; ix < getWidth(); ix += ow) {
-                    for(int iy = 0; iy < getHeight(); iy += oh) {
-                        g.drawImage(image, ix, iy, ow, oh, this);
+            switch(mode) {
+                case CENTER_HORIZONTAL:
+                case CENTER_VERTICAL:
+                case CENTER_BOTH:
+                case FILL:
+                case FIT_WIDTH:
+                case FIT_HEIGHT:
+                case FIT_MIN:
+                case FIT_MAX:
+                    int[] pos = new int[2];
+                    int[] size = new int[2];
+                    getImageCoords(pos, size);
+                    g.drawImage(image, pos[0], pos[1], size[0], size[1], this);
+                    break;
+                case TILE:
+                    // http://stackoverflow.com/a/2228932
+                    for(int ix = 0; ix < getWidth(); ix += ow) {
+                        for(int iy = 0; iy < getHeight(); iy += oh) {
+                            g.drawImage(image, ix, iy, ow, oh, this);
+                        }
                     }
-                }
-                break;
-            default:
-                throw new IllegalStateException("Invalid ImagePanel mode");
+                    break;
+                default:
+                    throw new IllegalStateException("Invalid ImagePanel mode");
+            }
         }
     }
 
@@ -199,8 +214,29 @@ public class ImagePanel
 
     public void setImage(Image image)
     {
-        this.image = image;
-        componentResized(null);
+        synchronized(this) {
+            this.image = image;
+            componentResized(null);
+        }
+    }
+
+    public void setImage(final URL urlIn)
+    {
+        SwingUtilities.invokeLater(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                try {
+                    Image imageIn = ImageIO.read(urlIn);
+                    setImage(imageIn);
+                } catch(IOException ex) {
+                    System.err.println("Failed to load image:");
+                    System.err.print("    ");
+                    System.err.println(urlIn);
+                }
+            }
+        });
     }
 
     public Mode getMode()

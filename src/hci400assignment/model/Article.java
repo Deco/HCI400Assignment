@@ -7,9 +7,12 @@ package hci400assignment.model;
 import hci400assignment.gui.minimal.MinimalPreviewCard;
 import java.awt.Image;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -47,25 +50,29 @@ public class Article
     public Image getPreviewImage()
     {
         try {
-            Elements imageElements = contentDocument.select("img");
-            if(imageElements.size() > 0) {
-                Element imageElement = imageElements.get(0);
-                String src = imageElement.attr("abs:src");
-                return ImageIO.read(
-                  new URL(src)
-                );
-            } else {
-                return ImageIO.read(
-                  MinimalPreviewCard.class.getResourceAsStream(
-                    "/hci400assignment/resources/curtin-logo.jpg"
-                  )
-                );
-            }
+            return ImageIO.read(getPreviewImageURL());
         } catch(IOException ex) {
-            System.err.println("meow " + ex);
-            System.exit(-1);
+            ex.printStackTrace(System.err);
         }
         return null;
+    }
+
+    @Override
+    public URL getPreviewImageURL()
+    {
+        Elements imageElements = contentDocument.select("img");
+        if(imageElements.size() > 0) {
+            Element imageElement = imageElements.get(0);
+            String src = imageElement.attr("abs:src");
+            try {
+                return new URL(src);
+            } catch(MalformedURLException ex) {
+                ex.printStackTrace(System.err);
+            }
+        }
+        return MinimalPreviewCard.class.getResource(
+          "/hci400assignment/resources/curtin-logo.jpg"
+        );
     }
 
     public String getPreviewText()

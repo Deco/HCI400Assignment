@@ -20,7 +20,9 @@ import hci400assignment.model.Item;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 
 /**
  *
@@ -47,7 +49,15 @@ public class MinimalPreviewCard
     @Override
     protected void updateContent()
     {
-        articleImagePanel.setImage(item.getPreviewImage());
+        URL previewImageURL = item.getPreviewImageURL();
+        if(previewImageURL != null) {
+            articleImagePanel.setImage(previewImageURL);
+        } else {
+            Image previewImage = item.getPreviewImage();
+            if(previewImage != null) {
+                articleImagePanel.setImage(previewImage);
+            }
+        }
         articleSnippetLabel.setText(item.getPreviewText());
     }
     
@@ -97,6 +107,8 @@ public class MinimalPreviewCard
 
         articleImagePanel = new hci400assignment.gui.ImagePanel();
         articleSnippetPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         articleSnippetLabelPanel = new javax.swing.JPanel();
         articleSnippetLabel = new javax.swing.JLabel();
 
@@ -114,7 +126,14 @@ public class MinimalPreviewCard
         add(articleImagePanel, gridBagConstraints);
 
         articleSnippetPanel.setName("articleSnippetPanel"); // NOI18N
-        articleSnippetPanel.setLayout(new javax.swing.OverlayLayout(articleSnippetPanel));
+        articleSnippetPanel.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setName("jPanel1"); // NOI18N
+        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
+
+        jButton1.setText("jButton1");
+        jButton1.setName("jButton1"); // NOI18N
+        jPanel1.add(jButton1);
 
         articleSnippetLabelPanel.setBackground(new java.awt.Color(0, 51, 255));
         articleSnippetLabelPanel.setName("articleSnippetLabelPanel"); // NOI18N
@@ -126,12 +145,15 @@ public class MinimalPreviewCard
         articleSnippetLabel.setForeground(new java.awt.Color(204, 204, 204));
         articleSnippetLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         articleSnippetLabel.setText("<html>\n<div id=\"lipsum\">\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ornare ultrices dolor, ut faucibus risus rutrum nec. Ut posuere sapien lectus, eget iaculis ipsum ultrices nec. Vestibulum dictum ligula est, at tempor enim pulvinar id. Donec libero dui, tristique vitae pellentesque sodales, interdum a erat. Vestibulum ac lacus consequat, sollicitudin est vitae, bibendum libero. Curabitur volutpat rutrum interdum. Phasellus fringilla risus nulla, nec imperdiet tellus dignissim quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ac nisl ex.\n</p>\n<p>\nAenean eget sodales mauris, ac placerat purus. Morbi sodales quis diam id mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam eget tincidunt urna. Suspendisse semper tincidunt nisl vel rutrum. Ut tristique porta ex, nec egestas enim rhoncus vitae. Curabitur purus massa, bibendum euismod mi vitae, facilisis tempus augue. Aenean purus diam, blandit non ex non, blandit maximus arcu. Suspendisse fermentum, arcu sed pretium sodales, turpis urna imperdiet lectus, a tincidunt arcu odio nec ipsum. Aliquam erat volutpat.\n</p>\n<p>\nMauris ullamcorper nunc diam, quis aliquam risus euismod ut. Vestibulum metus lectus, vestibulum in pharetra et, efficitur eu tortor. Proin posuere vel mauris eget eleifend. Sed porttitor metus nec libero vestibulum, id ullamcorper odio commodo. Nam commodo dictum massa id tempor. Donec elementum dolor lacinia tortor imperdiet, ut consectetur turpis auctor. Pellentesque ultricies consectetur dolor. Aenean nec nisi erat. Interdum et malesuada fames ac ante ipsum primis in faucibus.\n</p>\n<p>\nDonec aliquet eu dolor at tempus. Quisque posuere quam vitae lacus placerat, nec placerat ante commodo. Curabitur id ultricies enim. Duis a malesuada erat. Nullam suscipit nisi eu sollicitudin euismod. Maecenas malesuada faucibus nisi, mattis pellentesque odio tincidunt ac. In semper vulputate efficitur. Suspendisse vel pretium ipsum, quis imperdiet lorem. In convallis tortor felis, ac lacinia neque venenatis eu. Quisque egestas turpis id dapibus egestas.\n</p>\n<p>\nSed quis elementum metus. Aliquam eget maximus ligula. Sed fringilla, eros vel convallis egestas, ante quam volutpat leo, nec fermentum justo velit id lectus. Maecenas id mi purus. Vestibulum at massa condimentum, dapibus ligula dignissim, pellentesque nisi. Curabitur congue mauris sit amet odio consequat, eget luctus mi tincidunt. Sed non lobortis sapien. Duis non dolor bibendum, blandit nulla id, pharetra velit. Suspendisse et nunc eu tortor varius porttitor ac sit amet purus. Sed eu dui facilisis, aliquam neque at, ultrices quam.\n</p></div>");
+        articleSnippetLabel.setToolTipText("");
         articleSnippetLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         articleSnippetLabel.setName("articleSnippetLabel"); // NOI18N
         articleSnippetLabel.setPreferredSize(new java.awt.Dimension(0, 0));
         articleSnippetLabelPanel.add(articleSnippetLabel, java.awt.BorderLayout.CENTER);
 
-        articleSnippetPanel.add(articleSnippetLabelPanel);
+        jPanel1.add(articleSnippetLabelPanel);
+
+        articleSnippetPanel.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -147,6 +169,8 @@ public class MinimalPreviewCard
     private javax.swing.JLabel articleSnippetLabel;
     private javax.swing.JPanel articleSnippetLabelPanel;
     private javax.swing.JPanel articleSnippetPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
     public static class Factory implements CardFactory

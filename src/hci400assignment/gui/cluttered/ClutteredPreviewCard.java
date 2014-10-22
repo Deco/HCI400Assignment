@@ -11,7 +11,6 @@
 package hci400assignment.gui.cluttered;
 
 import hci400assignment.ApplicationCore;
-import hci400assignment.gui.Card;
 import hci400assignment.gui.ItemCard;
 import hci400assignment.model.Item;
 import java.awt.GridBagConstraints;
