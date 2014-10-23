@@ -104,7 +104,7 @@ public class CardGrid
           );
 
         Set<Object> absentItemSet = new HashSet<Object>(itemCardMap.keySet());
-
+        
         for(int itemI = startIndex; itemI < model.getSize(); itemI++) {
             Object item = model.getElementAt(itemI);
             Card card = itemCardMap.get(item);
@@ -112,7 +112,7 @@ public class CardGrid
                 card = cardFactory.construct(item);
                 itemCardMap.put(item, card);
             } else {
-                //gridContentPanel.remove(card);
+                gridContentPanel.remove(card);
             }
             absentItemSet.remove(item);
 
@@ -129,7 +129,8 @@ public class CardGrid
             constraints.gridy = itemI / currentColumnCount;
 
             gridContentPanel.add(card, constraints);
-
+            
+            card.relayout();
         }
         for(Object item : absentItemSet) {
             itemCardMap.remove(item);

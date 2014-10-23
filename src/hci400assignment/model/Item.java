@@ -22,5 +22,7 @@ public abstract class Item
     public abstract String getPreviewText();
 
     public abstract URL getPreviewImageURL();
+
+    public abstract String getPreviewTitle();
     
 }

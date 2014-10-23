@@ -40,6 +40,11 @@ public class Card
     {
         this(DEFAULT_ASPECT_RATIO);
     }
+    
+    public void relayout()
+    {
+        componentResized(null);
+    }
 
     @Override
     public void componentResized(ComponentEvent e)

@@ -66,15 +66,14 @@ public class MinimalRootPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         navBar = new hci400assignment.gui.minimal.MinimalNavBar();
         contentRootPanel = new javax.swing.JPanel();
         controlsBar1 = new hci400assignment.gui.ControlBar();
 
         setLayout(new java.awt.BorderLayout());
-
-        navBar.setName("topbar"); // NOI18N
         add(navBar, java.awt.BorderLayout.NORTH);
 
         contentRootPanel.setLayout(new java.awt.CardLayout());

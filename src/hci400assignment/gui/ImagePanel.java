@@ -204,7 +204,7 @@ public class ImagePanel
     public void componentResized(ComponentEvent ce)
     {
 //        resizedImage = image.getScaledInstance(getWidth(), getHeight(), 0);
-//        repaint();
+        repaint();
     }
 
     public Image getImage()
@@ -222,7 +222,7 @@ public class ImagePanel
 
     public void setImage(final URL urlIn)
     {
-        SwingUtilities.invokeLater(new Runnable()
+        Thread fetchImageThread = new Thread()
         {
             @Override
             public void run()
@@ -236,7 +236,8 @@ public class ImagePanel
                     System.err.println(urlIn);
                 }
             }
-        });
+        };
+        fetchImageThread.start();
     }
 
     public Mode getMode()

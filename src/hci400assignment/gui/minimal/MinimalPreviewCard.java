@@ -59,6 +59,7 @@ public class MinimalPreviewCard
             }
         }
         articleSnippetLabel.setText(item.getPreviewText());
+        articleTitleLabel.setText(item.getPreviewTitle());
     }
     
     public double getImageHeightPc()
@@ -101,17 +102,21 @@ public class MinimalPreviewCard
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         articleImagePanel = new hci400assignment.gui.ImagePanel();
+        articleTitlePanel = new javax.swing.JPanel();
+        articleTitleLabel = new javax.swing.JLabel();
         articleSnippetPanel = new javax.swing.JPanel();
         articleSnippetLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(81, 81, 81));
+        setName("minimal_preview"); // NOI18N
         setLayout(new java.awt.GridBagLayout());
 
-        articleImagePanel.setName("articleImagePanel"); // NOI18N
+        articleImagePanel.setName("minimal_preview_image"); // NOI18N
         articleImagePanel.setLayout(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -121,8 +126,29 @@ public class MinimalPreviewCard
         gridBagConstraints.weighty = 1.0;
         add(articleImagePanel, gridBagConstraints);
 
-        articleSnippetPanel.setBackground(new java.awt.Color(1, 1, 1));
-        articleSnippetPanel.setName("control_bar_bg"); // NOI18N
+        articleTitlePanel.setBackground(new java.awt.Color(42, 42, 42));
+        articleTitlePanel.setName("minimal_preview_title_bg"); // NOI18N
+        articleTitlePanel.setLayout(new java.awt.BorderLayout());
+
+        articleTitleLabel.setBackground(new java.awt.Color(46, 46, 46));
+        articleTitleLabel.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        articleTitleLabel.setForeground(new java.awt.Color(204, 204, 204));
+        articleTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        articleTitleLabel.setText("<html>Title");
+        articleTitleLabel.setToolTipText("");
+        articleTitleLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        articleTitleLabel.setName("minimal_preview_title"); // NOI18N
+        articleTitlePanel.add(articleTitleLabel, java.awt.BorderLayout.CENTER);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        add(articleTitlePanel, gridBagConstraints);
+
+        articleSnippetPanel.setBackground(new java.awt.Color(51, 51, 51));
+        articleSnippetPanel.setName("minimal_preview_snippet_bg"); // NOI18N
         articleSnippetPanel.setLayout(new java.awt.BorderLayout());
 
         articleSnippetLabel.setBackground(new java.awt.Color(51, 51, 51));
@@ -132,12 +158,12 @@ public class MinimalPreviewCard
         articleSnippetLabel.setText("<html>\n<div id=\"lipsum\">\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ornare ultrices dolor, ut faucibus risus rutrum nec. Ut posuere sapien lectus, eget iaculis ipsum ultrices nec. Vestibulum dictum ligula est, at tempor enim pulvinar id. Donec libero dui, tristique vitae pellentesque sodales, interdum a erat. Vestibulum ac lacus consequat, sollicitudin est vitae, bibendum libero. Curabitur volutpat rutrum interdum. Phasellus fringilla risus nulla, nec imperdiet tellus dignissim quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ac nisl ex.\n</p>\n<p>\nAenean eget sodales mauris, ac placerat purus. Morbi sodales quis diam id mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam eget tincidunt urna. Suspendisse semper tincidunt nisl vel rutrum. Ut tristique porta ex, nec egestas enim rhoncus vitae. Curabitur purus massa, bibendum euismod mi vitae, facilisis tempus augue. Aenean purus diam, blandit non ex non, blandit maximus arcu. Suspendisse fermentum, arcu sed pretium sodales, turpis urna imperdiet lectus, a tincidunt arcu odio nec ipsum. Aliquam erat volutpat.\n</p>\n<p>\nMauris ullamcorper nunc diam, quis aliquam risus euismod ut. Vestibulum metus lectus, vestibulum in pharetra et, efficitur eu tortor. Proin posuere vel mauris eget eleifend. Sed porttitor metus nec libero vestibulum, id ullamcorper odio commodo. Nam commodo dictum massa id tempor. Donec elementum dolor lacinia tortor imperdiet, ut consectetur turpis auctor. Pellentesque ultricies consectetur dolor. Aenean nec nisi erat. Interdum et malesuada fames ac ante ipsum primis in faucibus.\n</p>\n<p>\nDonec aliquet eu dolor at tempus. Quisque posuere quam vitae lacus placerat, nec placerat ante commodo. Curabitur id ultricies enim. Duis a malesuada erat. Nullam suscipit nisi eu sollicitudin euismod. Maecenas malesuada faucibus nisi, mattis pellentesque odio tincidunt ac. In semper vulputate efficitur. Suspendisse vel pretium ipsum, quis imperdiet lorem. In convallis tortor felis, ac lacinia neque venenatis eu. Quisque egestas turpis id dapibus egestas.\n</p>\n<p>\nSed quis elementum metus. Aliquam eget maximus ligula. Sed fringilla, eros vel convallis egestas, ante quam volutpat leo, nec fermentum justo velit id lectus. Maecenas id mi purus. Vestibulum at massa condimentum, dapibus ligula dignissim, pellentesque nisi. Curabitur congue mauris sit amet odio consequat, eget luctus mi tincidunt. Sed non lobortis sapien. Duis non dolor bibendum, blandit nulla id, pharetra velit. Suspendisse et nunc eu tortor varius porttitor ac sit amet purus. Sed eu dui facilisis, aliquam neque at, ultrices quam.\n</p></div>");
         articleSnippetLabel.setToolTipText("");
         articleSnippetLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        articleSnippetLabel.setName("articleSnippetLabel"); // NOI18N
+        articleSnippetLabel.setName("minimal_preview_snippet"); // NOI18N
         articleSnippetPanel.add(articleSnippetLabel, java.awt.BorderLayout.CENTER);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.5;
@@ -148,6 +174,8 @@ public class MinimalPreviewCard
     private hci400assignment.gui.ImagePanel articleImagePanel;
     private javax.swing.JLabel articleSnippetLabel;
     private javax.swing.JPanel articleSnippetPanel;
+    private javax.swing.JLabel articleTitleLabel;
+    private javax.swing.JPanel articleTitlePanel;
     // End of variables declaration//GEN-END:variables
 
     public static class Factory implements CardFactory

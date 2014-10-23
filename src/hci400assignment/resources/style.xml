@@ -6,52 +6,102 @@
     <!--#### Definitions #### -->
     <font id="default" name="Arial" size="14" />
     <color id="uiBackground" value="#333333" />
+    <color id="uiBackgroundDark" value="#222222" />
     <color id="uiText" value="#EEEEEE" />
 
 
 
     <!--#### Name-class styles ####-->
     
-    <style id="topbarStyle">
+    <!-- Top bar-->
+    <style id="topbar_bg">
         <state>
             <opaque value="true"/>
             <color type="BACKGROUND" idref="uiBackground" />
             <color type="FOREGROUND" idref="uiText" />
         </state>
     </style>
-    <bind style="topbarStyle" type="NAME" key="topbar"/>
+    <bind style="topbar_bg"
+          type="NAME" key="([\w_\s]*\s)?topbar_bg(\s[\w_\s]*)?"
+    />
 
-    <style id="topbarButtonStyle">
+    <style id="top_bar_button">
         <color type="BACKGROUND" idref="uiBackground" />w
         <color type="FOREGROUND" idref="uiBackground" />
         <painter method="buttonBorder" idref="painter" />
         <painter method="buttonBackground" idref="painter" />
     </style>
-    <bind style="topbarButtonStyle" type="NAME" key="top_bar_button"/>
+    <bind style="top_bar_button"
+          type="NAME" key="([\w_\s]*\s)?top_bar_button(\s[\w_\s]*)?"
+    />
 
-    <style id="controlBarButtonStyle">
+    <!-- Control bar -->
+    <style id="control_bar_button">
         <color type="BACKGROUND" idref="uiBackground" />
         <painter method="buttonBorder" idref="painter" />
         <painter method="buttonBackground" idref="painter" />
-
-        <state value="PRESSED">
-         
-        </state>
-        
     </style>
-    <bind style="controlBarButtonStyle"
+    <bind style="control_bar_button"
           type="NAME" key="([\w_\s]*\s)?control_bar_button(\s[\w_\s]*)?"
     />
     
-    <style id="controlBarBackgroundStyle">
+    <style id="control_bar_bg">
         <state>
             <opaque value="true"/>
             <color type="BACKGROUND" idref="uiBackground" />
             <color type="FOREGROUND" idref="uiText" />
         </state>
     </style>
-    <bind style="controlBarBackgroundStyle"
+    <bind style="control_bar_bg"
           type="NAME" key="([\w_\s]*\s)?control_bar_bg(\s[\w_\s]*)?"
+    />
+    
+    <!-- Minimal preview card -->
+    <style id="minimal_preview_snippet_bg">
+        <state>
+            <opaque value="true"/>
+            <color type="BACKGROUND" idref="uiBackground" />
+            <color type="FOREGROUND" idref="uiText" />
+        </state>
+    </style>
+    <bind style="minimal_preview_snippet_bg"
+          type="NAME" key="([\w_\s]*\s)?minimal_preview_snippet_bg(\s[\w_\s]*)?"
+    />
+    
+    <style id="minimal_preview_snippet">
+        <state>
+            <color type="FOREGROUND" idref="uiText" />
+        </state>
+    </style>
+    <bind style="minimal_preview_snippet"
+          type="NAME" key="([\w_\s]*\s)?minimal_preview_snippet(\s[\w_\s]*)?"
+    />
+    
+    <style id="minimal_preview_title_bg">
+        <state>
+            <opaque value="true"/>
+            <color type="BACKGROUND" idref="uiBackgroundDark" />
+            <color type="FOREGROUND" idref="uiText" />
+        </state>
+    </style>
+    <bind style="minimal_preview_title_bg"
+          type="NAME" key="([\w_\s]*\s)?minimal_preview_title_bg(\s[\w_\s]*)?"
+    />
+    
+    <style id="minimal_preview_title">
+        <state>
+            <color type="FOREGROUND" idref="uiText" />
+        </state>
+    </style>
+    <bind style="minimal_preview_title"
+          type="NAME" key="([\w_\s]*\s)?minimal_preview_title(\s[\w_\s]*)?"
+    />
+    
+    <style id="minimal_preview_image">
+        <!-- -->
+    </style>
+    <bind style="minimal_preview_image"
+          type="NAME" key="([\w_\s]*\s)?minimal_preview_image(\s[\w_\s]*)?"
     />
     
     <!--#### Component styles ####-->

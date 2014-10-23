@@ -4,12 +4,15 @@
  */
 package hci400assignment.model;
 
+import hci400assignment.Util;
 import hci400assignment.gui.minimal.MinimalPreviewCard;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,11 +34,11 @@ public class Article
     private String author;
     private Document contentDocument;
     private Map<String, Object> resourceMap;
+    private List<Enclosure> enclosureList;
 
     public Article()
     {
-        publishDate = new Date(2014, (int)(12 * Math.random()), (int)(20 * Math.
-          random()));
+        publishDate = Util.randomDate();
         title = "Yay, swag!";
         author = "Paul Swaggins";
         contentDocument = Jsoup.parse(
@@ -44,7 +47,17 @@ public class Article
           + "<img src=\"http://i.imgur.com/sFEVfMB.jpg\">"
           + "<br/>Yay!"
         );
+        enclosureList = new ArrayList<Enclosure>();
+    }
 
+    private String getEnclosureImageURL()
+    {
+        for(Enclosure enclosure : enclosureList) {
+            if(enclosure.type.startsWith("image")) {
+                return enclosure.url;
+            }
+        }
+        return null;
     }
 
     public Image getPreviewImage()
@@ -60,6 +73,14 @@ public class Article
     @Override
     public URL getPreviewImageURL()
     {
+        String enclosureURL = getEnclosureImageURL();
+        if(enclosureURL != null) {
+            try {
+                return new URL(enclosureURL);
+            } catch(MalformedURLException ex) {
+                ex.printStackTrace(System.err);
+            }
+        }
         Elements imageElements = contentDocument.select("img");
         if(imageElements.size() > 0) {
             Element imageElement = imageElements.get(0);
@@ -75,11 +96,18 @@ public class Article
         );
     }
 
+    @Override
     public String getPreviewText()
     {
         Document previewDocument = contentDocument.clone();
         previewDocument.select("img").remove();
-        return previewDocument.html();
+        return "<html>" + previewDocument.text();
+    }
+
+    @Override
+    public String getPreviewTitle()
+    {
+        return "<html>" + title;
     }
 
     public String getAuthor()
@@ -120,5 +148,22 @@ public class Article
     public void setPublishDate(Date publishDate)
     {
         this.publishDate = publishDate;
+    }
+
+    public void addEnclosure(String type, String url)
+    {
+        enclosureList.add(new Enclosure(type, url));
+    }
+
+    public class Enclosure
+    {
+        public final String type;
+        public final String url;
+
+        public Enclosure(String type, String url)
+        {
+            this.type = type;
+            this.url = url;
+        }
     }
 }
