@@ -5,6 +5,7 @@
 package hci400assignment.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -49,13 +50,12 @@ public class ItemProvider
 
         synchronized(itemList) {
             itemList.add(newItem);
-            itemList.sort(sorter);
+            Collections.sort(itemList, sorter);
             size = itemList.size();
         }
         ListDataEvent ev = new ListDataEvent(
           this, ListDataEvent.CONTENTS_CHANGED,
-          0, size - 1
-        );
+          0, size - 1);
         for(ListDataListener listener : dataListenerList) {
             listener.contentsChanged(ev);
         }
@@ -82,16 +82,14 @@ public class ItemProvider
     {
         if(sorter != null) {
             throw new IllegalStateException(
-              "Cannot insert to a specific index of a sorted ItemProvider"
-            );
+              "Cannot insert to a specific index of a sorted ItemProvider");
         }
         synchronized(itemList) {
             itemList.add(index, newItem);
         }
         ListDataEvent ev = new ListDataEvent(
           this, ListDataEvent.INTERVAL_ADDED,
-          index, index
-        );
+          index, index);
         for(ListDataListener listener : dataListenerList) {
             listener.intervalAdded(ev);
         }
@@ -116,14 +114,13 @@ public class ItemProvider
 
         int size;
         synchronized(itemList) {
-            itemList.sort(sorter);
+            Collections.sort(itemList, sorter);
             size = itemList.size();
         }
 
         ListDataEvent ev = new ListDataEvent(
           this, ListDataEvent.CONTENTS_CHANGED,
-          0, size - 1
-        );
+          0, size - 1);
         for(ListDataListener listener : dataListenerList) {
             listener.contentsChanged(ev);
         }
@@ -156,5 +153,4 @@ public class ItemProvider
     {
         dataListenerList.remove(listener);
     }
-
 }
