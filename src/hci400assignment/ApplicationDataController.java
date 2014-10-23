@@ -119,7 +119,6 @@ public class ApplicationDataController
                 } catch(Exception ex) {
                     System.err.println("Could not fetch feed.");
                     ex.printStackTrace(System.err);
-                    System.exit(-1);
                 }
             }
         };
