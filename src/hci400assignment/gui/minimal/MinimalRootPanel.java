@@ -5,11 +5,14 @@
 package hci400assignment.gui.minimal;
 
 import hci400assignment.ApplicationCore;
+import hci400assignment.ApplicationDataController;
 import hci400assignment.gui.Card;
 import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.RootPanel;
 import hci400assignment.model.Item;
+import java.awt.CardLayout;
+import java.awt.Image;
 import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +30,9 @@ public class MinimalRootPanel
 {
 
     private List<MinimalPreviewCard> articleCardList;
-    private final CardGrid cardGrid;
+    private final CardGrid homeGrid;
+    private final CardGrid friendsGrid;
+    private final CardGrid searchGrid;
 
     /**
      * Creates new form RootPanel
@@ -36,27 +41,85 @@ public class MinimalRootPanel
     {
         initComponents();
 
-        int cardWidthMin = 346;
+        int cardWidthMin = 330;
 
-        cardGrid = new CardGrid(
-          ApplicationCore.getInstance().getDataController().getHomePreviewFeed(),
-          new MinimalPreviewCard.Factory()
+        ApplicationDataController dc
+          = ApplicationCore.getInstance().getDataController();
+
+        Image bgImage = ImageIO.read(
+          MinimalRootPanel.class.getResourceAsStream(
+            "/hci400assignment/resources/bg.png"
+          )
         );
 
-        cardGrid.setBackgroundPanel(new ImagePanel(
-          ImageIO.read(
-            MinimalRootPanel.class.getResourceAsStream(
-              "/hci400assignment/resources/bg.png"
-            )
-          ),
+        homeGrid = new CardGrid(
+          dc.getHomePreviewFeed(),
+          new MinimalPreviewCard.Factory()
+        );
+        homeGrid.setBackgroundPanel(new ImagePanel(
+          bgImage,
           ImagePanel.Mode.TILE
         ));
-        cardGrid.setCardWidthMin(cardWidthMin);
+        homeGrid.setCardWidthMin(cardWidthMin);
+        contentRootPanel.add(homeGrid, "homeGrid");
 
-        contentRootPanel.add(cardGrid, "cardGrid");
+        friendsGrid = new CardGrid(
+          dc.getFriendPreviewFeed(),
+          new MinimalPreviewCard.Factory()
+        );
+        friendsGrid.setBackgroundPanel(new ImagePanel(
+          bgImage,
+          ImagePanel.Mode.TILE
+        ));
+        friendsGrid.setCardWidthMin(cardWidthMin);
+        contentRootPanel.add(friendsGrid, "friendsGrid");
+        
+        searchGrid = new CardGrid(
+          dc.getSearchPreviewFeed(),
+          new MinimalPreviewCard.Factory()
+        );
+        searchGrid.setPreamblePanel(new SearchPanel());
+        searchGrid.setBackgroundPanel(new ImagePanel(
+          bgImage,
+          ImagePanel.Mode.TILE
+        ));
+        searchGrid.setCardWidthMin(cardWidthMin);
+        contentRootPanel.add(searchGrid, "searchGrid");
 
         //contentRootPanel.add(focusPanel, "focusPanel");
+    }
 
+    @Override
+    public void focusItem(Item item)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void showHomeScreen()
+    {
+        CardLayout cardLayout = (CardLayout)contentRootPanel.getLayout();
+        cardLayout.show(contentRootPanel, "homeGrid");
+    }
+
+    @Override
+    public void showFriendsScreen()
+    {
+        CardLayout cardLayout = (CardLayout)contentRootPanel.getLayout();
+        cardLayout.show(contentRootPanel, "friendsGrid");
+    }
+
+    @Override
+    public void showSearchScreen()
+    {
+        CardLayout cardLayout = (CardLayout)contentRootPanel.getLayout();
+        cardLayout.show(contentRootPanel, "searchGrid");
+    }
+
+    @Override
+    public void showSettingsWindow()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -87,4 +150,5 @@ public class MinimalRootPanel
     private hci400assignment.gui.ControlBar controlsBar1;
     private hci400assignment.gui.minimal.MinimalNavBar navBar;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -13,10 +13,7 @@ import hci400assignment.gui.minimal.MinimalPreviewCard;
 import hci400assignment.model.Item;
 import java.util.List;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
 
 /**
  * CLUTTERED!
@@ -38,7 +35,7 @@ public class ClutteredRootPanel
     {
         initComponents();
         int cardWidthMin = 346;
-        
+
         cardGrid = new CardGrid(
           ApplicationCore.getInstance().getDataController().getHomePreviewFeed(),
           new MinimalPreviewCard.Factory()
@@ -55,6 +52,36 @@ public class ClutteredRootPanel
 
         contentRootPanel.add(cardGrid, java.awt.BorderLayout.CENTER);
 
+    }
+
+    @Override
+    public void focusItem(Item item)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void showHomeScreen()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void showFriendsScreen()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void showSearchScreen()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void showSettingsWindow()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -85,4 +112,5 @@ public class ClutteredRootPanel
     private hci400assignment.gui.ControlBar controlsBar1;
     private hci400assignment.gui.cluttered.ClutteredNavBar navBar;
     // End of variables declaration//GEN-END:variables
+
 }

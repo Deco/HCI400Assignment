@@ -11,18 +11,23 @@ import javax.swing.JPanel;
  *
  * @author Declan White
  */
-public class RootPanel
-    extends JPanel
+public abstract class RootPanel
+  extends JPanel
 {
 
     public RootPanel()
     {
         setDoubleBuffered(true);
     }
-    
-    public void focusItem(Item item)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+
+    public abstract void focusItem(Item item);
+
+    public abstract void showHomeScreen();
+
+    public abstract void showFriendsScreen();
+
+    public abstract void showSearchScreen();
+
+    public abstract void showSettingsWindow();
+
 }

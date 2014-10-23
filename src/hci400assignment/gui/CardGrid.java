@@ -4,10 +4,12 @@
  */
 package hci400assignment.gui;
 
+import hci400assignment.gui.minimal.SearchPanel;
 import hci400assignment.model.Item;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -31,13 +33,14 @@ public class CardGrid
   implements ListDataListener, ComponentListener
 {
     private ListModel model;
-    private CardFactory cardFactory;
+    private final CardFactory cardFactory;
     private int cardWidthMin = 400;
-    private int cardInset = 22;
-    private boolean shouldCardsGrow = false;
+    private int cardInset = 20;
+    private final boolean shouldCardsGrow = false;
     private final JPanel tailVoidPanel = new VoidPanel();
     private int currentColumnCount;
-    private Map<Object, Card> itemCardMap;
+    private final Map<Object, Card> itemCardMap;
+    private JPanel preamblePanel = null;
 
     /**
      * Creates new form CardGrid
@@ -79,6 +82,7 @@ public class CardGrid
     private void recreateCards()
     {
         itemCardMap.clear();
+        gridContentPanel.removeAll();
         relayoutCards(0);
     }
 
@@ -101,10 +105,21 @@ public class CardGrid
           inset, // left
           inset, // bottom
           inset // right
-          );
+        );
 
         Set<Object> absentItemSet = new HashSet<Object>(itemCardMap.keySet());
-        
+
+        int rowOffset = (preamblePanel == null ? 0 : 1);
+
+        // start hacky bugfix
+        startIndex = 0;
+        for(Card card : itemCardMap.values()) {
+            gridContentPanel.remove(card);
+        }
+        // end hacky bugfix
+
+        GridBagLayout layout = (GridBagLayout)gridContentPanel.getLayout();
+
         for(int itemI = startIndex; itemI < model.getSize(); itemI++) {
             Object item = model.getElementAt(itemI);
             Card card = itemCardMap.get(item);
@@ -112,7 +127,7 @@ public class CardGrid
                 card = cardFactory.construct(item);
                 itemCardMap.put(item, card);
             } else {
-                gridContentPanel.remove(card);
+                //gridContentPanel.remove(card);
             }
             absentItemSet.remove(item);
 
@@ -126,10 +141,14 @@ public class CardGrid
             }
 
             constraints.gridx = itemI % currentColumnCount;
-            constraints.gridy = itemI / currentColumnCount;
+            constraints.gridy = itemI / currentColumnCount + rowOffset;
 
-            gridContentPanel.add(card, constraints);
-            
+            if(card.getParent() != gridContentPanel) {
+                gridContentPanel.add(card, constraints);
+            } else {
+                layout.setConstraints(card, constraints);
+            }
+
             card.relayout();
         }
         for(Object item : absentItemSet) {
@@ -138,15 +157,16 @@ public class CardGrid
 
         GUIUtil.revalidate(this);
         relayoutVoidPanel();
+        relayoutPreamble();
     }
 
     private void relayoutVoidPanel()
     {
         int rowCount = calculateRowCount();
+        int rowOffset = (preamblePanel == null ? 0 : 1);
 
-        gridContentPanel.remove(tailVoidPanel);
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridy = rowCount;
+        constraints.gridy = rowCount + rowOffset;
         constraints.gridx = 0;
         constraints.gridwidth = currentColumnCount;
         constraints.weightx = 1.0;
@@ -154,7 +174,38 @@ public class CardGrid
         constraints.fill = GridBagConstraints.BOTH;
         constraints.anchor = GridBagConstraints.NORTHWEST;
         constraints.insets = new Insets(0, 0, 0, 0);
-        gridContentPanel.add(tailVoidPanel, constraints);
+
+        if(tailVoidPanel.getParent() != gridContentPanel) {
+            gridContentPanel.add(tailVoidPanel, constraints);
+        } else {
+            GridBagLayout layout = (GridBagLayout)gridContentPanel.getLayout();
+            layout.setConstraints(tailVoidPanel, constraints);
+        }
+        GUIUtil.revalidate(this);
+    }
+
+    private void relayoutPreamble()
+    {
+        if(preamblePanel == null) {
+            return;
+        }
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridy = 0;
+        constraints.gridx = 0;
+        constraints.gridwidth = currentColumnCount;
+        constraints.weightx = 1.0;
+        constraints.weighty = 0.0;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        constraints.insets = new Insets(0, 0, 0, 0);
+
+        if(preamblePanel.getParent() != gridContentPanel) {
+            gridContentPanel.add(preamblePanel, constraints);
+        } else {
+            GridBagLayout layout = (GridBagLayout)gridContentPanel.getLayout();
+            layout.setConstraints(preamblePanel, constraints);
+        }
 
         GUIUtil.revalidate(this);
     }
@@ -181,30 +232,10 @@ public class CardGrid
     public void componentResized(ComponentEvent ce)
     {
         int newColumnCount = calculateColumnCount();
-        System.out.println("CCC: " + currentColumnCount + " -> "
-          + newColumnCount);
         if(currentColumnCount != newColumnCount) {
             currentColumnCount = newColumnCount;
             relayoutCards(0);
         }
-    }
-
-    @Override
-    public void componentMoved(ComponentEvent ce)
-    {
-        // 
-    }
-
-    @Override
-    public void componentShown(ComponentEvent ce)
-    {
-        // 
-    }
-
-    @Override
-    public void componentHidden(ComponentEvent ce)
-    {
-        // 
     }
 
     public ListModel getModel()
@@ -260,6 +291,29 @@ public class CardGrid
         if(backgroundPanel != null) {
             gridViewPanel.add(backgroundPanel);
         }
+    }
+
+    public void setPreamblePanel(JPanel preamblePanelIn)
+    {
+        preamblePanel = preamblePanelIn;
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent ce)
+    {
+        // 
+    }
+
+    @Override
+    public void componentShown(ComponentEvent ce)
+    {
+        // 
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent ce)
+    {
+        // 
     }
 
     /**

@@ -4,6 +4,8 @@
  */
 package hci400assignment.gui;
 
+import hci400assignment.ImageCache;
+import hci400assignment.ImageCacheListener;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -23,7 +25,7 @@ import javax.swing.SwingUtilities;
  */
 public class ImagePanel
   extends JPanel
-  implements ComponentListener
+  implements ComponentListener, ImageCacheListener
 {
     public enum Mode
     {
@@ -48,6 +50,8 @@ public class ImagePanel
         setMode(Mode.CENTER_HORIZONTAL);
 
         setBackground(new Color(21, 21, 21));
+        setOpaque(true);
+        setName("image_panel");
     }
 
     public ImagePanel(Image imageIn)
@@ -219,25 +223,28 @@ public class ImagePanel
             componentResized(null);
         }
     }
+    
+    public void setImage(ImageCache imageCache)
+    {
+        setImage((Image)null);
+        imageCache.loadTo(this);
+    }
 
     public void setImage(final URL urlIn)
     {
-        Thread fetchImageThread = new Thread()
-        {
-            @Override
-            public void run()
-            {
-                try {
-                    Image imageIn = ImageIO.read(urlIn);
-                    setImage(imageIn);
-                } catch(IOException ex) {
-                    System.err.println("Failed to load image:");
-                    System.err.print("    ");
-                    System.err.println(urlIn);
-                }
-            }
-        };
-        fetchImageThread.start();
+        setImage(ImageCache.get(urlIn));
+    }
+
+    @Override
+    public void imageReady(Image image)
+    {
+        setImage(image);
+    }
+
+    @Override
+    public void imageError()
+    {
+        setImage((Image)null);
     }
 
     public Mode getMode()

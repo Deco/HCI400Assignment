@@ -4,18 +4,17 @@
  */
 package hci400assignment.model;
 
-import hci400assignment.Util;
 import hci400assignment.gui.minimal.MinimalPreviewCard;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -33,21 +32,36 @@ public class Article
     private String title;
     private String author;
     private Document contentDocument;
-    private Map<String, Object> resourceMap;
-    private List<Enclosure> enclosureList;
+    private final List<Enclosure> enclosureList;
 
     public Article()
     {
-        publishDate = Util.randomDate();
+        publishDate = new Date(100, 10, 30);//Util.randomDate();
         title = "Yay, swag!";
         author = "Paul Swaggins";
         contentDocument = Jsoup.parse(
           "<html> Stuff and things and <b>more</b> stuff."
           + "<br/> Picture:"
-          + "<img src=\"http://i.imgur.com/sFEVfMB.jpg\">"
+          //+ "<img src=\"http://i.imgur.com/sFEVfMB.jpg\">"
           + "<br/>Yay!"
         );
         enclosureList = new ArrayList<Enclosure>();
+    }
+
+    @Override
+    public String getPreviewTitle()
+    {
+        return "<html>" + title;
+    }
+
+    @Override
+    public String getPreviewText()
+    {
+        Document previewDocument = contentDocument.clone();
+        previewDocument.select("img").remove();
+        String text = previewDocument.text();
+        text = text.substring(0, Math.min(300, text.length() - 1));
+        return "<html>" + text;
     }
 
     private String getEnclosureImageURL()
@@ -56,16 +70,6 @@ public class Article
             if(enclosure.type.startsWith("image")) {
                 return enclosure.url;
             }
-        }
-        return null;
-    }
-
-    public Image getPreviewImage()
-    {
-        try {
-            return ImageIO.read(getPreviewImageURL());
-        } catch(IOException ex) {
-            ex.printStackTrace(System.err);
         }
         return null;
     }
@@ -97,17 +101,18 @@ public class Article
     }
 
     @Override
-    public String getPreviewText()
+    public String getTextDump()
     {
-        Document previewDocument = contentDocument.clone();
-        previewDocument.select("img").remove();
-        return "<html>" + previewDocument.text();
-    }
-
-    @Override
-    public String getPreviewTitle()
-    {
-        return "<html>" + title;
+        StringBuilder textDump = new StringBuilder();
+        textDump.append(title);
+        textDump.append(" ");
+        textDump.append(author);
+        textDump.append(" ");
+        DateFormat df = new SimpleDateFormat("dd MMMM, yyyy");
+        textDump.append(df.format(publishDate));
+        textDump.append(" ");
+        textDump.append(contentDocument.text());
+        return textDump.toString();
     }
 
     public String getAuthor()

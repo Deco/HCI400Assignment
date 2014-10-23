@@ -17,12 +17,22 @@ import javax.imageio.ImageIO;
 public abstract class Item
 {
 
-    public abstract Image getPreviewImage();
+    public abstract String getPreviewTitle();
 
     public abstract String getPreviewText();
 
     public abstract URL getPreviewImageURL();
 
-    public abstract String getPreviewTitle();
-    
+    public Image getPreviewImage()
+    {
+        try {
+            return ImageIO.read(getPreviewImageURL());
+        } catch(IOException ex) {
+            ex.printStackTrace(System.err);
+        }
+        return null;
+    }
+
+    public abstract String getTextDump();
+
 }

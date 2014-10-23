@@ -20,9 +20,9 @@ import javax.swing.event.ListDataListener;
 public class ItemProvider
   implements ListModel
 {
-    private final List<Item> itemList;
-    private final List<ListDataListener> dataListenerList;
-    private Comparator<Item> sorter;
+    protected final List<Item> itemList;
+    protected final List<ListDataListener> dataListenerList;
+    protected Comparator<Item> sorter;
 
     public ItemProvider()
     {

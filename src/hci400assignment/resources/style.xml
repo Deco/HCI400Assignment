@@ -104,13 +104,45 @@
           type="NAME" key="([\w_\s]*\s)?minimal_preview_image(\s[\w_\s]*)?"
     />
     
+    <!-- ImagePanel -->
+    <style id="image_panel">
+        <state>
+            <opaque value="true"/>
+            <color type="BACKGROUND" idref="uiBackgroundDark" />
+        </state>
+    </style>
+    <bind style="image_panel"
+          type="NAME" key="([\w_\s]*\s)?image_panel(\s[\w_\s]*)?"
+    />
+    
     <!--#### Component styles ####-->
+    
     <!-- Button -->
     <style id="buttonStyle">
         <font idref="default" />
         <insets top="5" bottom="5" left="10" right="10" />
     </style>
     <bind style="buttonStyle" type="REGION" key="Button" />
+    
+    <!-- TextField -->
+    <style id="textFieldStyle">
+        <font idref="default" />
+        <insets top="5" bottom="5" left="10" right="10" />
+        <state>
+            <color value="BLACK" type="FOREGROUND"/>
+            <color value="BLACK" type="TEXT_FOREGROUND"/>
+            <color value="WHITE" type="BACKGROUND"/>
+            <color value="WHITE" type="TEXT_BACKGROUND"/>
+        </state>
+        <state value="SELECTED">
+            <color value="WHITE" type="FOREGROUND"/>
+            <color value="WHITE" type="TEXT_FOREGROUND"/>
+            <color value="BLACK" type="BACKGROUND"/>
+            <color value="BLACK" type="TEXT_BACKGROUND"/>
+        </state>
+        <painter method="textFieldBackground" idref="painter"/>
+    </style>
+    <bind style="textFieldStyle" type="REGION" key="TextField" />
     
     <!-- Scrollbar -->
     <style id="scrollBarArrowStyle">

@@ -70,13 +70,25 @@ public class StylePainter
     }
     // </editor-fold>
 
+    //****** TEXTFIELD ******/
+    // <editor-fold defaultstate="collapsed" desc="TextField Painters">
+    @Override
+    public void paintTextFieldBackground(
+      SynthContext sc, Graphics g,
+      int x, int y, int w, int h
+    )
+    {
+        Color col = sc.getStyle().getColor(sc, ColorType.BACKGROUND);
+        g.setColor(col);
+        g.fillRect(x, y, w, h);
+    }
+
+    // </editor-fold>
     //****** SCROLLBAR ******/
     // <editor-fold defaultstate="collapsed" desc="Scrollbar Painters">
     @Override
     public void paintScrollBarThumbBackground(
-      SynthContext sc, Graphics g,
-      int x, int y, int w, int h, int orientation
-    )
+      SynthContext sc, Graphics g, int x, int y, int w, int h, int orientation)
     {
         Graphics2D g2 = (Graphics2D)g;
 

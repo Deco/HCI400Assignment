@@ -29,14 +29,16 @@ public class MinimalNavBar extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         navHomeButton = new javax.swing.JButton();
         navFriendsButton = new javax.swing.JButton();
         navSearchButton = new javax.swing.JButton();
         navAboutButton = new javax.swing.JButton();
-        navAboutButton1 = new javax.swing.JButton();
+        navSettingsButton = new javax.swing.JButton();
+        navSwitchButton = new javax.swing.JButton();
         navFacebookButton = new javax.swing.JButton();
         navTwitterButton = new javax.swing.JButton();
         navRSSButton = new javax.swing.JButton();
@@ -51,6 +53,13 @@ public class MinimalNavBar extends javax.swing.JPanel
         navHomeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navHomeButton.setName("top_bar_button"); // NOI18N
         navHomeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navHomeButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navHomeButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -67,6 +76,13 @@ public class MinimalNavBar extends javax.swing.JPanel
         navFriendsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navFriendsButton.setName("top_bar_button"); // NOI18N
         navFriendsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navFriendsButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navFriendsButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -82,6 +98,13 @@ public class MinimalNavBar extends javax.swing.JPanel
         navSearchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navSearchButton.setName("top_bar_button"); // NOI18N
         navSearchButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navSearchButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navSearchButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -97,8 +120,10 @@ public class MinimalNavBar extends javax.swing.JPanel
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton.setName("top_bar_button"); // NOI18N
         navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navAboutButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navAboutButtonActionPerformed(evt);
             }
         });
@@ -111,14 +136,17 @@ public class MinimalNavBar extends javax.swing.JPanel
         gridBagConstraints.weighty = 1.0;
         add(navAboutButton, gridBagConstraints);
 
-        navAboutButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-        navAboutButton1.setText("Switch Design");
-        navAboutButton1.setFocusable(false);
-        navAboutButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        navAboutButton1.setName("top_bar_button"); // NOI18N
-        navAboutButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navAboutButton1ActionPerformed(evt);
+        navSettingsButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navSettingsButton.setText("Settings");
+        navSettingsButton.setFocusable(false);
+        navSettingsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navSettingsButton.setName("top_bar_button"); // NOI18N
+        navSettingsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navSettingsButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navSettingsButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -128,20 +156,43 @@ public class MinimalNavBar extends javax.swing.JPanel
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(navAboutButton1, gridBagConstraints);
+        add(navSettingsButton, gridBagConstraints);
+
+        navSwitchButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navSwitchButton.setText("Switch Design");
+        navSwitchButton.setFocusable(false);
+        navSwitchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navSwitchButton.setName("top_bar_button"); // NOI18N
+        navSwitchButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navSwitchButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(navSwitchButton, gridBagConstraints);
 
         navFacebookButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/SmallFB.png"))); // NOI18N
         navFacebookButton.setFocusable(false);
         navFacebookButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navFacebookButton.setName("top_bar_button"); // NOI18N
         navFacebookButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navFacebookButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navFacebookButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navFacebookButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
@@ -153,13 +204,15 @@ public class MinimalNavBar extends javax.swing.JPanel
         navTwitterButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navTwitterButton.setName("top_bar_button"); // NOI18N
         navTwitterButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navTwitterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        navTwitterButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 navTwitterButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
@@ -169,7 +222,7 @@ public class MinimalNavBar extends javax.swing.JPanel
         navRSSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/SmallRSS.png"))); // NOI18N
         navRSSButton.setName("top_bar_button"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weighty = 1.0;
@@ -189,7 +242,7 @@ public class MinimalNavBar extends javax.swing.JPanel
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -201,10 +254,10 @@ public class MinimalNavBar extends javax.swing.JPanel
         ApplicationCore.getInstance().showAboutWindow();
     }//GEN-LAST:event_navAboutButtonActionPerformed
 
-    private void navAboutButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navAboutButton1ActionPerformed
-    {//GEN-HEADEREND:event_navAboutButton1ActionPerformed
+    private void navSwitchButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSwitchButtonActionPerformed
+    {//GEN-HEADEREND:event_navSwitchButtonActionPerformed
         ApplicationCore.getInstance().switchDesign();
-    }//GEN-LAST:event_navAboutButton1ActionPerformed
+    }//GEN-LAST:event_navSwitchButtonActionPerformed
 
     private void navFacebookButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navFacebookButtonActionPerformed
     {//GEN-HEADEREND:event_navFacebookButtonActionPerformed
@@ -233,16 +286,36 @@ public class MinimalNavBar extends javax.swing.JPanel
         }
     }//GEN-LAST:event_navTwitterButtonActionPerformed
 
+    private void navHomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navHomeButtonActionPerformed
+        ApplicationCore.getInstance().showHomeScreen();
+    }//GEN-LAST:event_navHomeButtonActionPerformed
+
+    private void navFriendsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navFriendsButtonActionPerformed
+    {//GEN-HEADEREND:event_navFriendsButtonActionPerformed
+        ApplicationCore.getInstance().showFriendsScreen();
+    }//GEN-LAST:event_navFriendsButtonActionPerformed
+
+    private void navSearchButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSearchButtonActionPerformed
+    {//GEN-HEADEREND:event_navSearchButtonActionPerformed
+        ApplicationCore.getInstance().showSearchScreen();
+    }//GEN-LAST:event_navSearchButtonActionPerformed
+
+    private void navSettingsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSettingsButtonActionPerformed
+    {//GEN-HEADEREND:event_navSettingsButtonActionPerformed
+        ApplicationCore.getInstance().showSettingsWindow();
+    }//GEN-LAST:event_navSettingsButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gapPanel;
     private javax.swing.JButton navAboutButton;
-    private javax.swing.JButton navAboutButton1;
     private javax.swing.JButton navFacebookButton;
     private javax.swing.JButton navFriendsButton;
     private javax.swing.JButton navHomeButton;
     private javax.swing.JButton navRSSButton;
     private javax.swing.JButton navSearchButton;
+    private javax.swing.JButton navSettingsButton;
+    private javax.swing.JButton navSwitchButton;
     private javax.swing.JButton navTwitterButton;
     // End of variables declaration//GEN-END:variables
 }

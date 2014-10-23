@@ -127,13 +127,6 @@ public class ApplicationCore
         rootFrame.repaint();
     }
 
-    public void showRootWindow()
-    {
-        rootFrame.setVisible(true);
-        rootFrame.toFront();
-        rootFrame.repaint();
-    }
-
     private void makeAboutWindow()
     {
         aboutFrame = new JFrame("About");
@@ -155,23 +148,6 @@ public class ApplicationCore
         aboutFrame.setLocation(
           screenSize.width / 2 - aboutFrame.getSize().width / 2,
           screenSize.height / 2 - aboutFrame.getSize().height / 2);
-    }
-
-    public void showAboutWindow()
-    {
-        aboutFrame.setVisible(true);
-        aboutFrame.toFront();
-        aboutFrame.repaint();
-    }
-
-    public void hideAboutWindow()
-    {
-        aboutFrame.setVisible(false);
-    }
-
-    public void focusItem(Item item)
-    {
-        currentRootPanel.focusItem(item);
     }
     
     private void updateDesign()
@@ -221,5 +197,54 @@ public class ApplicationCore
                 }
             }
         });
+    }
+
+    public void showRootWindow()
+    {
+        rootFrame.setVisible(true);
+        rootFrame.toFront();
+        rootFrame.repaint();
+    }
+
+    public void showAboutWindow()
+    {
+        aboutFrame.setVisible(true);
+        aboutFrame.toFront();
+        aboutFrame.repaint();
+    }
+
+    public void hideAboutWindow()
+    {
+        aboutFrame.setVisible(false);
+    }
+
+    public void focusItem(Item item)
+    {
+        currentRootPanel.focusItem(item);
+    }
+
+    public void showHomeScreen()
+    {
+        currentRootPanel.showHomeScreen();
+    }
+
+    public void showFriendsScreen()
+    {
+        currentRootPanel.showFriendsScreen();
+    }
+
+    public void showSearchScreen()
+    {
+        currentRootPanel.showSearchScreen();
+    }
+
+    public void setSearchText(String text)
+    {
+        dc.setSearchText(text);
+    }
+
+    public void showSettingsWindow()
+    {
+        currentRootPanel.showSettingsWindow();
     }
 }

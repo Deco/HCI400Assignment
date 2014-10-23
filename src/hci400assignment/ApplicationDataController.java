@@ -11,17 +11,15 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 import hci400assignment.model.Article;
+import hci400assignment.model.Friend;
 import hci400assignment.model.Item;
 import hci400assignment.model.ItemProvider;
+import hci400assignment.model.ItemProviderFilter;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.swing.ListModel;
-import javax.swing.SwingUtilities;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
 
 /**
  *
@@ -35,30 +33,83 @@ public class ApplicationDataController
         }
     }
 
+    private ItemProvider homeProvider;
+    private ItemProvider friendProvider;
+    private ItemProviderFilter searchProvider;
+
     public ItemProvider getHomePreviewFeed()
     {
-        ItemProvider itemProvider = new ItemProvider();
+        if(homeProvider != null) {
+            return homeProvider;
+        }
+        homeProvider = new ItemProvider();
 
-        itemProvider.setSorter(new Comparator<Item>()
+        homeProvider.setSorter(new Comparator<Item>()
         {
             @Override
             public int compare(Item a, Item b)
             {
                 Date dateA = ((Article)a).getPublishDate();
                 Date dateB = ((Article)b).getPublishDate();
-                return dateA.compareTo(dateB);
+                return -dateA.compareTo(dateB);
             }
         });
 
-        itemProvider.add(new Article());
+        homeProvider.add(new Article());
 
-        fetchRSS(itemProvider, "http://www.engadget.com/rss.xml");
-        fetchRSS(itemProvider, "http://www.fivedollarfinds.com/feed/");
-        fetchRSS(itemProvider, "http://wtfevolution.tumblr.com/rss");
-        fetchRSS(itemProvider,
+        fetchRSS(homeProvider, "http://www.engadget.com/rss.xml");
+        fetchRSS(homeProvider, "http://www.fivedollarfinds.com/feed/");
+        fetchRSS(homeProvider, "http://wtfevolution.tumblr.com/rss");
+        fetchRSS(homeProvider,
           "http://www.nasa.gov/rss/dyn/image_of_the_day.rss");
 
-        return itemProvider;
+        return homeProvider;
+    }
+
+    public ItemProvider getFriendPreviewFeed()
+    {
+        if(friendProvider != null) {
+            return friendProvider;
+        }
+        friendProvider = new ItemProvider();
+
+        friendProvider.add(new Friend(
+          "Rhys Davis", Util.randomDate(), "rhys.jpg"
+        ));
+        friendProvider.add(new Friend(
+          "Liam Pilling", Util.randomDate(), "liam.jpg"
+        ));
+        friendProvider.add(new Friend(
+          "Declan White", Util.randomDate(), "declan.jpg"
+        ));
+        friendProvider.add(new Friend(
+          "Ashleah Grant", Util.randomDate(), "ash.png"
+        ));
+        friendProvider.add(new Friend(
+          "Hamed Al-Hinai", Util.randomDate(), "hamed.jpg"
+        ));
+        friendProvider.add(new Friend(
+          "David Jiang", Util.randomDate(), "david.jpg"
+        ));
+
+        return friendProvider;
+    }
+
+    public ListModel getSearchPreviewFeed()
+    {
+        if(searchProvider != null) {
+            return searchProvider;
+        }
+        searchProvider = new ItemProviderFilter(
+          homeProvider,
+          new ItemProviderFilter.TextFilterer("")
+        );
+        return searchProvider;
+    }
+
+    void setSearchText(String text)
+    {
+        searchProvider.setFilterer(new ItemProviderFilter.TextFilterer(text));
     }
 
     public void fetchRSS(
@@ -85,7 +136,7 @@ public class ApplicationDataController
                         article.setTitle(entry.getTitle());
                         article.setAuthor(entry.getAuthor());
                         article.setPublishDate(entry.getPublishedDate());
-                        
+
                         List<SyndEnclosure> enclosureList
                           = (List<SyndEnclosure>)entry.getEnclosures();
                         for(SyndEnclosure enclosure : enclosureList) {

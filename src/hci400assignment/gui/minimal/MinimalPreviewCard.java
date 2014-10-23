@@ -2,12 +2,6 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-
-/*
- * ArticleCard.java
- *
- * Created on 15/10/2014, 4:36:46 PM
- */
 package hci400assignment.gui.minimal;
 
 import hci400assignment.ApplicationCore;
@@ -31,21 +25,21 @@ import java.net.URL;
 public class MinimalPreviewCard
   extends ItemCard
 {
-    public static final double DEFAULT_IMAGE_HEIGHT_PC = 0.61;
-    
+    public static final double DEFAULT_IMAGE_HEIGHT_PC = 0.70;
+
     private double imageHeightPc;
-    
+
     public MinimalPreviewCard(Item itemIn)
     {
         super();
-        
+
         initComponents();
-        
+
         articleImagePanel.setMode(ImagePanel.Mode.FIT_MAX);
         setItem(itemIn);
         setImageHeightPc(DEFAULT_IMAGE_HEIGHT_PC);
     }
-    
+
     @Override
     protected void updateContent()
     {
@@ -61,34 +55,34 @@ public class MinimalPreviewCard
         articleSnippetLabel.setText(item.getPreviewText());
         articleTitleLabel.setText(item.getPreviewTitle());
     }
-    
+
     public double getImageHeightPc()
     {
         return imageHeightPc;
     }
-    
+
     public void setImageHeightPc(double imageHeightPcIn)
     {
         imageHeightPc = imageHeightPcIn;
-        
+
         GridBagLayout layout = (GridBagLayout)getLayout();
         GridBagConstraints constraints = layout.
           getConstraints(articleImagePanel);
         remove(articleImagePanel);
         constraints.weighty = imageHeightPc;
         add(articleImagePanel, constraints);
-        
+
         constraints = layout.getConstraints(articleSnippetPanel);
         remove(articleSnippetPanel);
         constraints.weighty = 1.0 - imageHeightPc;
         add(articleSnippetPanel, constraints);
-        
+
         articleSnippetPanel.setPreferredSize(new Dimension(0, 0));
         articleSnippetLabel.setPreferredSize(new Dimension(0, 0));
-        
+
         GUIUtil.revalidate(this);
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent me)
     {
@@ -113,10 +107,18 @@ public class MinimalPreviewCard
         articleSnippetLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(81, 81, 81));
+        setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 34, 34)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51))));
         setName("minimal_preview"); // NOI18N
         setLayout(new java.awt.GridBagLayout());
 
         articleImagePanel.setName("minimal_preview_image"); // NOI18N
+        articleImagePanel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                articleImagePanelMouseClicked(evt);
+            }
+        });
         articleImagePanel.setLayout(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -128,7 +130,7 @@ public class MinimalPreviewCard
 
         articleTitlePanel.setBackground(new java.awt.Color(42, 42, 42));
         articleTitlePanel.setName("minimal_preview_title_bg"); // NOI18N
-        articleTitlePanel.setLayout(new java.awt.BorderLayout());
+        articleTitlePanel.setLayout(new java.awt.GridBagLayout());
 
         articleTitleLabel.setBackground(new java.awt.Color(46, 46, 46));
         articleTitleLabel.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
@@ -138,7 +140,21 @@ public class MinimalPreviewCard
         articleTitleLabel.setToolTipText("");
         articleTitleLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         articleTitleLabel.setName("minimal_preview_title"); // NOI18N
-        articleTitlePanel.add(articleTitleLabel, java.awt.BorderLayout.CENTER);
+        articleTitleLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                articleTitleLabelMouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 12, 4, 12);
+        articleTitlePanel.add(articleTitleLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -149,7 +165,7 @@ public class MinimalPreviewCard
 
         articleSnippetPanel.setBackground(new java.awt.Color(51, 51, 51));
         articleSnippetPanel.setName("minimal_preview_snippet_bg"); // NOI18N
-        articleSnippetPanel.setLayout(new java.awt.BorderLayout());
+        articleSnippetPanel.setLayout(new java.awt.GridBagLayout());
 
         articleSnippetLabel.setBackground(new java.awt.Color(51, 51, 51));
         articleSnippetLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -159,7 +175,21 @@ public class MinimalPreviewCard
         articleSnippetLabel.setToolTipText("");
         articleSnippetLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         articleSnippetLabel.setName("minimal_preview_snippet"); // NOI18N
-        articleSnippetPanel.add(articleSnippetLabel, java.awt.BorderLayout.CENTER);
+        articleSnippetLabel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                articleSnippetLabelMouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(4, 11, 6, 11);
+        articleSnippetPanel.add(articleSnippetLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -169,6 +199,20 @@ public class MinimalPreviewCard
         gridBagConstraints.weighty = 0.5;
         add(articleSnippetPanel, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void articleSnippetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_articleSnippetLabelMouseClicked
+        ApplicationCore.getInstance().focusItem(item);
+    }//GEN-LAST:event_articleSnippetLabelMouseClicked
+
+    private void articleTitleLabelMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_articleTitleLabelMouseClicked
+    {//GEN-HEADEREND:event_articleTitleLabelMouseClicked
+        ApplicationCore.getInstance().focusItem(item);
+    }//GEN-LAST:event_articleTitleLabelMouseClicked
+
+    private void articleImagePanelMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_articleImagePanelMouseClicked
+    {//GEN-HEADEREND:event_articleImagePanelMouseClicked
+        ApplicationCore.getInstance().focusItem(item);
+    }//GEN-LAST:event_articleImagePanelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private hci400assignment.gui.ImagePanel articleImagePanel;
@@ -187,5 +231,5 @@ public class MinimalPreviewCard
             return new MinimalPreviewCard(item);
         }
     }
-    
+
 }
