@@ -5,8 +5,6 @@
 package hci400assignment.model;
 
 import hci400assignment.gui.minimal.MinimalPreviewCard;
-import java.awt.Image;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -14,9 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.function.UnaryOperator;
-import javax.imageio.ImageIO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -71,6 +66,7 @@ public class Article
 
         for(Element el : outputDocument.select("img")) {
             Element div = outputDocument.createElement("center");
+            div.attr("style", "margin: 11px;");
             el.replaceWith(div);
             div.appendChild(el);
         }

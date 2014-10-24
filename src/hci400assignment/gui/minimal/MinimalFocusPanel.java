@@ -8,13 +8,9 @@ import hci400assignment.ApplicationCore;
 import hci400assignment.gui.GUIUtil;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.ItemCard;
-import java.awt.ComponentOrientation;
-import java.awt.Image;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JViewport;
 
