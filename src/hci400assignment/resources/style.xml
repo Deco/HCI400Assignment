@@ -4,7 +4,7 @@
     <object id="painter"
             class="hci400assignment.gui.StylePainter"
     />
-<!--    <object id="clutteredPainter"
+    <!--    <object id="clutteredPainter"
             class="hci400assignment.gui.cluttered.ClutteredStylePainter"
     />-->
     
@@ -177,8 +177,6 @@
     <bind style="image_panel"
           type="NAME" key="([\w_\s]*\s)?image_panel(\s[\w_\s]*)?"
     />
-    
-    
     
     <!--#### Component styles ####-->
     
