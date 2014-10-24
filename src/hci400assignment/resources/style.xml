@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <synth>
-    <object id="painter" class="hci400assignment.gui.StylePainter" />
+    <object id="painter"
+            class="hci400assignment.gui.StylePainter"
+    />
+<!--    <object id="clutteredPainter"
+            class="hci400assignment.gui.cluttered.ClutteredStylePainter"
+    />-->
     
     <!--#### Definitions #### -->
     <font id="default" name="Arial" size="14" />
     <color id="uiBackground" value="#333333" />
     <color id="uiBackgroundDark" value="#222222" />
     <color id="uiText" value="#EEEEEE" />
-
-
-
+    
+    
+    
     <!--#### Name-class styles ####-->
     
     <!-- Top bar-->
@@ -142,6 +147,8 @@
     <bind style="image_panel"
           type="NAME" key="([\w_\s]*\s)?image_panel(\s[\w_\s]*)?"
     />
+    
+    
     
     <!--#### Component styles ####-->
     

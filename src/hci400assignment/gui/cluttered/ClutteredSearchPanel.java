@@ -2,7 +2,7 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment.gui.minimal;
+package hci400assignment.gui.cluttered;
 
 import hci400assignment.ApplicationCore;
 import hci400assignment.gui.HintTextField;
@@ -12,14 +12,14 @@ import javax.swing.SwingUtilities;
  *
  * @author Declan White
  */
-public class MinimalSearchPanel
+public class ClutteredSearchPanel
   extends javax.swing.JPanel
 {
 
     /**
      * Creates new form SearchPanel
      */
-    public MinimalSearchPanel()
+    public ClutteredSearchPanel()
     {
         initComponents();
         ((HintTextField)searchTextField).setHintText("Enter search text...");

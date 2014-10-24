@@ -40,7 +40,7 @@ public class Card
     {
         this(DEFAULT_ASPECT_RATIO);
     }
-    
+
     public void relayout()
     {
         componentResized(null);
@@ -53,7 +53,7 @@ public class Card
             Dimension size = getSize();
             Dimension preferredSize = getPreferredSize();
             Dimension newSize = new Dimension(
-              preferredSize.width,
+              0,
               (int)((double)size.width / aspectRatio)
             );
             setPreferredSize(newSize);

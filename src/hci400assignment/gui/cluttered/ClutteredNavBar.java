@@ -4,17 +4,21 @@
  */
 package hci400assignment.gui.cluttered;
 
-import hci400assignment.gui.minimal.*;
 import hci400assignment.ApplicationCore;
+import java.awt.font.TextAttribute;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Declan White
  */
-public class ClutteredNavBar
-extends javax.swing.JPanel
+public class ClutteredNavBar extends javax.swing.JPanel
 {
+
+    private final Map<String, JButton> underlineButtonMap;
 
     /**
      * Creates new form NavBar
@@ -22,6 +26,31 @@ extends javax.swing.JPanel
     public ClutteredNavBar()
     {
         initComponents();
+
+        underlineButtonMap = new HashMap<String, JButton>()
+        {
+            {
+                put("home", navHomeButton);
+                put("friends", navCollectionsButton);
+                put("search", navSearchButton);
+            }
+        };
+    }
+
+    public void setUnderlinedButton(String key)
+    {
+        Map<TextAttribute, Integer> fontAttributes
+          = new HashMap<TextAttribute, Integer>();
+        fontAttributes.put(TextAttribute.UNDERLINE, null);
+
+        for(Map.Entry<String, JButton> entry : underlineButtonMap.entrySet()) {
+            JButton button = entry.getValue();
+            button.setFont(button.getFont().deriveFont(fontAttributes));
+        }
+
+        JButton button = underlineButtonMap.get(key);
+        fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        button.setFont(button.getFont().deriveFont(fontAttributes));
     }
 
     /**
@@ -36,58 +65,86 @@ extends javax.swing.JPanel
         java.awt.GridBagConstraints gridBagConstraints;
 
         navHomeButton = new javax.swing.JButton();
-        navFriendsButton = new javax.swing.JButton();
+        navCollectionsButton = new javax.swing.JButton();
         navSearchButton = new javax.swing.JButton();
         navAboutButton = new javax.swing.JButton();
-        navAboutButton1 = new javax.swing.JButton();
-        navFacebookButton = new javax.swing.JButton();
-        navTwitterButton = new javax.swing.JButton();
-        navRSSButton = new javax.swing.JButton();
+        navSettingsButton = new javax.swing.JButton();
+        navSwitchButton = new javax.swing.JButton();
         gapPanel = new javax.swing.JPanel();
+        clutteredControlBar1 = new hci400assignment.gui.cluttered.ClutteredControlBar();
 
+        setName("topbar_bg"); // NOI18N
         setLayout(new java.awt.GridBagLayout());
 
-        navHomeButton.setText("Home");
+        navHomeButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navHomeButton.setText("home");
         navHomeButton.setFocusable(false);
         navHomeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navHomeButton.setName("top_bar_button"); // NOI18N
         navHomeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navHomeButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navHomeButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(navHomeButton, gridBagConstraints);
 
-        navFriendsButton.setText("Friends");
-        navFriendsButton.setToolTipText("");
-        navFriendsButton.setFocusable(false);
-        navFriendsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        navFriendsButton.setName("top_bar_button"); // NOI18N
-        navFriendsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navCollectionsButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navCollectionsButton.setText("collections");
+        navCollectionsButton.setToolTipText("");
+        navCollectionsButton.setFocusable(false);
+        navCollectionsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navCollectionsButton.setName("top_bar_button"); // NOI18N
+        navCollectionsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navCollectionsButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navCollectionsButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(navFriendsButton, gridBagConstraints);
+        add(navCollectionsButton, gridBagConstraints);
 
-        navSearchButton.setText("Search");
+        navSearchButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navSearchButton.setText("shared");
         navSearchButton.setFocusable(false);
         navSearchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navSearchButton.setName("top_bar_button"); // NOI18N
         navSearchButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navSearchButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                navSearchButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(navSearchButton, gridBagConstraints);
 
-        navAboutButton.setText("About");
+        navAboutButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navAboutButton.setText("friends");
         navAboutButton.setFocusable(false);
         navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         navAboutButton.setName("top_bar_button"); // NOI18N
@@ -104,18 +161,21 @@ extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(navAboutButton, gridBagConstraints);
 
-        navAboutButton1.setText("Switch Design");
-        navAboutButton1.setFocusable(false);
-        navAboutButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        navAboutButton1.setName("top_bar_button"); // NOI18N
-        navAboutButton1.addActionListener(new java.awt.event.ActionListener()
+        navSettingsButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navSettingsButton.setText("settings");
+        navSettingsButton.setFocusable(false);
+        navSettingsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navSettingsButton.setName("top_bar_button"); // NOI18N
+        navSettingsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navSettingsButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                navAboutButton1ActionPerformed(evt);
+                navSettingsButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -123,57 +183,31 @@ extends javax.swing.JPanel
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(navAboutButton1, gridBagConstraints);
+        add(navSettingsButton, gridBagConstraints);
 
-        navFacebookButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/SmallFB.png"))); // NOI18N
-        navFacebookButton.setFocusable(false);
-        navFacebookButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        navFacebookButton.setName("top_bar_button"); // NOI18N
-        navFacebookButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navFacebookButton.addActionListener(new java.awt.event.ActionListener()
+        navSwitchButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navSwitchButton.setText("switch design");
+        navSwitchButton.setToolTipText("");
+        navSwitchButton.setFocusable(false);
+        navSwitchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navSwitchButton.setName("top_bar_button"); // NOI18N
+        navSwitchButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                navFacebookButtonActionPerformed(evt);
+                navSwitchButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(navFacebookButton, gridBagConstraints);
-
-        navTwitterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/SmallTwitter.png"))); // NOI18N
-        navTwitterButton.setFocusable(false);
-        navTwitterButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        navTwitterButton.setName("top_bar_button"); // NOI18N
-        navTwitterButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navTwitterButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                navTwitterButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weighty = 1.0;
-        add(navTwitterButton, gridBagConstraints);
-
-        navRSSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hci400assignment/resources/SmallRSS.png"))); // NOI18N
-        navRSSButton.setName("top_bar_button"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weighty = 1.0;
-        add(navRSSButton, gridBagConstraints);
+        add(navSwitchButton, gridBagConstraints);
 
         gapPanel.setName("top_bar_button"); // NOI18N
 
@@ -181,19 +215,25 @@ extends javax.swing.JPanel
         gapPanel.setLayout(gapPanelLayout);
         gapPanelLayout.setHorizontalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         gapPanelLayout.setVerticalGroup(
             gapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weightx = 12.0;
         add(gapPanel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weighty = 1.0;
+        add(clutteredControlBar1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void navAboutButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navAboutButtonActionPerformed
@@ -201,48 +241,39 @@ extends javax.swing.JPanel
         ApplicationCore.getInstance().showAboutWindow();
     }//GEN-LAST:event_navAboutButtonActionPerformed
 
-    private void navAboutButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navAboutButton1ActionPerformed
-    {//GEN-HEADEREND:event_navAboutButton1ActionPerformed
+    private void navSwitchButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSwitchButtonActionPerformed
+    {//GEN-HEADEREND:event_navSwitchButtonActionPerformed
         ApplicationCore.getInstance().switchDesign();
-    }//GEN-LAST:event_navAboutButton1ActionPerformed
+    }//GEN-LAST:event_navSwitchButtonActionPerformed
 
-    private void navFacebookButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navFacebookButtonActionPerformed
-    {//GEN-HEADEREND:event_navFacebookButtonActionPerformed
-        try
-        {
-            String URL = "https://www.facebook.com/";
-            java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
+    private void navHomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navHomeButtonActionPerformed
+        ApplicationCore.getInstance().showHomeScreen();
+    }//GEN-LAST:event_navHomeButtonActionPerformed
 
-    }//GEN-LAST:event_navFacebookButtonActionPerformed
+    private void navCollectionsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navCollectionsButtonActionPerformed
+    {//GEN-HEADEREND:event_navCollectionsButtonActionPerformed
+        ApplicationCore.getInstance().showFriendsScreen();
+    }//GEN-LAST:event_navCollectionsButtonActionPerformed
 
-    private void navTwitterButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navTwitterButtonActionPerformed
-    {//GEN-HEADEREND:event_navTwitterButtonActionPerformed
-        try
-        {
-            String URL = "https://www.twitter.com/";
-            java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_navTwitterButtonActionPerformed
+    private void navSearchButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSearchButtonActionPerformed
+    {//GEN-HEADEREND:event_navSearchButtonActionPerformed
+        ApplicationCore.getInstance().showSearchScreen();
+    }//GEN-LAST:event_navSearchButtonActionPerformed
+
+    private void navSettingsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSettingsButtonActionPerformed
+    {//GEN-HEADEREND:event_navSettingsButtonActionPerformed
+        ApplicationCore.getInstance().showSettingsWindow();
+    }//GEN-LAST:event_navSettingsButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private hci400assignment.gui.cluttered.ClutteredControlBar clutteredControlBar1;
     private javax.swing.JPanel gapPanel;
     private javax.swing.JButton navAboutButton;
-    private javax.swing.JButton navAboutButton1;
-    private javax.swing.JButton navFacebookButton;
-    private javax.swing.JButton navFriendsButton;
+    private javax.swing.JButton navCollectionsButton;
     private javax.swing.JButton navHomeButton;
-    private javax.swing.JButton navRSSButton;
     private javax.swing.JButton navSearchButton;
-    private javax.swing.JButton navTwitterButton;
+    private javax.swing.JButton navSettingsButton;
+    private javax.swing.JButton navSwitchButton;
     // End of variables declaration//GEN-END:variables
 }

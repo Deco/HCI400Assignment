@@ -2,19 +2,19 @@
  * Curtin University - Machine Perception 400 - Assignment
  * Group 11 - 2014S2
  */
-package hci400assignment.gui;
+package hci400assignment.gui.minimal;
 
 /**
  *
  * @author Declan White
  */
-public class ControlBar extends javax.swing.JPanel
+public class MinimalControlBar extends javax.swing.JPanel
 {
 
     /**
      * Creates new form ControlsBar
      */
-    public ControlBar()
+    public MinimalControlBar()
     {
         initComponents();
         

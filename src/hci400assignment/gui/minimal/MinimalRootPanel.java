@@ -157,7 +157,7 @@ public class MinimalRootPanel
 
         navBar = new hci400assignment.gui.minimal.MinimalNavBar();
         contentRootPanel = new javax.swing.JPanel();
-        controlsBar1 = new hci400assignment.gui.ControlBar();
+        controlsBar1 = new hci400assignment.gui.minimal.MinimalControlBar();
 
         setLayout(new java.awt.BorderLayout());
         add(navBar, java.awt.BorderLayout.NORTH);
@@ -170,7 +170,7 @@ public class MinimalRootPanel
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentRootPanel;
-    private hci400assignment.gui.ControlBar controlsBar1;
+    private hci400assignment.gui.minimal.MinimalControlBar controlsBar1;
     private hci400assignment.gui.minimal.MinimalNavBar navBar;
     // End of variables declaration//GEN-END:variables
 
