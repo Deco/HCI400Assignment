@@ -11,14 +11,20 @@ import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.RootPanel;
 import hci400assignment.gui.SettingsPanel;
+import hci400assignment.gui.minimal.MinimalRootPanel;
 import hci400assignment.model.Item;
 import hci400assignment.model.ItemProviderFilter;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.util.List;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.LookAndFeel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * MINIMAL!
@@ -152,7 +158,26 @@ public class ClutteredRootPanel
     @Override
     public JPanel getSettingsPanel()
     {
-        return new SettingsPanel();
+        LookAndFeel previousLF = UIManager.getLookAndFeel();
+        SettingsPanel settingsPanel = null;
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            settingsPanel = new SettingsPanel();
+            UIManager.setLookAndFeel(previousLF);
+        } catch(ClassNotFoundException ex) {
+            Logger.getLogger(MinimalRootPanel.class.getName()).
+              log(Level.SEVERE, null, ex);
+        } catch(InstantiationException ex) {
+            Logger.getLogger(MinimalRootPanel.class.getName()).
+              log(Level.SEVERE, null, ex);
+        } catch(IllegalAccessException ex) {
+            Logger.getLogger(MinimalRootPanel.class.getName()).
+              log(Level.SEVERE, null, ex);
+        } catch(UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(MinimalRootPanel.class.getName()).
+              log(Level.SEVERE, null, ex);
+        }
+        return settingsPanel;
     }
 
     @Override

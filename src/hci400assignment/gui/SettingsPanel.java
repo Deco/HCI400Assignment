@@ -39,10 +39,15 @@ public class SettingsPanel
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         checkBox1 = new javax.swing.JCheckBox();
+        checkBox1.setName("settingsCheckbox");
         checkBox2 = new javax.swing.JCheckBox();
+        checkBox2.setName("settingsCheckbox");
         checkBox4 = new javax.swing.JCheckBox();
+        checkBox4.setName("settingsCheckbox");
         checkBox5 = new javax.swing.JCheckBox();
+        checkBox5.setName("settingsCheckbox");
         checkBox3 = new javax.swing.JCheckBox();
+        checkBox3.setName("settingsCheckbox");
         autoFetch = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
