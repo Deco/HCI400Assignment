@@ -7,6 +7,8 @@ package hci400assignment.gui;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -81,9 +83,32 @@ public class StylePainter
         Color col = sc.getStyle().getColor(sc, ColorType.BACKGROUND);
         g.setColor(col);
         g.fillRect(x, y, w, h);
-    }
 
+        if(sc.getComponent() instanceof HintTextField) {
+            HintTextField comp = (HintTextField)sc.getComponent();
+
+            if(comp.getText().trim().isEmpty()) {
+                String hint = comp.getHintText();
+
+                g.setColor(new Color(180, 180, 180));
+
+                Font font = comp.getFont();
+                font = font.deriveFont(Font.BOLD | Font.ITALIC);
+                g.setFont(font);
+
+                FontMetrics fm = g.getFontMetrics();
+                int hintWidth = fm.stringWidth(hint);
+
+                g.drawString(
+                  hint,
+                  x + w / 2 - hintWidth / 2,
+                  y + h / 2 + fm.getAscent() / 2
+                );
+            }
+        }
+    }
     // </editor-fold>
+
     //****** SCROLLBAR ******/
     // <editor-fold defaultstate="collapsed" desc="Scrollbar Painters">
     @Override

@@ -5,6 +5,7 @@
 package hci400assignment.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Pattern;
@@ -19,14 +20,14 @@ import javax.swing.event.ListDataListener;
 public class ItemProviderFilter
   implements ListModel, ListDataListener
 {
-    private ItemProvider source;
+    private List<ItemProvider> sourceList;
     private Filterer filterer;
     private final List<Item> itemList;
     private final List<ListDataListener> dataListenerList;
 
-    public ItemProviderFilter(ItemProvider sourceIn, Filterer filtererIn)
+    public ItemProviderFilter(Filterer filtererIn, ItemProvider... sourceArray)
     {
-        source = sourceIn;
+        sourceList = Arrays.asList(sourceArray);
         filterer = filtererIn;
         itemList = new ArrayList<Item>();
         dataListenerList = new CopyOnWriteArrayList<ListDataListener>();
@@ -37,10 +38,12 @@ public class ItemProviderFilter
         int size;
         synchronized(itemList) {
             itemList.clear();
-            for(int itemI = 0; itemI < source.getSize(); itemI++) {
-                Item item = (Item)source.getElementAt(itemI);
-                if(filterer.filter(item)) {
-                    itemList.add(item);
+            for(ItemProvider source : sourceList) {
+                for(int itemI = 0; itemI < source.getSize(); itemI++) {
+                    Item item = (Item)source.getElementAt(itemI);
+                    if(filterer.filter(item)) {
+                        itemList.add(item);
+                    }
                 }
             }
             size = itemList.size();
@@ -48,20 +51,16 @@ public class ItemProviderFilter
 
         ListDataEvent ev = new ListDataEvent(
           this, ListDataEvent.CONTENTS_CHANGED,
-          0, size - 1);
+          0, size - 1
+        );
         for(ListDataListener listener : dataListenerList) {
             listener.contentsChanged(ev);
         }
     }
 
-    public ItemProvider getSource()
+    public void addSource(ItemProvider source)
     {
-        return source;
-    }
-
-    public void setSource(ItemProvider source)
-    {
-        this.source = source;
+        sourceList.add(source);
         refilter();
     }
 

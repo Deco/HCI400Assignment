@@ -56,6 +56,34 @@
           type="NAME" key="([\w_\s]*\s)?control_bar_bg(\s[\w_\s]*)?"
     />
     
+    <!-- Minimal focus view -->
+    <style id="focus_bg">
+        <state>
+            <opaque value="true"/>
+            <color type="BACKGROUND" value="WHITE" />
+            <color type="TEXT_BACKGROUND" value="WHITE" />
+            <color type="FOREGROUND" value="BLACK" />
+            <color type="TEXT_FOREGROUND" value="BLACK" />
+        </state>
+    </style>
+    <bind style="focus_bg"
+          type="NAME" key="([\w_\s]*\s)?focus_bg(\s[\w_\s]*)?"
+    />
+    
+    <style id="focus_content">
+        <insets top="11" right="11" bottom="11" left="11" />
+        <state>
+            <opaque value="true"/>
+            <color type="BACKGROUND" value="WHITE" />
+            <color type="TEXT_BACKGROUND" value="WHITE" />
+            <color type="FOREGROUND" value="BLACK" />
+            <color type="TEXT_FOREGROUND" value="BLACK" />
+        </state>
+    </style>
+    <bind style="focus_content"
+          type="NAME" key="([\w_\s]*\s)?focus_content(\s[\w_\s]*)?"
+    />
+    
     <!-- Minimal preview card -->
     <style id="minimal_preview_snippet_bg">
         <state>

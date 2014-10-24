@@ -7,17 +7,15 @@ package hci400assignment.gui;
 import hci400assignment.ImageCache;
 import hci400assignment.ImageCacheListener;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.io.IOException;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -44,6 +42,7 @@ public class ImagePanel
     private Image image;
 //    private Image resizedImage;
     private Mode mode;
+    private Cursor cursor;
 
     public ImagePanel()
     {
@@ -257,7 +256,7 @@ public class ImagePanel
         this.mode = modeIn;
         componentResized(null);
     }
-
+    
     @Override
     public void componentMoved(ComponentEvent ce)
     {

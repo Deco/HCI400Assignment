@@ -30,4 +30,6 @@ public abstract class RootPanel
 
     public abstract void showSettingsWindow();
 
+    public abstract void goBack();
+
 }

@@ -15,6 +15,9 @@ public class GUIUtil
 {
     public static void revalidate(final Container comp)
     {
+        if(comp == null) {
+            return;
+        }
 
         comp.invalidate();
 

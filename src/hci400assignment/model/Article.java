@@ -15,10 +15,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.function.UnaryOperator;
 import javax.imageio.ImageIO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
 /**
@@ -49,6 +51,48 @@ public class Article
     }
 
     @Override
+    public String getTitle()
+    {
+        return title;
+    }
+
+    @Override
+    public String getContent()
+    {
+        Document outputDocument = contentDocument.clone();
+
+        for(Enclosure enclosure : enclosureList) {
+            if(enclosure.type.startsWith("image")) {
+                Element img = outputDocument.createElement("img");
+                img.attr("src", enclosure.url);
+                outputDocument.body().prependChild(img);
+            }
+        }
+
+        for(Element el : outputDocument.select("img")) {
+            Element div = outputDocument.createElement("center");
+            el.replaceWith(div);
+            div.appendChild(el);
+        }
+        for(TextNode node : outputDocument.textNodes()) {
+            Element div = outputDocument.createElement("div");
+            node.replaceWith(div);
+            div.appendChild(node);
+            div.attr("style", "backgroud-color: red;");
+            div.attr("width", "450px");
+            div.attr("align", "center");
+        }
+        System.out.println(outputDocument.html());
+        return outputDocument.html();
+//        
+//        String fuckJava = "<html>";
+//        for(int i = 0; i < 5000; i++) {
+//            fuckJava += "ABC ";
+//        }
+//        return fuckJava;
+    }
+
+    @Override
     public String getPreviewTitle()
     {
         return "<html>" + title;
@@ -61,7 +105,7 @@ public class Article
         previewDocument.select("img").remove();
         String text = previewDocument.text();
         text = text.substring(0, Math.min(300, text.length() - 1));
-        return "<html>" + text;
+        return "<html>" + text + "...";
     }
 
     private String getEnclosureImageURL()
@@ -133,11 +177,6 @@ public class Article
     public void setContentHTML(String contentHTML)
     {
         contentDocument = Jsoup.parse(contentHTML);
-    }
-
-    public String getTitle()
-    {
-        return title;
     }
 
     public void setTitle(String title)

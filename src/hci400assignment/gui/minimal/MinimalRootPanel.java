@@ -6,7 +6,6 @@ package hci400assignment.gui.minimal;
 
 import hci400assignment.ApplicationCore;
 import hci400assignment.ApplicationDataController;
-import hci400assignment.gui.Card;
 import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.RootPanel;
@@ -15,10 +14,7 @@ import java.awt.CardLayout;
 import java.awt.Image;
 import java.util.List;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
 
 /**
  * MINIMAL!
@@ -33,6 +29,9 @@ public class MinimalRootPanel
     private final CardGrid homeGrid;
     private final CardGrid friendsGrid;
     private final CardGrid searchGrid;
+    private final MinimalFocusPanel focusPanel;
+
+    private String prevScreenStr = "homeGrid";
 
     /**
      * Creates new form RootPanel
@@ -73,12 +72,12 @@ public class MinimalRootPanel
         ));
         friendsGrid.setCardWidthMin(cardWidthMin);
         contentRootPanel.add(friendsGrid, "friendsGrid");
-        
+
         searchGrid = new CardGrid(
           dc.getSearchPreviewFeed(),
           new MinimalPreviewCard.Factory()
         );
-        searchGrid.setPreamblePanel(new SearchPanel());
+        searchGrid.setPreamblePanel(new MinimalSearchPanel());
         searchGrid.setBackgroundPanel(new ImagePanel(
           bgImage,
           ImagePanel.Mode.TILE
@@ -86,13 +85,19 @@ public class MinimalRootPanel
         searchGrid.setCardWidthMin(cardWidthMin);
         contentRootPanel.add(searchGrid, "searchGrid");
 
-        //contentRootPanel.add(focusPanel, "focusPanel");
+        focusPanel = new MinimalFocusPanel();
+        contentRootPanel.add(focusPanel, "focusPanel");
+
+        showHomeScreen();
     }
 
     @Override
     public void focusItem(Item item)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        focusPanel.setItem(item);
+
+        CardLayout cardLayout = (CardLayout)contentRootPanel.getLayout();
+        cardLayout.show(contentRootPanel, "focusPanel");
     }
 
     @Override
@@ -100,6 +105,8 @@ public class MinimalRootPanel
     {
         CardLayout cardLayout = (CardLayout)contentRootPanel.getLayout();
         cardLayout.show(contentRootPanel, "homeGrid");
+        prevScreenStr = "homeGrid";
+        navBar.setUnderlinedButton("home");
     }
 
     @Override
@@ -107,6 +114,8 @@ public class MinimalRootPanel
     {
         CardLayout cardLayout = (CardLayout)contentRootPanel.getLayout();
         cardLayout.show(contentRootPanel, "friendsGrid");
+        prevScreenStr = "friendsGrid";
+        navBar.setUnderlinedButton("friends");
     }
 
     @Override
@@ -114,12 +123,26 @@ public class MinimalRootPanel
     {
         CardLayout cardLayout = (CardLayout)contentRootPanel.getLayout();
         cardLayout.show(contentRootPanel, "searchGrid");
+        prevScreenStr = "searchGrid";
+        navBar.setUnderlinedButton("search");
     }
 
     @Override
     public void showSettingsWindow()
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void goBack()
+    {
+        if("homeGrid".equals(prevScreenStr)) {
+            showHomeScreen();
+        } else if("friendsGrid".equals(prevScreenStr)) {
+            showFriendsScreen();
+        } else if("searchGrid".equals(prevScreenStr)) {
+            showSearchScreen();
+        }
     }
 
     /**

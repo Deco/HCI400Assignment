@@ -30,9 +30,25 @@ public class Friend
     }
 
     @Override
-    public String getPreviewTitle()
+    public String getTitle()
     {
         return name;
+    }
+
+    @Override
+    public String getContent()
+    {
+        DateFormat df = new SimpleDateFormat("dd MMMM, yyyy");
+        return "<html>"
+          + "<img src=\"file:" + avatarURL.getPath() + "\" />"
+          + "Friends since: "
+          + df.format(friendshipDate);
+    }
+
+    @Override
+    public String getPreviewTitle()
+    {
+        return getTitle();
     }
 
     @Override

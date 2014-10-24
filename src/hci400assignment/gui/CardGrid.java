@@ -4,8 +4,7 @@
  */
 package hci400assignment.gui;
 
-import hci400assignment.gui.minimal.SearchPanel;
-import hci400assignment.model.Item;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -13,10 +12,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.swing.JPanel;
@@ -35,7 +32,7 @@ public class CardGrid
     private ListModel model;
     private final CardFactory cardFactory;
     private int cardWidthMin = 400;
-    private int cardInset = 20;
+    private int cardInset = 23;
     private final boolean shouldCardsGrow = false;
     private final JPanel tailVoidPanel = new VoidPanel();
     private int currentColumnCount;
@@ -113,8 +110,10 @@ public class CardGrid
 
         // start hacky bugfix
         startIndex = 0;
-        for(Card card : itemCardMap.values()) {
-            gridContentPanel.remove(card);
+        for(Component c : gridContentPanel.getComponents()) {
+            if(c instanceof Card) {
+                gridContentPanel.remove(c);
+            }
         }
         // end hacky bugfix
 

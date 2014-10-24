@@ -247,4 +247,9 @@ public class ApplicationCore
     {
         currentRootPanel.showSettingsWindow();
     }
+
+    public void goBack()
+    {
+        currentRootPanel.goBack();
+    }
 }

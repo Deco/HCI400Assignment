@@ -11,6 +11,7 @@ import hci400assignment.gui.GUIUtil;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.ItemCard;
 import hci400assignment.model.Item;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -36,6 +37,12 @@ public class MinimalPreviewCard
         initComponents();
 
         articleImagePanel.setMode(ImagePanel.Mode.FIT_MAX);
+        
+        Cursor handCursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+        articleImagePanel.setCursor(handCursor);
+        articleTitleLabel.setCursor(handCursor);
+        articleSnippetLabel.setCursor(handCursor);
+        
         setItem(itemIn);
         setImageHeightPc(DEFAULT_IMAGE_HEIGHT_PC);
     }
@@ -96,8 +103,7 @@ public class MinimalPreviewCard
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         articleImagePanel = new hci400assignment.gui.ImagePanel();
@@ -112,10 +118,8 @@ public class MinimalPreviewCard
         setLayout(new java.awt.GridBagLayout());
 
         articleImagePanel.setName("minimal_preview_image"); // NOI18N
-        articleImagePanel.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        articleImagePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 articleImagePanelMouseClicked(evt);
             }
         });
@@ -140,10 +144,8 @@ public class MinimalPreviewCard
         articleTitleLabel.setToolTipText("");
         articleTitleLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         articleTitleLabel.setName("minimal_preview_title"); // NOI18N
-        articleTitleLabel.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        articleTitleLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 articleTitleLabelMouseClicked(evt);
             }
         });
@@ -171,14 +173,12 @@ public class MinimalPreviewCard
         articleSnippetLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         articleSnippetLabel.setForeground(new java.awt.Color(204, 204, 204));
         articleSnippetLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        articleSnippetLabel.setText("<html>\n<div id=\"lipsum\">\n<p>\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ornare ultrices dolor, ut faucibus risus rutrum nec. Ut posuere sapien lectus, eget iaculis ipsum ultrices nec. Vestibulum dictum ligula est, at tempor enim pulvinar id. Donec libero dui, tristique vitae pellentesque sodales, interdum a erat. Vestibulum ac lacus consequat, sollicitudin est vitae, bibendum libero. Curabitur volutpat rutrum interdum. Phasellus fringilla risus nulla, nec imperdiet tellus dignissim quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ac nisl ex.\n</p>\n<p>\nAenean eget sodales mauris, ac placerat purus. Morbi sodales quis diam id mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam eget tincidunt urna. Suspendisse semper tincidunt nisl vel rutrum. Ut tristique porta ex, nec egestas enim rhoncus vitae. Curabitur purus massa, bibendum euismod mi vitae, facilisis tempus augue. Aenean purus diam, blandit non ex non, blandit maximus arcu. Suspendisse fermentum, arcu sed pretium sodales, turpis urna imperdiet lectus, a tincidunt arcu odio nec ipsum. Aliquam erat volutpat.\n</p>\n<p>\nMauris ullamcorper nunc diam, quis aliquam risus euismod ut. Vestibulum metus lectus, vestibulum in pharetra et, efficitur eu tortor. Proin posuere vel mauris eget eleifend. Sed porttitor metus nec libero vestibulum, id ullamcorper odio commodo. Nam commodo dictum massa id tempor. Donec elementum dolor lacinia tortor imperdiet, ut consectetur turpis auctor. Pellentesque ultricies consectetur dolor. Aenean nec nisi erat. Interdum et malesuada fames ac ante ipsum primis in faucibus.\n</p>\n<p>\nDonec aliquet eu dolor at tempus. Quisque posuere quam vitae lacus placerat, nec placerat ante commodo. Curabitur id ultricies enim. Duis a malesuada erat. Nullam suscipit nisi eu sollicitudin euismod. Maecenas malesuada faucibus nisi, mattis pellentesque odio tincidunt ac. In semper vulputate efficitur. Suspendisse vel pretium ipsum, quis imperdiet lorem. In convallis tortor felis, ac lacinia neque venenatis eu. Quisque egestas turpis id dapibus egestas.\n</p>\n<p>\nSed quis elementum metus. Aliquam eget maximus ligula. Sed fringilla, eros vel convallis egestas, ante quam volutpat leo, nec fermentum justo velit id lectus. Maecenas id mi purus. Vestibulum at massa condimentum, dapibus ligula dignissim, pellentesque nisi. Curabitur congue mauris sit amet odio consequat, eget luctus mi tincidunt. Sed non lobortis sapien. Duis non dolor bibendum, blandit nulla id, pharetra velit. Suspendisse et nunc eu tortor varius porttitor ac sit amet purus. Sed eu dui facilisis, aliquam neque at, ultrices quam.\n</p></div>");
+        articleSnippetLabel.setText("<html> <div id=\"lipsum\"> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ornare ultrices dolor, ut faucibus risus rutrum nec. Ut posuere sapien lectus, eget iaculis ipsum ultrices nec. Vestibulum dictum ligula est, at tempor enim pulvinar id. Donec libero dui, tristique vitae pellentesque sodales, interdum a erat. Vestibulum ac lacus consequat, sollicitudin est vitae, bibendum libero. Curabitur volutpat rutrum interdum. Phasellus fringilla risus nulla, nec imperdiet tellus dignissim quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ac nisl ex. </p> <p> Aenean eget sodales mauris, ac placerat purus. Morbi sodales quis diam id mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam eget tincidunt urna. Suspendisse semper tincidunt nisl vel rutrum. Ut tristique porta ex, nec egestas enim rhoncus vitae. Curabitur purus massa, bibendum euismod mi vitae, facilisis tempus augue. Aenean purus diam, blandit non ex non, blandit maximus arcu. Suspendisse fermentum, arcu sed pretium sodales, turpis urna imperdiet lectus, a tincidunt arcu odio nec ipsum. Aliquam erat volutpat. </p> <p> Mauris ullamcorper nunc diam, quis aliquam risus euismod ut. Vestibulum metus lectus, vestibulum in pharetra et, efficitur eu tortor. Proin posuere vel mauris eget eleifend. Sed porttitor metus nec libero vestibulum, id ullamcorper odio commodo. Nam commodo dictum massa id tempor. Donec elementum dolor lacinia tortor imperdiet, ut consectetur turpis auctor. Pellentesque ultricies consectetur dolor. Aenean nec nisi erat. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p> <p> Donec aliquet eu dolor at tempus. Quisque posuere quam vitae lacus placerat, nec placerat ante commodo. Curabitur id ultricies enim. Duis a malesuada erat. Nullam suscipit nisi eu sollicitudin euismod. Maecenas malesuada faucibus nisi, mattis pellentesque odio tincidunt ac. In semper vulputate efficitur. Suspendisse vel pretium ipsum, quis imperdiet lorem. In convallis tortor felis, ac lacinia neque venenatis eu. Quisque egestas turpis id dapibus egestas. </p> <p> Sed quis elementum metus. Aliquam eget maximus ligula. Sed fringilla, eros vel convallis egestas, ante quam volutpat leo, nec fermentum justo velit id lectus. Maecenas id mi purus. Vestibulum at massa condimentum, dapibus ligula dignissim, pellentesque nisi. Curabitur congue mauris sit amet odio consequat, eget luctus mi tincidunt. Sed non lobortis sapien. Duis non dolor bibendum, blandit nulla id, pharetra velit. Suspendisse et nunc eu tortor varius porttitor ac sit amet purus. Sed eu dui facilisis, aliquam neque at, ultrices quam. </p></div>");
         articleSnippetLabel.setToolTipText("");
         articleSnippetLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         articleSnippetLabel.setName("minimal_preview_snippet"); // NOI18N
-        articleSnippetLabel.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        articleSnippetLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 articleSnippetLabelMouseClicked(evt);
             }
         });

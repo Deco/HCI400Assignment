@@ -101,8 +101,8 @@ public class ApplicationDataController
             return searchProvider;
         }
         searchProvider = new ItemProviderFilter(
-          homeProvider,
-          new ItemProviderFilter.TextFilterer("")
+          new ItemProviderFilter.TextFilterer(""),
+          homeProvider, friendProvider
         );
         return searchProvider;
     }
@@ -168,7 +168,7 @@ public class ApplicationDataController
                         provider.add(article);
                     }
                 } catch(Exception ex) {
-                    System.err.println("Could not fetch feed.");
+                    System.err.println("Could not fetch feed: " + uriString);
                     ex.printStackTrace(System.err);
                 }
             }

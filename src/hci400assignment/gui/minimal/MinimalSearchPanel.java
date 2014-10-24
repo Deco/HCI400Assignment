@@ -5,21 +5,23 @@
 package hci400assignment.gui.minimal;
 
 import hci400assignment.ApplicationCore;
+import hci400assignment.gui.HintTextField;
 import javax.swing.SwingUtilities;
 
 /**
  *
  * @author Declan White
  */
-public class SearchPanel extends javax.swing.JPanel
+public class MinimalSearchPanel extends javax.swing.JPanel
 {
 
     /**
      * Creates new form SearchPanel
      */
-    public SearchPanel()
+    public MinimalSearchPanel()
     {
         initComponents();
+        ((HintTextField)searchTextField).setHintText("Enter search text...");
     }
 
     /**
@@ -34,7 +36,7 @@ public class SearchPanel extends javax.swing.JPanel
         java.awt.GridBagConstraints gridBagConstraints;
 
         leftPaddingPanel = new javax.swing.JPanel();
-        searchTextField = new javax.swing.JTextField();
+        searchTextField = new HintTextField();
         rightPaddingPanel = new javax.swing.JPanel();
 
         setLayout(new java.awt.GridBagLayout());
@@ -59,7 +61,6 @@ public class SearchPanel extends javax.swing.JPanel
 
         searchTextField.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         searchTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        searchTextField.setText("jTextField1");
         searchTextField.setMaximumSize(new java.awt.Dimension(600, 50));
         searchTextField.setMinimumSize(new java.awt.Dimension(250, 19));
         searchTextField.setPreferredSize(new java.awt.Dimension(600, 30));

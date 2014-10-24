@@ -16,6 +16,9 @@ import javax.imageio.ImageIO;
  */
 public abstract class Item
 {
+    public abstract String getTitle();
+
+    public abstract String getContent();
 
     public abstract String getPreviewTitle();
 

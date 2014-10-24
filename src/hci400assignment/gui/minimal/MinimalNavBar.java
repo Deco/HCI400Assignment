@@ -5,6 +5,10 @@
 package hci400assignment.gui.minimal;
 
 import hci400assignment.ApplicationCore;
+import java.awt.font.TextAttribute;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,12 +18,39 @@ import javax.swing.JOptionPane;
 public class MinimalNavBar extends javax.swing.JPanel
 {
 
+    private final Map<String, JButton> underlineButtonMap;
+
     /**
      * Creates new form NavBar
      */
     public MinimalNavBar()
     {
         initComponents();
+
+        underlineButtonMap = new HashMap<String, JButton>()
+        {
+            {
+                put("home", navHomeButton);
+                put("friends", navFriendsButton);
+                put("search", navSearchButton);
+            }
+        };
+    }
+
+    public void setUnderlinedButton(String key)
+    {
+        Map<TextAttribute, Integer> fontAttributes
+          = new HashMap<TextAttribute, Integer>();
+        fontAttributes.put(TextAttribute.UNDERLINE, null);
+
+        for(Map.Entry<String, JButton> entry : underlineButtonMap.entrySet()) {
+            JButton button = entry.getValue();
+            button.setFont(button.getFont().deriveFont(fontAttributes));
+        }
+
+        JButton button = underlineButtonMap.get(key);
+        fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        button.setFont(button.getFont().deriveFont(fontAttributes));
     }
 
     /**
@@ -261,13 +292,10 @@ public class MinimalNavBar extends javax.swing.JPanel
 
     private void navFacebookButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navFacebookButtonActionPerformed
     {//GEN-HEADEREND:event_navFacebookButtonActionPerformed
-        try
-        {
+        try {
             String URL = "https://www.facebook.com/";
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
@@ -275,13 +303,10 @@ public class MinimalNavBar extends javax.swing.JPanel
 
     private void navTwitterButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navTwitterButtonActionPerformed
     {//GEN-HEADEREND:event_navTwitterButtonActionPerformed
-        try
-        {
+        try {
             String URL = "https://www.twitter.com/";
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_navTwitterButtonActionPerformed

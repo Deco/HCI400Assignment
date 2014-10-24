@@ -75,11 +75,13 @@ public class AboutBox extends javax.swing.JPanel
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         add(jButton1, gridBagConstraints);
 
-        jLabel3.setText("<html>\n<center> This Program is a product of Team Placeholder<br>\nCreated in mid 2014. </center>\n\n<img src=\"file:/home/16142600/hci400/assignment/build/classes/hci400assignment/resources/curtin-logo.jpg\"></img>\n\n</html>");
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("<html> <center> This Program is a product of Team Placeholder<br> Created in mid 2014. </center> </html>");
         jLabel3.setName("jLabel3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(jLabel3, gridBagConstraints);
 
         jLabel2.setText("About Placeholder");
