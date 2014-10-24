@@ -10,6 +10,7 @@ import hci400assignment.gui.Card;
 import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.RootPanel;
+import hci400assignment.gui.SettingsPanel;
 import hci400assignment.model.Item;
 import hci400assignment.model.ItemProviderFilter;
 import java.awt.CardLayout;
@@ -151,7 +152,7 @@ public class ClutteredRootPanel
     @Override
     public JPanel getSettingsPanel()
     {
-        return null;
+        return new SettingsPanel();
     }
 
     @Override

@@ -71,7 +71,20 @@ public class StylePainter
         g.fillRect(x, y, w, h);
     }
     // </editor-fold>
-
+    
+    
+    
+    
+    //AHGJAHSDFJHSADFJKAHSDJFHAGJHASDF
+    
+    @Override
+    public void paintComboBoxBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+        paintVerticalGradient(context,graphics,x,y,w,h);
+    }
+    
+    
+    
+    
     //****** TEXTFIELD ******/
     // <editor-fold defaultstate="collapsed" desc="TextField Painters">
     @Override
