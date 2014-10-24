@@ -5,6 +5,7 @@
 package hci400assignment.model;
 
 import hci400assignment.gui.minimal.MinimalPreviewCard;
+import java.awt.Image;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -30,6 +31,7 @@ public class Article
     private String author;
     private Document contentDocument;
     private final List<Enclosure> enclosureList;
+    private String avatarURL;
 
     public Article()
     {
@@ -43,6 +45,17 @@ public class Article
           + "<br/>Yay!"
         );
         enclosureList = new ArrayList<Enclosure>();
+    }
+
+    @Override
+    public URL getAvatarImageURL()
+    {
+        try {
+            return new URL(avatarURL);
+        } catch(MalformedURLException ex) {
+            ex.printStackTrace(System.err);
+        }
+        return null;
     }
 
     @Override
@@ -193,6 +206,11 @@ public class Article
     public void addEnclosure(String type, String url)
     {
         enclosureList.add(new Enclosure(type, url));
+    }
+
+    public void setAvatar(String url)
+    {
+        avatarURL = url;
     }
 
     public class Enclosure

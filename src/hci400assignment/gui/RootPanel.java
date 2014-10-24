@@ -28,8 +28,10 @@ public abstract class RootPanel
 
     public abstract void showSearchScreen();
 
-    public abstract void showSettingsWindow();
+    public abstract JPanel getSettingsPanel();
 
     public abstract void goBack();
+
+    public abstract void setSearchText(String text);
 
 }

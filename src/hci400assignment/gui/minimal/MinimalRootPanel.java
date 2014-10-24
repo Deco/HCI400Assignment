@@ -10,11 +10,13 @@ import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.RootPanel;
 import hci400assignment.model.Item;
+import hci400assignment.model.ItemProviderFilter;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.util.List;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 /**
  * MINIMAL!
@@ -32,6 +34,7 @@ public class MinimalRootPanel
     private final MinimalFocusPanel focusPanel;
 
     private String prevScreenStr = "homeGrid";
+    private final ItemProviderFilter searchProvider;
 
     /**
      * Creates new form RootPanel
@@ -73,8 +76,12 @@ public class MinimalRootPanel
         friendsGrid.setCardWidthMin(cardWidthMin);
         contentRootPanel.add(friendsGrid, "friendsGrid");
 
+        searchProvider = dc.getSearchPreviewFeed(
+          dc.getHomePreviewFeed(),
+          dc.getFriendPreviewFeed()
+        );
         searchGrid = new CardGrid(
-          dc.getSearchPreviewFeed(),
+          searchProvider,
           new MinimalPreviewCard.Factory()
         );
         searchGrid.setPreamblePanel(new MinimalSearchPanel());
@@ -128,9 +135,15 @@ public class MinimalRootPanel
     }
 
     @Override
-    public void showSettingsWindow()
+    public void setSearchText(String text)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        searchProvider.setFilterer(new ItemProviderFilter.TextFilterer(text));
+    }
+
+    @Override
+    public JPanel getSettingsPanel()
+    {
+        return null;
     }
 
     @Override

@@ -31,6 +31,10 @@ public class ItemProviderFilter
         filterer = filtererIn;
         itemList = new ArrayList<Item>();
         dataListenerList = new CopyOnWriteArrayList<ListDataListener>();
+
+        for(ItemProvider source : sourceArray) {
+            source.addListDataListener(this);
+        }
     }
 
     private void refilter()
@@ -61,6 +65,7 @@ public class ItemProviderFilter
     public void addSource(ItemProvider source)
     {
         sourceList.add(source);
+        source.addListDataListener(this);
         refilter();
     }
 

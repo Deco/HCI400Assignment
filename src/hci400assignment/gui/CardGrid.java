@@ -297,6 +297,12 @@ public class CardGrid
         preamblePanel = preamblePanelIn;
     }
 
+    public JPanel getPreamblePanel()
+    {
+        return preamblePanel;
+    }
+    
+
     @Override
     public void componentMoved(ComponentEvent ce)
     {

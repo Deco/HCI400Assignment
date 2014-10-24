@@ -33,6 +33,11 @@ public class ImageCache
 
     public static ImageCache get(URL url)
     {
+        if(url == null) {
+            url = ImageCache.class.getResource(
+              "/hci400assignment/resources/about.png"
+            );
+        }
         ImageCache imageCache = imageCacheMap.get(url);
 
         if(imageCache == null) {

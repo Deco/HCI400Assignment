@@ -44,6 +44,9 @@ public class ApplicationCore
     private JFrame aboutFrame;
     private JPanel aboutPanel;
 
+    private JFrame settingsFrame;
+    private JPanel settingsPanel;
+
     private SynthLookAndFeel laf;
 
     public ApplicationCore()
@@ -65,7 +68,7 @@ public class ApplicationCore
     {
         return dc;
     }
-    
+
     private void launch()
       throws IOException, ParseException, UnsupportedLookAndFeelException
     {
@@ -74,6 +77,7 @@ public class ApplicationCore
         makeRootPanels();
         makeRootWindow();
         makeAboutWindow();
+        makeSettingsWindow();
 
         showRootWindow();
     }
@@ -149,7 +153,29 @@ public class ApplicationCore
           screenSize.width / 2 - aboutFrame.getSize().width / 2,
           screenSize.height / 2 - aboutFrame.getSize().height / 2);
     }
-    
+
+    private void makeSettingsWindow()
+    {
+        settingsFrame = new JFrame("Settings");
+        settingsFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+//        settingsPanel = new AboutBox();
+//        settingsPanel.setDoubleBuffered(true);
+//        settingsFrame.getContentPane().add(settingsPanel);
+        settingsFrame.pack();
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = new Dimension(
+          (int)(screenSize.getWidth() * 2.0 / 5.0),
+          (int)(screenSize.getHeight() * 2.0 / 5.0));
+        settingsFrame.setPreferredSize(frameSize);
+        settingsFrame.setSize(frameSize);
+
+        settingsFrame.setLocation(
+          screenSize.width / 2 - settingsFrame.getSize().width / 2,
+          screenSize.height / 2 - settingsFrame.getSize().height / 2);
+    }
+
     private void updateDesign()
     {
         CardLayout layout = (CardLayout)rootFrame.getContentPane().getLayout();
@@ -240,12 +266,20 @@ public class ApplicationCore
 
     public void setSearchText(String text)
     {
-        dc.setSearchText(text);
+        currentRootPanel.setSearchText(text);
     }
 
     public void showSettingsWindow()
     {
-        currentRootPanel.showSettingsWindow();
+        settingsPanel = currentRootPanel.getSettingsPanel();
+        settingsPanel.setDoubleBuffered(true);
+
+        settingsFrame.getContentPane().removeAll();
+        settingsFrame.getContentPane().add(settingsPanel);
+
+        settingsFrame.setVisible(true);
+        settingsFrame.toFront();
+        settingsFrame.repaint();
     }
 
     public void goBack()

@@ -124,6 +124,7 @@
     <style id="minimal_preview_title">
         <state>
             <color type="FOREGROUND" idref="uiText" />
+            <color type="TEXT_FOREGROUND" idref="uiText" />
         </state>
     </style>
     <bind style="minimal_preview_title"
@@ -135,6 +136,35 @@
     </style>
     <bind style="minimal_preview_image"
           type="NAME" key="([\w_\s]*\s)?minimal_preview_image(\s[\w_\s]*)?"
+    />
+    
+    <!-- Cluttered preview card -->
+    <style id="cluttered_preview_title_bg">
+        <state>
+            <opaque value="true"/>
+            <color type="BACKGROUND" idref="uiBackgroundDark" />
+            <color type="FOREGROUND" idref="uiText" />
+        </state>
+    </style>
+    <bind style="cluttered_preview_title_bg"
+          type="NAME" key="([\w_\s]*\s)?cluttered_preview_title_bg(\s[\w_\s]*)?"
+    />
+    
+    <style id="cluttered_preview_title">
+        <state>
+            <color type="FOREGROUND" idref="uiText" />
+            <color type="TEXT_FOREGROUND" idref="uiText" />
+        </state>
+    </style>
+    <bind style="cluttered_preview_title"
+          type="NAME" key="([\w_\s]*\s)?cluttered_preview_title(\s[\w_\s]*)?"
+    />
+    
+    <style id="cluttered_preview_image">
+        <!-- -->
+    </style>
+    <bind style="cluttered_preview_image"
+          type="NAME" key="([\w_\s]*\s)?cluttered_preview_image(\s[\w_\s]*)?"
     />
     
     <!-- ImagePanel -->

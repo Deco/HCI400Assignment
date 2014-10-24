@@ -53,7 +53,7 @@ public class Card
             Dimension size = getSize();
             Dimension preferredSize = getPreferredSize();
             Dimension newSize = new Dimension(
-              0,
+              preferredSize.width,
               (int)((double)size.width / aspectRatio)
             );
             setPreferredSize(newSize);

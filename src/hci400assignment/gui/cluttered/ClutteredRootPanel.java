@@ -11,11 +11,13 @@ import hci400assignment.gui.CardGrid;
 import hci400assignment.gui.ImagePanel;
 import hci400assignment.gui.RootPanel;
 import hci400assignment.model.Item;
+import hci400assignment.model.ItemProviderFilter;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.util.List;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 /**
  * MINIMAL!
@@ -25,13 +27,14 @@ import javax.imageio.ImageIO;
 public class ClutteredRootPanel
   extends RootPanel
 {
-    
+
     private List<ClutteredPreviewCard> articleCardList;
     private final CardGrid homeGrid;
     private final CardGrid friendsGrid;
-    private final CardGrid searchGrid;
     private final ClutteredFocusPanel focusPanel;
-    
+    private final ItemProviderFilter homeSearchProvider;
+    private final ItemProviderFilter friendSearchProvider;
+
     private String prevScreenStr = "homeGrid";
 
     /**
@@ -40,20 +43,23 @@ public class ClutteredRootPanel
     public ClutteredRootPanel() throws IOException
     {
         initComponents();
-        
+
         int cardWidthMin = 330;
-        
+
         ApplicationDataController dc
           = ApplicationCore.getInstance().getDataController();
-        
+
         Image bgImage = ImageIO.read(ClutteredRootPanel.class.
           getResourceAsStream(
             "/hci400assignment/resources/dark-bg.png"
           )
         );
         
+        homeSearchProvider =
+          dc.getSearchPreviewFeed(dc.getHomePreviewFeed());
+
         homeGrid = new CardGrid(
-          dc.getHomePreviewFeed(),
+          homeSearchProvider,
           new ClutteredPreviewCard.Factory()
           {
               @Override
@@ -72,10 +78,14 @@ public class ClutteredRootPanel
           ImagePanel.Mode.TILE
         ));
         homeGrid.setCardWidthMin(cardWidthMin);
+        homeGrid.setPreamblePanel(new ClutteredSearchPanel());
         contentRootPanel.add(homeGrid, "homeGrid");
-        
+
+        friendSearchProvider
+          = dc.getSearchPreviewFeed(dc.getFriendPreviewFeed());
+
         friendsGrid = new CardGrid(
-          dc.getFriendPreviewFeed(),
+          friendSearchProvider,
           new ClutteredPreviewCard.Factory()
         );
         friendsGrid.setBackgroundPanel(new ImagePanel(
@@ -83,35 +93,24 @@ public class ClutteredRootPanel
           ImagePanel.Mode.TILE
         ));
         friendsGrid.setCardWidthMin(cardWidthMin);
+        friendsGrid.setPreamblePanel(new ClutteredSearchPanel());
         contentRootPanel.add(friendsGrid, "friendsGrid");
-        
-        searchGrid = new CardGrid(
-          dc.getSearchPreviewFeed(),
-          new ClutteredPreviewCard.Factory()
-        );
-        searchGrid.setPreamblePanel(new ClutteredSearchPanel());
-        searchGrid.setBackgroundPanel(new ImagePanel(
-          bgImage,
-          ImagePanel.Mode.TILE
-        ));
-        searchGrid.setCardWidthMin(cardWidthMin);
-        contentRootPanel.add(searchGrid, "searchGrid");
-        
+
         focusPanel = new ClutteredFocusPanel();
         contentRootPanel.add(focusPanel, "focusPanel");
-        
+
         showHomeScreen();
     }
-    
+
     @Override
     public void focusItem(Item item)
     {
         focusPanel.setItem(item);
-        
+
         CardLayout cardLayout = (CardLayout)contentRootPanel.getLayout();
         cardLayout.show(contentRootPanel, "focusPanel");
     }
-    
+
     @Override
     public void showHomeScreen()
     {
@@ -120,7 +119,7 @@ public class ClutteredRootPanel
         prevScreenStr = "homeGrid";
         navBar.setUnderlinedButton("home");
     }
-    
+
     @Override
     public void showFriendsScreen()
     {
@@ -129,7 +128,7 @@ public class ClutteredRootPanel
         prevScreenStr = "friendsGrid";
         navBar.setUnderlinedButton("friends");
     }
-    
+
     @Override
     public void showSearchScreen()
     {
@@ -138,13 +137,23 @@ public class ClutteredRootPanel
         prevScreenStr = "searchGrid";
         navBar.setUnderlinedButton("search");
     }
-    
+
     @Override
-    public void showSettingsWindow()
+    public void setSearchText(String text)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if("homeGrid".equals(prevScreenStr)) {
+            homeSearchProvider.setFilterer(new ItemProviderFilter.TextFilterer(text));
+        } else if("friendsGrid".equals(prevScreenStr)) {
+            friendSearchProvider.setFilterer(new ItemProviderFilter.TextFilterer(text));
+        }
     }
-    
+
+    @Override
+    public JPanel getSettingsPanel()
+    {
+        return null;
+    }
+
     @Override
     public void goBack()
     {

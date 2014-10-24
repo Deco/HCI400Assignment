@@ -40,6 +40,8 @@ public class ClutteredPreviewCard
         Cursor handCursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
         articleImagePanel.setCursor(handCursor);
         articleTitleLabel.setCursor(handCursor);
+        
+        avatarPanel.setMode(ImagePanel.Mode.FILL);
 
         setItem(itemIn);
     }
@@ -57,6 +59,8 @@ public class ClutteredPreviewCard
             }
         }
         articleTitleLabel.setText(item.getPreviewTitle());
+        
+        avatarPanel.setImage(item.getAvatarImageURL());
     }
 
     @Override
@@ -78,14 +82,18 @@ public class ClutteredPreviewCard
 
         articleImagePanel = new hci400assignment.gui.ImagePanel();
         articleTitlePanel = new javax.swing.JPanel();
+        avatarContainerContainer = new javax.swing.JPanel();
+        avatarContainer = new javax.swing.JPanel();
+        avatarPanel = new hci400assignment.gui.ImagePanel();
+        avatarPadding = new javax.swing.JPanel();
         articleTitleLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(81, 81, 81));
         setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 34, 34)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51))));
-        setName("minimal_preview"); // NOI18N
+        setName("cluttered_preview"); // NOI18N
         setLayout(new java.awt.GridBagLayout());
 
-        articleImagePanel.setName("minimal_preview_image"); // NOI18N
+        articleImagePanel.setName("cluttered_preview_image"); // NOI18N
         articleImagePanel.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
@@ -96,24 +104,50 @@ public class ClutteredPreviewCard
         articleImagePanel.setLayout(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 1.0;
         add(articleImagePanel, gridBagConstraints);
 
         articleTitlePanel.setBackground(new java.awt.Color(42, 42, 42));
-        articleTitlePanel.setName("minimal_preview_title_bg"); // NOI18N
-        articleTitlePanel.setLayout(new java.awt.GridBagLayout());
+        articleTitlePanel.setName("cluttered_preview_title_bg"); // NOI18N
+        articleTitlePanel.setLayout(new java.awt.BorderLayout());
+
+        avatarContainerContainer.setName("cluttered_preview_title_bg"); // NOI18N
+        avatarContainerContainer.setLayout(new java.awt.BorderLayout());
+
+        avatarContainer.setName("cluttered_preview_title_bg"); // NOI18N
+        avatarContainer.setPreferredSize(new java.awt.Dimension(38, 38));
+        avatarContainer.setLayout(new java.awt.GridBagLayout());
+
+        avatarPanel.setName("cluttered_avatar"); // NOI18N
+        avatarPanel.setPreferredSize(new java.awt.Dimension(64, 64));
+        avatarPanel.setLayout(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        avatarContainer.add(avatarPanel, gridBagConstraints);
+
+        avatarContainerContainer.add(avatarContainer, java.awt.BorderLayout.NORTH);
+
+        avatarPadding.setName("cluttered_preview_title_bg"); // NOI18N
+        avatarContainerContainer.add(avatarPadding, java.awt.BorderLayout.CENTER);
+
+        articleTitlePanel.add(avatarContainerContainer, java.awt.BorderLayout.WEST);
 
         articleTitleLabel.setBackground(new java.awt.Color(46, 46, 46));
-        articleTitleLabel.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        articleTitleLabel.setFont(new java.awt.Font("Arial", 1, 19)); // NOI18N
         articleTitleLabel.setForeground(new java.awt.Color(204, 204, 204));
         articleTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         articleTitleLabel.setText("<html>Title");
         articleTitleLabel.setToolTipText("");
         articleTitleLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        articleTitleLabel.setName("minimal_preview_title"); // NOI18N
+        articleTitleLabel.setName("cluttered_preview_title"); // NOI18N
         articleTitleLabel.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
@@ -121,18 +155,11 @@ public class ClutteredPreviewCard
                 articleTitleLabelMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 12, 4, 12);
-        articleTitlePanel.add(articleTitleLabel, gridBagConstraints);
+        articleTitlePanel.add(articleTitleLabel, java.awt.BorderLayout.CENTER);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         add(articleTitlePanel, gridBagConstraints);
@@ -152,6 +179,10 @@ public class ClutteredPreviewCard
     private hci400assignment.gui.ImagePanel articleImagePanel;
     private javax.swing.JLabel articleTitleLabel;
     private javax.swing.JPanel articleTitlePanel;
+    private javax.swing.JPanel avatarContainer;
+    private javax.swing.JPanel avatarContainerContainer;
+    private javax.swing.JPanel avatarPadding;
+    private hci400assignment.gui.ImagePanel avatarPanel;
     // End of variables declaration//GEN-END:variables
 
     public static class Factory implements CardFactory

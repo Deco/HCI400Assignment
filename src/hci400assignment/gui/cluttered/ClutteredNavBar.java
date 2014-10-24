@@ -31,8 +31,7 @@ public class ClutteredNavBar extends javax.swing.JPanel
         {
             {
                 put("home", navHomeButton);
-                put("friends", navCollectionsButton);
-                put("search", navSearchButton);
+                put("friends", navFriendsButton);
             }
         };
     }
@@ -66,8 +65,8 @@ public class ClutteredNavBar extends javax.swing.JPanel
 
         navHomeButton = new javax.swing.JButton();
         navCollectionsButton = new javax.swing.JButton();
-        navSearchButton = new javax.swing.JButton();
-        navAboutButton = new javax.swing.JButton();
+        navSharedButton = new javax.swing.JButton();
+        navFriendsButton = new javax.swing.JButton();
         navSettingsButton = new javax.swing.JButton();
         navSwitchButton = new javax.swing.JButton();
         gapPanel = new javax.swing.JPanel();
@@ -121,17 +120,17 @@ public class ClutteredNavBar extends javax.swing.JPanel
         gridBagConstraints.weighty = 1.0;
         add(navCollectionsButton, gridBagConstraints);
 
-        navSearchButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-        navSearchButton.setText("shared");
-        navSearchButton.setFocusable(false);
-        navSearchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        navSearchButton.setName("top_bar_button"); // NOI18N
-        navSearchButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navSearchButton.addActionListener(new java.awt.event.ActionListener()
+        navSharedButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navSharedButton.setText("shared");
+        navSharedButton.setFocusable(false);
+        navSharedButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navSharedButton.setName("top_bar_button"); // NOI18N
+        navSharedButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navSharedButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                navSearchButtonActionPerformed(evt);
+                navSharedButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -141,19 +140,19 @@ public class ClutteredNavBar extends javax.swing.JPanel
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(navSearchButton, gridBagConstraints);
+        add(navSharedButton, gridBagConstraints);
 
-        navAboutButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-        navAboutButton.setText("friends");
-        navAboutButton.setFocusable(false);
-        navAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        navAboutButton.setName("top_bar_button"); // NOI18N
-        navAboutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navAboutButton.addActionListener(new java.awt.event.ActionListener()
+        navFriendsButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        navFriendsButton.setText("friends");
+        navFriendsButton.setFocusable(false);
+        navFriendsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        navFriendsButton.setName("top_bar_button"); // NOI18N
+        navFriendsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navFriendsButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                navAboutButtonActionPerformed(evt);
+                navFriendsButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -163,7 +162,7 @@ public class ClutteredNavBar extends javax.swing.JPanel
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(navAboutButton, gridBagConstraints);
+        add(navFriendsButton, gridBagConstraints);
 
         navSettingsButton.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         navSettingsButton.setText("settings");
@@ -236,10 +235,10 @@ public class ClutteredNavBar extends javax.swing.JPanel
         add(clutteredControlBar1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void navAboutButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navAboutButtonActionPerformed
-    {//GEN-HEADEREND:event_navAboutButtonActionPerformed
-        ApplicationCore.getInstance().showAboutWindow();
-    }//GEN-LAST:event_navAboutButtonActionPerformed
+    private void navFriendsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navFriendsButtonActionPerformed
+    {//GEN-HEADEREND:event_navFriendsButtonActionPerformed
+        ApplicationCore.getInstance().showFriendsScreen();
+    }//GEN-LAST:event_navFriendsButtonActionPerformed
 
     private void navSwitchButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSwitchButtonActionPerformed
     {//GEN-HEADEREND:event_navSwitchButtonActionPerformed
@@ -252,13 +251,13 @@ public class ClutteredNavBar extends javax.swing.JPanel
 
     private void navCollectionsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navCollectionsButtonActionPerformed
     {//GEN-HEADEREND:event_navCollectionsButtonActionPerformed
-        ApplicationCore.getInstance().showFriendsScreen();
+        
     }//GEN-LAST:event_navCollectionsButtonActionPerformed
 
-    private void navSearchButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSearchButtonActionPerformed
-    {//GEN-HEADEREND:event_navSearchButtonActionPerformed
-        ApplicationCore.getInstance().showSearchScreen();
-    }//GEN-LAST:event_navSearchButtonActionPerformed
+    private void navSharedButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSharedButtonActionPerformed
+    {//GEN-HEADEREND:event_navSharedButtonActionPerformed
+        
+    }//GEN-LAST:event_navSharedButtonActionPerformed
 
     private void navSettingsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_navSettingsButtonActionPerformed
     {//GEN-HEADEREND:event_navSettingsButtonActionPerformed
@@ -269,11 +268,11 @@ public class ClutteredNavBar extends javax.swing.JPanel
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private hci400assignment.gui.cluttered.ClutteredControlBar clutteredControlBar1;
     private javax.swing.JPanel gapPanel;
-    private javax.swing.JButton navAboutButton;
     private javax.swing.JButton navCollectionsButton;
+    private javax.swing.JButton navFriendsButton;
     private javax.swing.JButton navHomeButton;
-    private javax.swing.JButton navSearchButton;
     private javax.swing.JButton navSettingsButton;
+    private javax.swing.JButton navSharedButton;
     private javax.swing.JButton navSwitchButton;
     // End of variables declaration//GEN-END:variables
 }

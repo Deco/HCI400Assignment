@@ -30,6 +30,12 @@ public class Friend
     }
 
     @Override
+    public URL getAvatarImageURL()
+    {
+        return getPreviewImageURL();
+    }
+
+    @Override
     public String getTitle()
     {
         return name;
@@ -40,7 +46,7 @@ public class Friend
     {
         DateFormat df = new SimpleDateFormat("dd MMMM, yyyy");
         return "<html>"
-          + "<img src=\"file:" + avatarURL.getPath() + "\" />"
+          + "<img src=\"file:" + avatarURL.getPath() + "\" /><br/>"
           + "Friends since: "
           + df.format(friendshipDate);
     }

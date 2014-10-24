@@ -38,4 +38,6 @@ public abstract class Item
 
     public abstract String getTextDump();
 
+    public abstract URL getAvatarImageURL();
+
 }

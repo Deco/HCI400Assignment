@@ -8,6 +8,7 @@ import com.sun.syndication.feed.synd.SyndContentImpl;
 import com.sun.syndication.feed.synd.SyndEnclosure;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndImage;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 import hci400assignment.model.Article;
@@ -35,7 +36,6 @@ public class ApplicationDataController
 
     private ItemProvider homeProvider;
     private ItemProvider friendProvider;
-    private ItemProviderFilter searchProvider;
 
     public ItemProvider getHomePreviewFeed()
     {
@@ -95,21 +95,13 @@ public class ApplicationDataController
         return friendProvider;
     }
 
-    public ListModel getSearchPreviewFeed()
+    public ItemProviderFilter getSearchPreviewFeed(ItemProvider... otherArray)
     {
-        if(searchProvider != null) {
-            return searchProvider;
-        }
-        searchProvider = new ItemProviderFilter(
+        ItemProviderFilter searchProvider = new ItemProviderFilter(
           new ItemProviderFilter.TextFilterer(""),
-          homeProvider, friendProvider
+          otherArray
         );
         return searchProvider;
-    }
-
-    void setSearchText(String text)
-    {
-        searchProvider.setFilterer(new ItemProviderFilter.TextFilterer(text));
     }
 
     public void fetchRSS(
@@ -130,12 +122,20 @@ public class ApplicationDataController
                     List<SyndEntryImpl> entryList
                       = (List<SyndEntryImpl>)feed.getEntries();
 
+                    String feedImageURL = null;
+                    SyndImage feedImage = feed.getImage();
+                    if(feedImage != null) {
+
+                        feedImageURL = feedImage.getUrl();
+                    }
+
                     for(SyndEntryImpl entry : entryList) {
 
                         Article article = new Article();
                         article.setTitle(entry.getTitle());
                         article.setAuthor(entry.getAuthor());
                         article.setPublishDate(entry.getPublishedDate());
+                        article.setAvatar(feedImageURL);
 
                         List<SyndEnclosure> enclosureList
                           = (List<SyndEnclosure>)entry.getEnclosures();
